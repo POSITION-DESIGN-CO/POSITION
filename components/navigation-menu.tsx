@@ -15,10 +15,14 @@ export function NavigationMenu() {
         <div className="relative z-50">
             <div className="fixed top-4 left-4 z-50">
                 <button
-                    onClick={() => setIsOpen(!isOpen)}
+                    // onClick={() => setIsOpen(!isOpen)}
                     className={`w-80 flex items-center justify-between border-t border-x border-gray-800 bg-white px-3 py-1 text-sm`}
                 >
-                    <span className="text-xl">POSITION</span>
+                    <span className="text-xl">
+                        <Link href={`/`} className="text-l">
+                            POSITION
+                        </Link>
+                    </span>
                     <MenuIcon
                         isOpen={isOpen}
                         handleClick={() => setIsOpen(!isOpen)}

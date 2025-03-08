@@ -67,7 +67,7 @@ export default async function Home() {
                                         height={project.thumbnail.height}
                                         className={cn(
                                             config.height,
-                                            "w-full max-h-96 object-cover transition-transform duration-300 group-hover:scale-105"
+                                            "w-full md:max-h-96 lg:max-h-[50rem] object-cover transition-transform duration-300 group-hover:scale-105"
                                         )}
                                     />
                                 </div>

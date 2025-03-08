@@ -37,7 +37,11 @@ export function ProjectList({ projects }: ProjectListProps) {
                     <Link
                         key={project.sys.id}
                         href={`/projects/${project.sys.id}`}
-                        className="py-1 group grid grid-cols-12 gap-4 relative"
+                        className={`${
+                            hoveredId && hoveredId !== project.sys.id
+                                ? "opacity-10"
+                                : "opacity-100"
+                        } py-1 group grid grid-cols-12 gap-4 relative`}
                         onMouseEnter={() => setHoveredId(project.sys.id)}
                         onMouseLeave={() => setHoveredId(null)}
                     >
@@ -52,7 +56,7 @@ export function ProjectList({ projects }: ProjectListProps) {
                             <span>{project.location}</span>
                             {project.thumbnail &&
                                 hoveredId === project.sys.id && (
-                                    <div className="absolute top-0 right-0 h-48 w-72 overflow-hidden z-50">
+                                    <div className="absolute top-0 right-0 h-48 w-72 overflow-hidden z-50 pointer-events-none">
                                         <Image
                                             src={
                                                 project.thumbnail.url ||
