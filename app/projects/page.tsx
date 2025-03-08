@@ -20,31 +20,26 @@ export default async function ProjectsPage({
     const categories = getUniqueCategories();
 
     return (
-        <main className="min-h-screen bg-white p-8">
-            <div className="mx-auto max-w-7xl">
-                <div className="mb-8 mt-16 flex flex-col justify-between gap-4 md:flex-row md:items-center">
-                    <div className="flex items-center">
-                        <h1 className="text-2xl font-bold">POSITION</h1>
-                    </div>
-                    <ViewToggle />
-                </div>
-
-                <div className="mb-12">
-                    <p className="max-w-3xl text-lg text-gray-600">
-                        Founded in Brooklyn, New York by Poyao Shih, POSITION is
-                        an architectural practice that explores ideas across
-                        disciplines and scales, focusing on contemporary
-                        architectural challenges through innovative forms and
-                        materials.
-                    </p>
-                </div>
-
-                {view === "grid" ? (
-                    <ProjectGrid projects={projects} />
-                ) : (
-                    <ProjectList projects={projects} />
-                )}
+        <main className="min-h-screen p-4">
+            <div className="fixed top-4 right-4">
+                <ViewToggle />
             </div>
+
+            <div className="my-24">
+                <p className="max-w-3xl text-sm text-gray-600">
+                    Founded in Brooklyn, New York by Poyao Shih, POSITION is an
+                    architectural practice that explores ideas across
+                    disciplines and scales, focusing on contemporary
+                    architectural challenges through innovative forms and
+                    materials.
+                </p>
+            </div>
+
+            {view === "grid" ? (
+                <ProjectGrid projects={projects} />
+            ) : (
+                <ProjectList projects={projects} />
+            )}
         </main>
     );
 }

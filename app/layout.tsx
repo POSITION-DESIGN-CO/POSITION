@@ -1,32 +1,29 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-import "./globals.css"
-import { NavigationMenu } from "@/components/navigation-menu"
+import type React from "react";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "../styles/index.css";
+import { cn } from "@/lib/utils";
+import { NavigationMenu } from "@/components/navigation-menu";
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "POSITION | Architecture Studio",
-  description: "An architectural practice that explores ideas across disciplines and scales",
-    generator: 'v0.dev'
-}
+    title: "POSITION | Architecture Studio",
+    description:
+        "An architectural practice that explores ideas across disciplines and scales",
+};
 
 export default function RootLayout({
-  children,
+    children,
 }: {
-  children: React.ReactNode
+    children: React.ReactNode;
 }) {
-  return (
-    <html lang="en">
-      <body className={inter.className}>
-        <NavigationMenu />
-        {children}
-      </body>
-    </html>
-  )
+    return (
+        <html lang="en">
+            <body className={cn(inter.className, "bg-[#fbf7f7]")}>
+                <NavigationMenu />
+                {children}
+            </body>
+        </html>
+    );
 }
-
-
-
-import './globals.css'

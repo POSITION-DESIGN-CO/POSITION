@@ -7,7 +7,7 @@ export const dummyProjects = {
                 category: "Architecture",
                 year: "2024",
                 thumbnail: {
-                    url: "https://www.mplus.org.hk/api/images/415/width-1380%7Cformat-webp/",
+                    url: "https://www.mplus.org.hk/api/images/475/width-1380%7Cformat-webp/",
                     width: 600,
                     height: 400,
                 },
@@ -60,7 +60,7 @@ export const dummyProjects = {
                 category: "Architecture",
                 year: "2024",
                 thumbnail: {
-                    url: "https://www.mplus.org.hk/api/images/423/width-1380%7Cformat-webp/",
+                    url: "https://www.mplus.org.hk/api/images/199/width-1380%7Cformat-webp/",
                     width: 600,
                     height: 400,
                 },
@@ -83,7 +83,7 @@ export const dummyProjects = {
                 category: "Architecture",
                 year: "2024",
                 thumbnail: {
-                    url: "https://www.mplus.org.hk/api/images/424/width-1380%7Cformat-webp/",
+                    url: "https://www.mplus.org.hk/api/images/352/width-1380%7Cformat-webp/",
                     width: 600,
                     height: 400,
                 },
@@ -129,7 +129,7 @@ export const dummyProjects = {
                 category: "Interior",
                 year: "2023",
                 thumbnail: {
-                    url: "https://www.mplus.org.hk/api/images/427/width-1380%7Cformat-webp/",
+                    url: "https://www.mplus.org.hk/api/images/322/width-1380%7Cformat-webp/",
                     width: 600,
                     height: 400,
                 },
@@ -152,7 +152,7 @@ export const dummyProjects = {
                 category: "Fabrication",
                 year: "2023",
                 thumbnail: {
-                    url: "https://www.mplus.org.hk/api/images/439/width-1380%7Cformat-webp/",
+                    url: "https://www.mplus.org.hk/api/images/431/width-1380%7Cformat-webp/",
                     width: 600,
                     height: 400,
                 },
@@ -175,7 +175,7 @@ export const dummyProjects = {
                 category: "Architecture",
                 year: "2022",
                 thumbnail: {
-                    url: "https://www.mplus.org.hk/api/images/420/width-1380%7Cformat-webp/",
+                    url: "https://www.mplus.org.hk/api/images/617/width-1380%7Cformat-webp/",
                     width: 600,
                     height: 400,
                 },
@@ -184,7 +184,7 @@ export const dummyProjects = {
                     items: [
                         {
                             title: "Intercorp - Main Hall",
-                            url: "https://www.mplus.org.hk/api/images/412/width-1380%7Cformat-webp/",
+                            url: "https://www.mplus.org.hk/api/images/619/width-1380%7Cformat-webp/",
                             width: 1200,
                             height: 800,
                             sys: { id: "8-1" },
@@ -198,7 +198,7 @@ export const dummyProjects = {
                 category: "Product",
                 year: "2022",
                 thumbnail: {
-                    url: "https://www.mplus.org.hk/api/images/413/width-1380%7Cformat-webp/",
+                    url: "https://www.mplus.org.hk/api/images/143/width-1380%7Cformat-webp/",
                     width: 600,
                     height: 400,
                 },

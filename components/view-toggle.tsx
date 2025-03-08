@@ -16,13 +16,11 @@ export function ViewToggle() {
     };
 
     return (
-        <div className="flex border border-gray-300">
+        <div className="flex border border-gray-800 bg-white">
             <button
                 className={cn(
-                    "rounded-none border-r border-gray-300 px-4 py-2 text-sm font-medium",
-                    view === "grid"
-                        ? "bg-gray-100"
-                        : "bg-white hover:bg-gray-50"
+                    "rounded-none border-r border-gray-800 px-6 py-2 text-sm",
+                    view === "grid" ? "text-black" : "text-gray-300"
                 )}
                 onClick={() => setView("grid")}
             >
@@ -30,10 +28,8 @@ export function ViewToggle() {
             </button>
             <button
                 className={cn(
-                    "rounded-none px-4 py-2 text-sm font-medium",
-                    view === "list"
-                        ? "bg-gray-100"
-                        : "bg-white hover:bg-gray-50"
+                    "rounded-none px-6 py-1 text-sm",
+                    view === "list" ? "text-black" : "text-gray-300"
                 )}
                 onClick={() => setView("list")}
             >

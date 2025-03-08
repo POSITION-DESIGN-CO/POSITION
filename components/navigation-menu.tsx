@@ -2,9 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { getUniqueCategories } from "@/lib/dummy-data";
+import MenuIcon from "./MenuIcon/MenuIcon";
 
 export function NavigationMenu() {
     const [isOpen, setIsOpen] = useState(false);
@@ -13,60 +12,51 @@ export function NavigationMenu() {
 
     return (
         <div className="relative z-50">
-            {/* Main navigation button */}
             <div className="fixed top-4 left-4 z-50">
                 <button
                     onClick={() => setIsOpen(!isOpen)}
-                    className="flex items-center justify-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium"
+                    className={`w-80 flex items-center justify-between border-t border-x border-gray-800 bg-white px-3 py-1 text-sm`}
                 >
-                    <span className="mr-2">POSITION</span>
-                    <Menu className={cn("h-5 w-5", isOpen && "hidden")} />
-                    <X className={cn("h-5 w-5", !isOpen && "hidden")} />
+                    <span className="text-xl">POSITION</span>
+                    <MenuIcon
+                        isOpen={isOpen}
+                        handleClick={() => setIsOpen(!isOpen)}
+                    />
                 </button>
+                <div
+                    className={`w-full h-[1px] bg-gray-800 transition-transform duration-1000 origin-left ${
+                        !isOpen ? "scale-x-100" : "scale-x-0"
+                    }`}
+                />
             </div>
 
-            {/* Navigation panel */}
             <div
-                className={cn(
-                    "fixed inset-0 z-40 bg-white transition-transform duration-300 ease-in-out",
-                    isOpen ? "translate-x-0" : "-translate-x-full"
-                )}
+                className={`fixed left-4 w-80 top-12 z-40 bg-white overflow-hidden transition-[max-height] duration-1000 ease-in-out border-x border-b border-gray-800 ${
+                    isOpen ? "max-h-[calc(100vh-88px)]" : "max-h-0"
+                }`}
             >
-                <div className="flex h-full flex-col p-16">
-                    <div className="flex justify-between">
-                        <h1 className="text-2xl font-bold">POSITION</h1>
-                        <button
-                            onClick={() => setIsOpen(false)}
-                            className="text-lg"
-                        >
-                            CLOSE <X className="ml-2 inline h-5 w-5" />
-                        </button>
-                    </div>
-
-                    <div className="mt-12 flex flex-col space-y-4">
+                <div className="flex flex-col p-3">
+                    <div className="flex flex-col space-y-4">
                         <div className="w-full">
                             <button
                                 onClick={() =>
                                     setIsProjectsOpen(!isProjectsOpen)
                                 }
-                                className="flex w-full items-start justify-start text-left text-xl font-medium"
+                                className="flex w-full items-start justify-start text-left text-l"
                             >
                                 PROJECTS
                             </button>
                             <div
-                                className={cn(
-                                    "mt-4 space-y-2 overflow-hidden transition-all duration-300",
-                                    isProjectsOpen
-                                        ? "max-h-screen opacity-100"
-                                        : "max-h-0 opacity-0"
-                                )}
+                                className={`mt-2 overflow-hidden transition-[max-height] duration-700 ease-in-out ${
+                                    isProjectsOpen ? "max-h-[500px]" : "max-h-0"
+                                }`}
                             >
                                 {categories.map((category) => (
-                                    <div key={category} className="pl-4">
+                                    <div key={category} className="py-0">
                                         <Link
                                             href={`/projects?category=${category}`}
                                             onClick={() => setIsOpen(false)}
-                                            className="text-lg hover:underline"
+                                            className="text-l"
                                         >
                                             {category}
                                         </Link>
@@ -78,14 +68,14 @@ export function NavigationMenu() {
                         <Link
                             href="/about"
                             onClick={() => setIsOpen(false)}
-                            className="text-xl font-medium hover:underline"
+                            className="text-l"
                         >
                             ABOUT
                         </Link>
                     </div>
 
-                    <div className="mt-auto">
-                        <div className="space-y-2 text-sm">
+                    <div className="mt-auto pt-8">
+                        <div className="text-l">
                             <p>New York / Taipei</p>
                             <p>+1(323)600-5582</p>
                             <p>pshih@positiondesign.co</p>

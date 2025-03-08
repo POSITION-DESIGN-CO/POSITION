@@ -1,0 +1,58 @@
+/*********** FILTER MENU ***********/
+
+.menuButton {
+    width: 25px;
+    height: 25px;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3px;
+}
+
+.menuButton-inner {
+    position: relative;
+    width: 17px;
+    height: 17px;
+}
+
+.line {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 14px;
+    height: 1px;
+    background-color: black;
+    transform-origin: center;
+    transition: all 0.3s ease;
+}
+
+.closed #line1 {
+    transform: translate(-50%, 3px) rotate(0);
+}
+
+.closed #line2 {
+    transform: translate(-50%, -3px) rotate(0);
+}
+
+.closed:hover #line1 {
+    transform: translate(-50%, 5px) rotate(0);
+}
+
+.closed:hover #line2 {
+    transform: translate(-50%, -5px) rotate(0);
+}
+
+.open #line1 {
+    transform: translate(-50%) rotate(-135deg);
+}
+
+.open #line2,
+.open:hover #line1 {
+    transform: translate(-50%) rotate(-45deg);
+}
+
+.open:hover #line2 {
+    transform: translate(-50%) rotate(45deg);
+}

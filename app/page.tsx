@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getProjects } from "@/lib/contentful";
+import { cn } from "@/lib/utils";
 
 export default async function Home() {
     const { items: projects } = await getProjects();
@@ -8,66 +9,75 @@ export default async function Home() {
     const featuredProjects = projects.slice(0, 7);
 
     const gridConfigurations = [
-        { colSpan: "col-span-12 md:col-span-3", height: "h-[200px]" },
-        { colSpan: "col-span-12 md:col-span-6", height: "h-[400px]" },
-        { colSpan: "col-span-12 md:col-span-3", height: "h-[200px]" },
+        { colSpan: "col-span-12 md:col-span-3 place-content-end" },
+        { colSpan: "col-span-12 md:col-span-4 place-content-end" },
         {
-            colSpan: "col-span-12 md:col-span-9",
-            height: "h-[300px]",
-            hasDescription: true,
-        },
-        { colSpan: "col-span-12 md:col-span-8", height: "h-[300px]" },
-        { colSpan: "col-span-12 md:col-span-4", height: "h-[300px]" },
-        { colSpan: "col-span-12 md:col-span-4", height: "h-[250px]" },
-        {
-            colSpan: "col-span-12 md:col-span-8",
+            colSpan: "col-span-12 md:col-span-2 place-content-end",
             height: "h-auto",
             isText: true,
-        }, // About text
+        },
+        { colSpan: "col-span-12 md:col-span-3 place-content-end" },
+        {
+            colSpan: "col-span-12 md:col-span-3",
+        },
+        { colSpan: "col-span-12 md:col-span-3 place-content-end" },
+        { colSpan: "col-span-12 md:col-span-6" },
     ];
 
     return (
-        <main className="min-h-screen bg-white p-8">
+        <main className="min-h-screen p-8">
             {/* <div className="mx-auto max-w-7xl"> */}
-            <div className="flex flex-wrap gap-8 md:grid-cols-2 lg:grid-cols-3">
-                {/* <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"> */}
-                {featuredProjects.map((project) => (
-                    <Link
-                        key={project.sys.id}
-                        href={`/projects/${project.sys.id}`}
-                        className="group block"
-                    >
-                        <div className="overflow-hidden">
-                            <Image
-                                src={
-                                    project.thumbnail.url || "/placeholder.svg"
-                                }
-                                alt={project.title}
-                                width={project.thumbnail.width}
-                                height={project.thumbnail.height}
-                                className="transition-transform duration-300 group-hover:scale-105"
-                                // className="h-60 w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                            />
-                        </div>
-                        <div className="mt-2">
-                            <h2 className="text-lg font-medium">
-                                {project.title}
-                            </h2>
-                            {/* <p className="text-sm text-gray-600">
-                                {project.category}, {project.year}
-                            </p> */}
-                        </div>
-                    </Link>
-                ))}
-            </div>
+            <div className="grid grid-cols-12 gap-4 md:gap-6">
+                {gridConfigurations.map((config, index) => {
+                    if (index === 2 && config.isText) {
+                        return (
+                            <div key="about-text" className={config.colSpan}>
+                                <div className="">
+                                    <p className="text-sm text-gray-600">
+                                        POSITION is an architectural practice
+                                        founded by Poyao Shih in Brooklyn, New
+                                        York. The studio explores ideas across
+                                        different disciplines and scales,
+                                        focusing on responding to contemporary
+                                        architectural issues through innovative
+                                        forms and materials.
+                                    </p>
+                                </div>
+                            </div>
+                        );
+                    }
 
-            <div className="mt-12 text-center">
-                <Link
-                    href="/projects"
-                    className="inline-block border border-gray-300 px-6 py-3 text-sm font-medium hover:bg-gray-100"
-                >
-                    View All Projects
-                </Link>
+                    if (index >= featuredProjects.length) return null;
+                    const project = featuredProjects[index];
+
+                    return (
+                        <div key={project.sys.id} className={config.colSpan}>
+                            <Link
+                                href={`/projects/${project.sys.id}`}
+                                className="group block"
+                            >
+                                <div className="overflow-hidden">
+                                    <Image
+                                        src={
+                                            project.thumbnail.url ||
+                                            "/placeholder.svg"
+                                        }
+                                        alt={project.title}
+                                        width={project.thumbnail.width}
+                                        height={project.thumbnail.height}
+                                        className={cn(
+                                            config.height,
+                                            "w-full max-h-96 object-cover transition-transform duration-300 group-hover:scale-105"
+                                        )}
+                                    />
+                                </div>
+                                <div className="mt-2">
+                                    <h2 className="text-sm">{project.title}</h2>
+                                </div>
+                            </Link>
+                        </div>
+                    );
+                })}
             </div>
         </main>
     );
