@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getProjectById } from "@/lib/contentful";
-import { notFound } from "next/navigation";
 
 export default async function ProjectPage({
     params,
@@ -11,7 +10,11 @@ export default async function ProjectPage({
     const project = await getProjectById(params.id);
 
     if (!project) {
-        notFound();
+        return (
+            <main className="min-h-screen flex justify-center items-center bg-white p-8">
+                <h1 className="text-xl">project not found...</h1>
+            </main>
+        );
     }
 
     return (
