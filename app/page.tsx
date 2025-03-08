@@ -25,7 +25,7 @@ export default async function Home() {
     ];
 
     return (
-        <main className="min-h-screen p-8">
+        <main className="min-h-screen p-4">
             {/* <div className="mx-auto max-w-7xl"> */}
             <div className="grid grid-cols-12 gap-4 md:gap-6">
                 {gridConfigurations.map((config, index) => {

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { getUniqueCategories } from "@/lib/dummy-data";
 import MenuIcon from "./MenuIcon/MenuIcon";
+import { BackgroundLine } from "./BackgroundLine/BackgroundLine";
 
 export function NavigationMenu() {
     const [isOpen, setIsOpen] = useState(false);
@@ -24,8 +25,10 @@ export function NavigationMenu() {
                     />
                 </button>
                 <div
-                    className={`w-full h-[1px] bg-gray-800 transition-transform duration-1000 origin-left ${
-                        !isOpen ? "scale-x-100" : "scale-x-0"
+                    className={`w-full h-[1px] bg-gray-800 transition-transform origin-right ${
+                        !isOpen
+                            ? "scale-x-100 delay-700 duration-1000"
+                            : "scale-x-0 duration-100"
                     }`}
                 />
             </div>
@@ -35,52 +38,50 @@ export function NavigationMenu() {
                     isOpen ? "max-h-[calc(100vh-88px)]" : "max-h-0"
                 }`}
             >
-                <div className="flex flex-col p-3">
-                    <div className="flex flex-col space-y-4">
-                        <div className="w-full">
-                            <button
-                                onClick={() =>
-                                    setIsProjectsOpen(!isProjectsOpen)
-                                }
-                                className="flex w-full items-start justify-start text-left text-l"
-                            >
-                                PROJECTS
-                            </button>
-                            <div
-                                className={`mt-2 overflow-hidden transition-[max-height] duration-700 ease-in-out ${
-                                    isProjectsOpen ? "max-h-[500px]" : "max-h-0"
-                                }`}
-                            >
-                                {categories.map((category) => (
-                                    <div key={category} className="py-0">
-                                        <Link
-                                            href={`/projects?category=${category}`}
-                                            onClick={() => setIsOpen(false)}
-                                            className="text-l"
-                                        >
-                                            {category}
-                                        </Link>
-                                    </div>
-                                ))}
+                <div className="flex flex-col p-3 pt-24 w-full">
+                    <BackgroundLine
+                        isMenuOpen={isOpen}
+                        isProjectsOpen={isProjectsOpen}
+                    />
+                    <button
+                        onClick={() => setIsProjectsOpen(!isProjectsOpen)}
+                        className="flex w-full items-start justify-start text-left text-l"
+                    >
+                        PROJECTS
+                    </button>
+                    <div
+                        className={`overflow-hidden transition-[max-height] duration-700 ease-in-out ${
+                            isProjectsOpen ? "max-h-screen" : "max-h-0"
+                        }`}
+                    >
+                        {categories.map((category) => (
+                            <div key={category} className="py-0">
+                                <Link
+                                    href={`/projects?category=${category}`}
+                                    onClick={() => setIsOpen(false)}
+                                    className="text-l"
+                                >
+                                    {category}
+                                </Link>
                             </div>
-                        </div>
-
-                        <Link
-                            href="/about"
-                            onClick={() => setIsOpen(false)}
-                            className="text-l"
-                        >
-                            ABOUT
-                        </Link>
+                        ))}
                     </div>
 
-                    <div className="mt-auto pt-8">
-                        <div className="text-l">
-                            <p>New York / Taipei</p>
-                            <p>+1(323)600-5582</p>
-                            <p>pshih@positiondesign.co</p>
-                            <p>Instagram</p>
-                        </div>
+                    <Link
+                        href="/about"
+                        onClick={() => setIsOpen(false)}
+                        className="text-l pt-2"
+                    >
+                        ABOUT
+                    </Link>
+                </div>
+
+                <div className="mt-auto pt-8 p-3">
+                    <div className="text-l">
+                        <p>New York / Taipei</p>
+                        <p>+1(323)600-5582</p>
+                        <p>pshih@positiondesign.co</p>
+                        <p>Instagram</p>
                     </div>
                 </div>
             </div>
