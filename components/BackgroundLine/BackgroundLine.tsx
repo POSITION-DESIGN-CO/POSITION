@@ -23,13 +23,13 @@ export function BackgroundLine({
                 className="w-full h-full"
             >
                 <path
-                    d={`M15 0 L15 ${isMenuOpen ? "90" : "0"} L305 ${
-                        isMenuOpen ? "13" : "0"
+                    d={`M15 0 L15 ${isMenuOpen ? "90" : "8"} L305 ${
+                        isMenuOpen ? "13" : "8"
                     }  L305 600`}
                     stroke="black"
                     strokeWidth="1"
                     fill="none"
-                    className="transition-all duration-1000 ease-in-out"
+                    className="transition-all duration-700 ease-in-out"
                 />
             </svg>
         </div>

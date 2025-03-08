@@ -26,7 +26,7 @@ export default async function ProjectsPage({
             </div>
 
             <div className="my-24">
-                <p className="max-w-3xl text-sm text-gray-600">
+                <p className="max-w-3xl text-sm">
                     Founded in Brooklyn, New York by Poyao Shih, POSITION is an
                     architectural practice that explores ideas across
                     disciplines and scales, focusing on contemporary

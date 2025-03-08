@@ -5,11 +5,14 @@ import Link from "next/link";
 import { getUniqueCategories } from "@/lib/dummy-data";
 import MenuIcon from "./MenuIcon/MenuIcon";
 import { BackgroundLine } from "./BackgroundLine/BackgroundLine";
+import { useSearchParams } from "next/navigation";
 
 export function NavigationMenu() {
     const [isOpen, setIsOpen] = useState(false);
     const [isProjectsOpen, setIsProjectsOpen] = useState(false);
     const categories = getUniqueCategories();
+    const searchParams = useSearchParams();
+    const currentCategory = searchParams.get("category");
 
     return (
         <div className="relative z-50">
@@ -19,8 +22,16 @@ export function NavigationMenu() {
                     className={`w-80 flex items-center justify-between border-t border-x border-gray-800 bg-white px-3 py-1 text-sm`}
                 >
                     <span className="text-xl">
-                        <Link href={`/`} className="text-l">
-                            POSITION
+                        <Link href={`/`} className={`text-l`}>
+                            POSITIO
+                            <span
+                                style={{
+                                    transform: "scale(-1,1)",
+                                    display: "inline-block",
+                                }}
+                            >
+                                N
+                            </span>
                         </Link>
                     </span>
                     <MenuIcon
@@ -29,9 +40,9 @@ export function NavigationMenu() {
                     />
                 </button>
                 <div
-                    className={`w-full h-[1px] bg-gray-800 transition-transform origin-right ${
+                    className={`w-full h-[1px] bg-gray-800 transition-transform origin-center ${
                         !isOpen
-                            ? "scale-x-100 delay-700 duration-1000"
+                            ? "scale-x-100 delay-700 duration-500"
                             : "scale-x-0 duration-100"
                     }`}
                 />
@@ -63,7 +74,11 @@ export function NavigationMenu() {
                                 <Link
                                     href={`/projects?category=${category}`}
                                     onClick={() => setIsOpen(false)}
-                                    className="text-l"
+                                    className={`text-l ${
+                                        currentCategory === category
+                                            ? "text-gray-500"
+                                            : ""
+                                    }`}
                                 >
                                     {category}
                                 </Link>

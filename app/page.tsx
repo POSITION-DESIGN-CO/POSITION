@@ -33,7 +33,7 @@ export default async function Home() {
                         return (
                             <div key="about-text" className={config.colSpan}>
                                 <div className="">
-                                    <p className="text-sm text-gray-600">
+                                    <p className="text-sm">
                                         POSITION is an architectural practice
                                         founded by Poyao Shih in Brooklyn, New
                                         York. The studio explores ideas across
