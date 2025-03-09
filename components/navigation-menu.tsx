@@ -53,7 +53,7 @@ export function NavigationMenu() {
                         <Link
                             href={`/`}
                             className={`text-l`}
-                            onClick={() => setIsOpen(!isOpen)}
+                            onClick={() => setIsOpen(false)}
                         >
                             POSITIO
                             <span
