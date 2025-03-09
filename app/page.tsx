@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 export default async function Home() {
     const { items: projects } = await getProjects();
-    // Take only the first 6 projects for the homepage
+    // Take only the first 7 projects for the homepage
     const featuredProjects = projects.slice(0, 7);
 
     const gridConfigurations = [

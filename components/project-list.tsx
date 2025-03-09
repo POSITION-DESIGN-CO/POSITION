@@ -37,7 +37,7 @@ export function ProjectList({ projects }: ProjectListProps) {
                     <Link
                         key={project.sys.id}
                         href={`/projects/${project.sys.id}`}
-                        className={`${
+                        className={`transition-opacity duration-300 ${
                             hoveredId && hoveredId !== project.sys.id
                                 ? "opacity-10"
                                 : "opacity-100"
@@ -54,21 +54,29 @@ export function ProjectList({ projects }: ProjectListProps) {
                         <div className="col-span-3">{project.category}</div>
                         <div className="col-span-3 place-content-end flex items-center">
                             <span>{project.location}</span>
-                            {project.thumbnail &&
-                                hoveredId === project.sys.id && (
-                                    <div className="absolute top-0 right-0 h-48 w-72 overflow-hidden z-50 pointer-events-none">
-                                        <Image
-                                            src={
-                                                project.thumbnail.url ||
-                                                "/placeholder.svg"
-                                            }
-                                            alt={project.title}
-                                            width={project.thumbnail.width}
-                                            height={project.thumbnail.height}
-                                            className="h-full w-full object-cover"
-                                        />
-                                    </div>
-                                )}
+                            {project.thumbnail && (
+                                // hoveredId === project.sys.id && (
+                                <div
+                                    style={{
+                                        opacity:
+                                            hoveredId === project.sys.id
+                                                ? 1
+                                                : 0,
+                                    }}
+                                    className="transition-opacity duration-300 absolute top-0 right-0 h-48 w-72 overflow-hidden z-50 pointer-events-none"
+                                >
+                                    <Image
+                                        src={
+                                            project.thumbnail.url ||
+                                            "/placeholder.svg"
+                                        }
+                                        alt={project.title}
+                                        width={project.thumbnail.width}
+                                        height={project.thumbnail.height}
+                                        className="h-full w-full object-cover"
+                                    />
+                                </div>
+                            )}
                         </div>
                     </Link>
                 ))}

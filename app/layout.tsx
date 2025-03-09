@@ -4,6 +4,8 @@ import { Inter } from "next/font/google";
 import "../styles/index.css";
 import { cn } from "@/lib/utils";
 import { NavigationMenu } from "@/components/navigation-menu";
+import { Footer } from "@/components/Footer";
+import { getUniqueCategories } from "@/lib/contentful";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,16 +15,20 @@ export const metadata: Metadata = {
         "An architectural practice that explores ideas across disciplines and scales",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
 }: {
     children: React.ReactNode;
 }) {
+    // const categories = (await getUniqueCategories()) as string[];
+
     return (
         <html lang="en">
             <body className={cn(inter.className, "bg-[#fbf7f7]")}>
+                {/* <NavigationMenu categories={categories} /> */}
                 <NavigationMenu />
                 {children}
+                <Footer />
             </body>
         </html>
     );

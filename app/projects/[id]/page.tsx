@@ -2,6 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { getProjectById } from "@/lib/contentful";
 
+interface Image {
+    title: string;
+    url: string;
+    width: number;
+    height: number;
+    sys: { id: string };
+}
+
 export default async function ProjectPage({
     params,
 }: {
@@ -36,7 +44,7 @@ export default async function ProjectPage({
                 </div>
 
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-                    {project.galleryCollection.items.map((image) => (
+                    {project.galleryCollection.items.map((image: Image) => (
                         <div key={image.sys.id} className="overflow-hidden">
                             <Image
                                 src={image.url || "/placeholder.svg"}
