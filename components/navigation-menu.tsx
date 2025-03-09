@@ -50,7 +50,11 @@ export function NavigationMenu() {
                     ref={buttonRef}
                 >
                     <span className="text-xl">
-                        <Link href={`/`} className={`text-l`}>
+                        <Link
+                            href={`/`}
+                            className={`text-l`}
+                            onClick={() => setIsOpen(!isOpen)}
+                        >
                             POSITIO
                             <span
                                 style={{

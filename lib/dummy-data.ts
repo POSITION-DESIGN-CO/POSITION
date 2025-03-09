@@ -7,11 +7,13 @@ export const dummyProjects = {
                 category: "Architecture",
                 year: "2024",
                 thumbnail: {
-                    url: "https://www.mplus.org.hk/api/images/475/width-1380%7Cformat-webp/",
+                    url: "https://www.mplus.org.hk/api/images/469/width-1380%7Cformat-webp/",
                     width: 600,
                     height: 400,
                 },
                 location: "Brooklyn, NY",
+                featured: true, // Featured on homepage
+                order: 1, // First item on homepage
                 galleryCollection: {
                     items: [
                         {
@@ -42,6 +44,8 @@ export const dummyProjects = {
                     height: 400,
                 },
                 location: "Brooklyn, NY",
+                featured: true, // Featured on homepage
+                order: 3, // Third item on homepage
                 galleryCollection: {
                     items: [
                         {
@@ -65,6 +69,7 @@ export const dummyProjects = {
                     height: 400,
                 },
                 location: "Brooklyn, NY",
+                featured: false, // Not featured on homepage
                 galleryCollection: {
                     items: [
                         {
@@ -88,6 +93,8 @@ export const dummyProjects = {
                     height: 400,
                 },
                 location: "Brooklyn, NY",
+                featured: true, // Featured on homepage
+                order: 5, // Fifth item on homepage
                 galleryCollection: {
                     items: [
                         {
@@ -111,6 +118,8 @@ export const dummyProjects = {
                     height: 400,
                 },
                 location: "New York, NY",
+                featured: true, // Featured on homepage
+                order: 7, // Seventh item on homepage
                 galleryCollection: {
                     items: [
                         {
@@ -134,6 +143,7 @@ export const dummyProjects = {
                     height: 400,
                 },
                 location: "Taipei",
+                featured: false, // Not featured on homepage
                 galleryCollection: {
                     items: [
                         {
@@ -157,6 +167,8 @@ export const dummyProjects = {
                     height: 400,
                 },
                 location: "Brooklyn, NY",
+                featured: true, // Featured on homepage
+                order: 9, // Ninth item on homepage
                 galleryCollection: {
                     items: [
                         {
@@ -180,6 +192,7 @@ export const dummyProjects = {
                     height: 400,
                 },
                 location: "Lima, Peru",
+                featured: false, // Not featured on homepage
                 galleryCollection: {
                     items: [
                         {
@@ -203,6 +216,7 @@ export const dummyProjects = {
                     height: 400,
                 },
                 location: "Seoul, Korea",
+                featured: false, // Not featured on homepage
                 galleryCollection: {
                     items: [
                         {
@@ -214,6 +228,57 @@ export const dummyProjects = {
                         },
                     ],
                 },
+            },
+        ],
+    },
+};
+
+export const dummyEditorialImages = {
+    editorialCollection: {
+        items: [
+            {
+                sys: { id: "e1" },
+                title: "Material Study",
+                image: {
+                    url: "https://www.mplus.org.hk/api/images/272/width-1380%7Cformat-webp/",
+                    width: 800,
+                    height: 800,
+                },
+                order: 2,
+                size: "small",
+            },
+            {
+                sys: { id: "e2" },
+                title: "Light & Shadow",
+                image: {
+                    url: "https://www.mplus.org.hk/api/images/765/width-1380%7Cformat-webp/",
+                    width: 600,
+                    height: 900,
+                },
+                order: 8,
+                size: "medium",
+            },
+            {
+                sys: { id: "e3" },
+                title: null,
+                image: {
+                    url: "https://www.mplus.org.hk/api/images/342/width-1380%7Cformat-webp/",
+                    width: 1200,
+                    height: 800,
+                },
+                order: 6, // Sixth item on homepage
+                size: "small",
+            },
+            {
+                sys: { id: "e4" },
+                title: "Concept Sketch",
+                image: {
+                    url: "https://www.mplus.org.hk/api/images/613/width-1380%7Cformat-webp/",
+                    width: 900,
+                    height: 600,
+                },
+                order: 4, // Eighth item on homepage
+                size: "large",
             },
         ],
     },

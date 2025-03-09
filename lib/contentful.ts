@@ -1,4 +1,5 @@
-import { dummyProjects } from "./dummy-data";
+import { dummyProjects, dummyEditorialImages } from "./dummy-data";
+import type { HomepageItem } from "./contentful-models";
 
 const CONTENTFUL_API_URL = `https://graphql.contentful.com/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`;
 const CONTENTFUL_HEADERS = {
@@ -47,6 +48,33 @@ export async function getProjects() {
     // const data = await fetchFromContentful(projectsQuery);
     // return data?.projectCollection || { items: [] };
     return dummyProjects.projectCollection;
+}
+
+export async function getEditorialImages() {
+    const editorialQuery = `
+    query {
+      editorialCollection {
+        items {
+          sys {
+            id
+          }
+          title
+          description
+          image {
+            url
+            width
+            height
+          }
+          order
+          size
+        }
+      }
+    }
+  `;
+
+    // const data = await fetchFromContentful(editorialQuery);
+    // return data?.editorialCollection || { items: [] };
+    return dummyEditorialImages.editorialCollection;
 }
 
 export async function getProjectById(id: string) {
@@ -139,4 +167,35 @@ export async function getUniqueCategories(): Promise<string[]> {
         (project: any) => project.category
     );
     return ["All", ...Array.from(new Set(categories as string))];
+}
+
+export async function getHomepageItems(): Promise<HomepageItem[]> {
+    const [projectsData, editorialData] = await Promise.all([
+        getProjects(),
+        getEditorialImages(),
+    ]);
+
+    const projectItems: HomepageItem[] = projectsData.items
+        .filter((project) => project.featured)
+        .map((project) => ({
+            type: "project" as const,
+            data: project,
+            order: project.order || 999,
+        }));
+
+    const editorialItems: HomepageItem[] = editorialData.items.map(
+        (editorial) => ({
+            type: "editorial" as const,
+            data: {
+                ...editorial,
+                description: null,
+                size: editorial.size as "small" | "medium" | "large",
+            },
+            order: editorial.order,
+        })
+    );
+
+    return [...projectItems, ...editorialItems].sort(
+        (a, b) => a.order - b.order
+    );
 }
