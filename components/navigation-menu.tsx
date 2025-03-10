@@ -32,6 +32,7 @@ export function NavigationMenu() {
                 !buttonRef.current.contains(event.target as Node)
             ) {
                 setIsOpen(false);
+                setIsProjectsOpen(false);
             }
         };
         if (isOpen) {
@@ -53,7 +54,10 @@ export function NavigationMenu() {
                         <Link
                             href={`/`}
                             className={`text-l`}
-                            onClick={() => setIsOpen(false)}
+                            onClick={() => {
+                                setIsOpen(false);
+                                setIsProjectsOpen(false);
+                            }}
                         >
                             POSITIO
                             <span
@@ -111,7 +115,10 @@ export function NavigationMenu() {
                                             : ""
                                     }
                                     `}
-                                    onClick={() => setIsOpen(false)}
+                                    onClick={() => {
+                                        setIsOpen(false);
+                                        setIsProjectsOpen(false);
+                                    }}
                                     className={`text-l ${
                                         currentCategory === category
                                             ? "text-gray-500"

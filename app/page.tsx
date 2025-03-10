@@ -104,7 +104,7 @@ export default async function Home() {
                             key={item.data.sys.id}
                             className={
                                 index === 0
-                                    ? "col-start-2 col-span-3"
+                                    ? "md:col-start-2 col-start-1 md:col-span-3 col-span-12"
                                     : config.colSpan
                             }
                         >
@@ -114,6 +114,7 @@ export default async function Home() {
                             >
                                 <div className="overflow-hidden">
                                     <Image
+                                        priority
                                         src={
                                             item.data.thumbnail.url ||
                                             "/placeholder.svg"

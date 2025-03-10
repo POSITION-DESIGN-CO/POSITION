@@ -1,4 +1,8 @@
-import { dummyProjects, dummyEditorialImages } from "./dummy-data";
+import {
+    dummyProjects,
+    dummyEditorialImages,
+    dummyAboutCollection,
+} from "./dummy-data";
 import type { HomepageItem } from "./contentful-models";
 
 const CONTENTFUL_API_URL = `https://graphql.contentful.com/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`;
@@ -20,6 +24,8 @@ async function fetchFromContentful(query: string) {
             method: "POST",
             headers: CONTENTFUL_HEADERS,
             body: JSON.stringify({ query }),
+            // cache: "no-store",
+            next: { revalidate: 0 },
         });
         const { data } = await response.json();
         return data;
@@ -41,13 +47,43 @@ export async function getProjects() {
             year
             thumbnail { url width height }
             location
+            order
+            featured
           }
         }
       }
     `;
     // const data = await fetchFromContentful(projectsQuery);
+    // console.log("data", data.projectCollection);
     // return data?.projectCollection || { items: [] };
     return dummyProjects.projectCollection;
+}
+
+export async function getAbout() {
+    const aboutQuery = `
+      query {
+        aboutCollection {
+          items {
+            sys { id }
+            about
+            contact
+            headCollection {
+              items {
+                title
+                url
+                width
+                height
+                sys { id }
+              }
+            }
+          }
+        }
+      }
+    `;
+    // const data = await fetchFromContentful(aboutQuery);
+    // console.log("data", data.aboutCollection);
+    // return data?.aboutCollection || { items: [] };
+    return dummyAboutCollection.aboutCollection.items[0];
 }
 
 export async function getEditorialImages() {

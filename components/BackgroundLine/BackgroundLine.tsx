@@ -25,11 +25,11 @@ export function BackgroundLine({
                 <path
                     d={`M15 0 L15 ${isMenuOpen ? "90" : "8"} L305 ${
                         isMenuOpen ? "13" : "8"
-                    }  L305 600`}
+                    }  L305 ${isMenuOpen ? "600" : "0"}`}
                     stroke="black"
                     strokeWidth="1"
                     fill="none"
-                    className="transition-all duration-700 ease-in-out"
+                    className="transition-all duration-700 delay-100 ease-in-out"
                 />
             </svg>
         </div>

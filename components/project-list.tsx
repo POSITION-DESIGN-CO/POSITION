@@ -37,7 +37,7 @@ export function ProjectList({ projects }: ProjectListProps) {
                     <Link
                         key={project.sys.id}
                         href={`/projects/${project.sys.id}`}
-                        className={`transition-opacity duration-300 ${
+                        className={`transition-opacity duration-100 ${
                             hoveredId && hoveredId !== project.sys.id
                                 ? "opacity-10"
                                 : "opacity-100"
