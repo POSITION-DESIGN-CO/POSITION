@@ -1,8 +1,8 @@
 import { getProjects, getProjectsByCategory } from "@/lib/contentful";
 import { ProjectGrid } from "@/components/project-grid";
 import { ProjectList } from "@/components/project-list";
-import { ViewToggle } from "@/components/view-toggle";
 import { getUniqueCategories } from "@/lib/dummy-data";
+import { ViewToggleWithSuspense } from "@/components/view-toggle-with-suspense";
 
 export default async function ProjectsPage({
     searchParams,
@@ -22,7 +22,7 @@ export default async function ProjectsPage({
     return (
         <main className="min-h-screen p-4">
             <div className="fixed top-4 right-4">
-                <ViewToggle />
+                <ViewToggleWithSuspense />
             </div>
 
             <div className="my-24">
