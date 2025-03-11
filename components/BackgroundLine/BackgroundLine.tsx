@@ -29,7 +29,7 @@ export function BackgroundLine({
                     stroke="black"
                     strokeWidth="1"
                     fill="none"
-                    className="transition-all duration-700 delay-100 ease-in-out"
+                    className="transition-all duration-700 delay-100 ease-in-out will-change-[d] motion-reduce:transition-none"
                 />
             </svg>
         </div>
