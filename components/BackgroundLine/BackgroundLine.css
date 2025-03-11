@@ -1,3 +1,35 @@
+.path-normal {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 400;
+}
+
+.path-extended {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 0;
+}
+
 path {
     vector-effect: non-scaling-stroke;
+}
+
+.svg-path {
+    transition: d 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    vector-effect: non-scaling-stroke;
+    will-change: d;
+}
+
+/* Add specific styles for mobile devices */
+@media (max-width: 768px) {
+    .svg-path {
+        /* Use a slightly shorter transition on mobile for better performance */
+        transition: d 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+}
+
+/* Ensure SVG animations work in Safari */
+@supports (-webkit-touch-callout: none) {
+    .svg-path {
+        /* Safari-specific transition */
+        transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
 }
