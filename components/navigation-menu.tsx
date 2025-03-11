@@ -72,7 +72,10 @@ export function NavigationMenu() {
                     </span>
                     <MenuIcon
                         isOpen={isOpen}
-                        handleClick={() => setIsOpen(!isOpen)}
+                        handleClick={() => {
+                            setIsOpen(!isOpen);
+                            setIsProjectsOpen(false);
+                        }}
                     />
                 </button>
                 <div
