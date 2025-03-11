@@ -12,7 +12,6 @@ export default function MenuIcon({ handleClick, isOpen }: MenuIconProps) {
             className={`absolute right-2 py-1 px-1 flex items-center gap-3 mt-1`}
             onClick={handleClick}
         >
-            <span className="text-sm">{isOpen && "CLOSE"}</span>
             <section className="menuButton">
                 <div
                     className={`menuButton-inner ${isOpen ? "open" : "closed"}`}

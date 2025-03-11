@@ -24,24 +24,27 @@ export function BackgroundLine({
             >
                 <motion.line
                     x1="15"
-                    y1="5.5"
+                    y1="6"
                     x2="15"
+                    initial={{ y2: 6 }}
                     animate={{ y2: isMenuOpen ? 90 : 6 }}
                     transition={{
-                        duration: 1,
+                        duration: 0.7,
                         ease: "circOut",
                         delay: 0.1,
                     }}
                     stroke="black"
                     strokeWidth="0.9"
                 />
+
                 <motion.line
                     x1="15"
+                    initial={{ y1: 6 }}
                     animate={{ y1: isMenuOpen ? 90 : 6 }}
                     x2="305"
-                    y2="5.5"
+                    y2="6"
                     transition={{
-                        duration: 1,
+                        duration: 0.7,
                         ease: "circOut",
                         delay: 0.1,
                     }}
@@ -50,8 +53,9 @@ export function BackgroundLine({
                 />
                 <motion.line
                     x1="305"
-                    y1="5.5"
+                    y1="6"
                     x2="305"
+                    initial={{ y2: 6 }}
                     animate={{
                         y2:
                             isMenuOpen && !isProjectsOpen
