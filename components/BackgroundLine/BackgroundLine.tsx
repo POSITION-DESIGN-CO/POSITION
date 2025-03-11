@@ -28,7 +28,7 @@ export function BackgroundLine({
                     x2="15"
                     animate={{ y2: isMenuOpen ? 90 : 6 }}
                     transition={{
-                        duration: 0.7,
+                        duration: 1,
                         ease: "circOut",
                         delay: 0.1,
                     }}
@@ -39,9 +39,9 @@ export function BackgroundLine({
                     x1="15"
                     animate={{ y1: isMenuOpen ? 90 : 6 }}
                     x2="305"
-                    y2="6"
+                    y2="5.5"
                     transition={{
-                        duration: 0.7,
+                        duration: 1,
                         ease: "circOut",
                         delay: 0.1,
                     }}
@@ -50,7 +50,7 @@ export function BackgroundLine({
                 />
                 <motion.line
                     x1="305"
-                    y1="6"
+                    y1="5.5"
                     x2="305"
                     animate={{
                         y2:
