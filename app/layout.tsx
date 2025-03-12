@@ -24,7 +24,7 @@ export default async function RootLayout({
 
     return (
         <html lang="en">
-            <body className={cn(inter.className, "bg-[#fbf7f7]")}>
+            <body className={cn(inter.className, "bg-[#F8F8F5]")}>
                 {/* <NavigationMenu categories={categories} /> */}
                 <NavigationMenu />
                 {children}

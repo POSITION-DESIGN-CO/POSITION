@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { HoverImage } from "./hover-image";
 
 type Project = {
     sys: { id: string };
@@ -27,10 +27,10 @@ export function ProjectList({ projects }: ProjectListProps) {
     return (
         <div className="w-full">
             <div className="grid grid-cols-12 gap-4 text-sm">
-                <div className="col-span-4">Project</div>
-                <div className="col-span-2">Year</div>
-                <div className="col-span-3">Category</div>
-                <div className="col-span-3 place-self-end">Location</div>
+                <div className="col-span-3">Project</div>
+                <div className="col-span-2">Location</div>
+                <div className="col-span-5">Category</div>
+                <div className="col-span-2 place-self-end">Year</div>
             </div>
             <div className="py-4">
                 {projects.map((project) => (
@@ -41,43 +41,27 @@ export function ProjectList({ projects }: ProjectListProps) {
                             hoveredId && hoveredId !== project.sys.id
                                 ? "opacity-10"
                                 : "opacity-100"
-                        } py-1 group grid grid-cols-12 gap-4 relative`}
+                        } py-0 group grid grid-cols-12 gap-4 relative`}
                         onMouseEnter={() => setHoveredId(project.sys.id)}
                         onMouseLeave={() => setHoveredId(null)}
                     >
-                        <div className="col-span-4">
+                        <div className="col-span-3">
                             <span className="hover:underline">
                                 {project.title}
                             </span>
                         </div>
-                        <div className="col-span-2">{project.year}</div>
-                        <div className="col-span-3">{project.category}</div>
-                        <div className="col-span-3 place-content-end flex items-center">
-                            <span>{project.location}</span>
-                            {project.thumbnail && (
-                                // hoveredId === project.sys.id && (
-                                <div
-                                    style={{
-                                        opacity:
-                                            hoveredId === project.sys.id
-                                                ? 1
-                                                : 0,
-                                    }}
-                                    className="transition-opacity duration-300 absolute top-0 right-0 h-48 w-72 overflow-hidden z-50 pointer-events-none"
-                                >
-                                    <Image
-                                        src={
-                                            project.thumbnail.url ||
-                                            "/placeholder.svg"
-                                        }
-                                        alt={project.title}
-                                        width={project.thumbnail.width}
-                                        height={project.thumbnail.height}
-                                        className="h-full w-full object-cover"
-                                    />
-                                </div>
-                            )}
+                        <div className="col-span-2">{project.location}</div>
+                        <div className="col-span-5">{project.category}</div>
+                        <div className="col-span-2 place-content-end flex items-center">
+                            <span>{project.year}</span>
                         </div>
+                        {project.thumbnail && hoveredId === project.sys.id && (
+                            <HoverImage
+                                image={project.thumbnail}
+                                isVisible={hoveredId === project.sys.id}
+                                alt={project.title}
+                            />
+                        )}
                     </Link>
                 ))}
             </div>

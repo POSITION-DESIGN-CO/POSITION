@@ -13,7 +13,7 @@ export default function ErrorBoundary({ error, reset }: ErrorBoundaryProps) {
     }, [error]);
 
     return (
-        <div className="min-h-screen bg-white p-8 flex flex-col items-center justify-center">
+        <div className="min-h-[calc(100vh-50px)] bg-white p-8 flex flex-col items-center justify-center">
             <div className="text-center">
                 <h2 className="text-2xl font-bold mb-4">
                     Something went wrong!

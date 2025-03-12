@@ -17,7 +17,7 @@ export default async function AboutPage() {
     };
 
     return (
-        <main className="min-h-screen p-4">
+        <main className="min-h-[calc(100vh-50px)] p-4">
             <div className="grid md:grid-cols-2 col-span-12 mt-96">
                 <div>
                     <p className="text-sm">{about.about}</p>

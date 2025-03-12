@@ -9,13 +9,13 @@ export default async function ProjectsPage({}: {}) {
     const categories = getUniqueCategories();
 
     return (
-        <main className="min-h-screen p-4">
+        <main className="min-h-[calc(100vh-50px)] p-4">
             <StoreInitializer projects={allProjects} categories={categories} />
 
             <div className="fixed top-4 right-4">
                 <ViewToggleWithSuspense />
             </div>
-
+            {/* 
             <div className="my-24">
                 <p className="max-w-3xl text-sm">
                     Founded in Brooklyn, New York by Poyao Shih, POSITION is an
@@ -24,8 +24,10 @@ export default async function ProjectsPage({}: {}) {
                     architectural challenges through innovative forms and
                     materials.
                 </p>
+            </div> */}
+            <div className="my-24">
+                <ClientSideProjectsRenderer />
             </div>
-            <ClientSideProjectsRenderer />
         </main>
     );
 }

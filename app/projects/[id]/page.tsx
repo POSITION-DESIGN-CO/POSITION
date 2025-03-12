@@ -45,14 +45,14 @@ export default async function ProjectPage({
 
     if (!project) {
         return (
-            <main className="min-h-screen flex justify-center items-center p-8">
+            <main className="min-h-[calc(100vh-50px)] flex justify-center items-center p-8">
                 <h1 className="text-xl">project not found...</h1>
             </main>
         );
     }
 
     return (
-        <main className="min-h-screen p-4">
+        <main className="min-h-[calc(100vh-50px)] p-4">
             <div className="grid grid-cols-2 mb-80">
                 <div className="max-w-3xl text-sm md:col-start-2 col-span-2 pt-12 md:p-0">
                     <p>{project.title}</p>

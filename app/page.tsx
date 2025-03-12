@@ -70,7 +70,7 @@ export default async function Home() {
     ];
 
     return (
-        <main className="min-h-screen p-4">
+        <main className="min-h-[calc(100vh-50px)] p-4">
             <StoreInitializer projects={allProjects} categories={categories} />
             <div className="grid grid-cols-12 gap-4 md:gap-6">
                 {itemsWithAboutText.map((item, index) => {

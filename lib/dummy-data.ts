@@ -146,8 +146,8 @@ export const dummyProjects = {
                 year: "2024",
                 thumbnail: {
                     url: "https://www.mplus.org.hk/api/images/352/width-1380%7Cformat-webp/",
-                    width: 600,
-                    height: 400,
+                    width: 400,
+                    height: 600,
                 },
                 location: "Brooklyn, NY",
                 featured: true, // Featured on homepage
