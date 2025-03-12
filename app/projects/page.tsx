@@ -1,26 +1,17 @@
-import { getProjects, getProjectsByCategory } from "@/lib/contentful";
-import { ProjectGrid } from "@/components/project-grid";
-import { ProjectList } from "@/components/project-list";
 import { getUniqueCategories } from "@/lib/dummy-data";
+import { StoreInitializer } from "@/components/store-initializer";
+import { ClientSideProjectsRenderer } from "@/components/client-side-projects-renderer";
 import { ViewToggleWithSuspense } from "@/components/view-toggle-with-suspense";
+import { getProjects } from "@/lib/contentful";
 
-export default async function ProjectsPage({
-    searchParams,
-}: {
-    searchParams: { category?: string; view?: string };
-}) {
-    const category = searchParams.category || "All";
-    const view = searchParams.view || "grid";
-
-    const { items: projects } =
-        category === "All"
-            ? await getProjects()
-            : await getProjectsByCategory(category);
-
+export default async function ProjectsPage({}: {}) {
+    const { items: allProjects } = await getProjects();
     const categories = getUniqueCategories();
 
     return (
         <main className="min-h-screen p-4">
+            <StoreInitializer projects={allProjects} categories={categories} />
+
             <div className="fixed top-4 right-4">
                 <ViewToggleWithSuspense />
             </div>
@@ -34,12 +25,7 @@ export default async function ProjectsPage({
                     materials.
                 </p>
             </div>
-
-            {view === "grid" ? (
-                <ProjectGrid projects={projects} />
-            ) : (
-                <ProjectList projects={projects} />
-            )}
+            <ClientSideProjectsRenderer />
         </main>
     );
 }

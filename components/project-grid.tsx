@@ -49,9 +49,11 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
                     </div>
                     <div className="mt-2">
                         <h3 className="text-sm">{project.title}</h3>
-                        <p className="text-sm text-gray-500">
-                            {project.category}, {project.year}
-                        </p>
+                        {hoveredId === project.sys.id && (
+                            <p className="text-xs text-gray-500">
+                                {project.category}, {project.year}
+                            </p>
+                        )}
                     </div>
                 </Link>
             ))}

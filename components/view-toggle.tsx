@@ -1,40 +1,74 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
+import FilterIcon from "./FilterIcon/FilterIcon";
+import { useProjectsStore } from "@/store";
 
 export function ViewToggle() {
-    const router = useRouter();
-    const searchParams = useSearchParams();
-    const view = searchParams.get("view") || "grid";
-    const category = searchParams.get("category") || "All";
-
-    const setView = (newView: string) => {
-        const params = new URLSearchParams(searchParams);
-        params.set("view", newView);
-        router.push(`/projects?${params.toString()}`);
-    };
-
+    const { view, category, categories, setView, setCategory } =
+        useProjectsStore();
+    const [isFilterActive, setIsFilterActive] = useState(false);
+    const buttonClasses =
+        "rounded-none border-r border-gray-800 px-6 py-2 text-sm transition-all duration-300 hover:text-black";
     return (
-        <div className="flex border border-gray-800 bg-white">
-            <button
-                className={cn(
-                    "rounded-none border-r border-gray-800 px-6 py-2 text-sm",
-                    view === "grid" ? "text-black" : "text-gray-300"
-                )}
-                onClick={() => setView("grid")}
-            >
-                Grid
-            </button>
-            <button
-                className={cn(
-                    "rounded-none px-6 py-1 text-sm",
-                    view === "list" ? "text-black" : "text-gray-300"
-                )}
-                onClick={() => setView("list")}
-            >
-                List
-            </button>
-        </div>
+        <>
+            <div className="flex border border-gray-800 bg-white justify-self-end">
+                <button
+                    className={cn(
+                        buttonClasses,
+                        view === "grid" ? "text-black" : "text-gray-300"
+                    )}
+                    onClick={() => setView("grid")}
+                >
+                    Grid
+                </button>
+                <button
+                    className={cn(
+                        buttonClasses,
+                        view === "list" ? "text-black" : "text-gray-300"
+                    )}
+                    onClick={() => setView("list")}
+                >
+                    List
+                </button>
+                <button
+                    className={cn(
+                        buttonClasses,
+                        "text-black border-none flex items-center justify-between w-24"
+                    )}
+                    onClick={() => setIsFilterActive(!isFilterActive)}
+                >
+                    Filter
+                    <FilterIcon
+                        handleClick={() => setIsFilterActive(!isFilterActive)}
+                        isOpen={isFilterActive}
+                    />
+                </button>
+            </div>
+            {categories && isFilterActive && (
+                <div className="flex border border-gray-800 bg-white -mt-[1px] justify-self-end">
+                    {categories?.map((categoryItem: any, index: number) => {
+                        return (
+                            <>
+                                <button
+                                    className={cn(
+                                        "rounded-none border-r border-gray-800 px-6 py-2 text-sm transition-all duration-300",
+                                        index === categories.length - 1 &&
+                                            "border-none",
+                                        categoryItem === category
+                                            ? "text-black"
+                                            : "text-gray-300 hover:text-black"
+                                    )}
+                                    onClick={() => setCategory(categoryItem)}
+                                >
+                                    {categoryItem}
+                                </button>
+                            </>
+                        );
+                    })}
+                </div>
+            )}
+        </>
     );
 }

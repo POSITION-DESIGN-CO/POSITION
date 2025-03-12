@@ -198,11 +198,14 @@ export async function getUniqueCategories(): Promise<string[]> {
         }
       }
     `;
-    const data = await fetchFromContentful(categoryQuery);
-    const categories = data?.projectCollection.items.map(
-        (project: any) => project.category
+    // const data = await fetchFromContentful(categoryQuery);
+    // const categories = data?.projectCollection.items.map(
+    //     (project: any) => project.category
+    // );
+    const categories = dummyProjects.projectCollection.items.map(
+        (project) => project.category
     );
-    return ["All", ...Array.from(new Set(categories as string))];
+    return ["All", ...Array.from(new Set(categories as string[]))];
 }
 
 export async function getHomepageItems(): Promise<HomepageItem[]> {

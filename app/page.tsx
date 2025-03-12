@@ -1,14 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getHomepageItems } from "@/lib/contentful";
+import {
+    getHomepageItems,
+    getProjects,
+    getUniqueCategories,
+} from "@/lib/contentful";
 import { EditorialImage } from "@/components/editorial-image";
 import type {
     HomepageItem,
     extendedHomePageItem,
 } from "@/lib/contentful-models";
+import { StoreInitializer } from "@/components/store-initializer";
 
 export default async function Home() {
     const homepageItems: HomepageItem[] = await getHomepageItems();
+    const categories = await getUniqueCategories();
+    const { items: allProjects } = await getProjects();
 
     const getGridConfig = (item: HomepageItem, index: number) => {
         if (item.type === "editorial") {
@@ -64,6 +71,7 @@ export default async function Home() {
 
     return (
         <main className="min-h-screen p-4">
+            <StoreInitializer projects={allProjects} categories={categories} />
             <div className="grid grid-cols-12 gap-4 md:gap-6">
                 {itemsWithAboutText.map((item, index) => {
                     const config = getGridConfig(item as HomepageItem, index);

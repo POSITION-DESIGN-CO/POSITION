@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getProjectById } from "@/lib/contentful";
+import Link from "next/link";
 
 interface Image {
     title: string;
@@ -64,14 +65,16 @@ export default async function ProjectPage({
                 </div>
             </div>
 
-            {/* <div className="mb-8 mt-16">
+            <div className="fixed top-4 right-4">
+                <div className="flex border border-gray-800 bg-white justify-self-end">
                     <Link
                         href="/projects"
-                        className="mb-4 inline-block text-sm hover:underline"
+                        className="rounded-none border-gray-800 px-6 py-2 text-sm transition-all duration-300 hover:text-black"
                     >
-                        ← Back to Projects
-                    </Link> 
-                </div> */}
+                        Back
+                    </Link>
+                </div>
+            </div>
 
             <div className="gap-2 grid md:grid-cols-12">
                 {project.galleryCollection.items.map((image: Image, index) => {
