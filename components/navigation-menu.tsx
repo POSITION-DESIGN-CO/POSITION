@@ -5,20 +5,15 @@ import Link from "next/link";
 import { getUniqueCategories } from "@/lib/dummy-data";
 import MenuIcon from "./MenuIcon/MenuIcon";
 import { BackgroundLine } from "./BackgroundLine/BackgroundLine";
-import { useSearchParams } from "next/navigation";
+import { useProjectsStore } from "@/store";
 
 // pass the categories from layout.tsx when fetching data from contentful
 // export function NavigationMenu({ categories }: { categories: string[] }) {
 export function NavigationMenu() {
     const [isOpen, setIsOpen] = useState(false);
     const [isProjectsOpen, setIsProjectsOpen] = useState(false);
+    const { category, setCategory, categories } = useProjectsStore();
 
-    // remove this when fetching data from contentful
-    const categories = getUniqueCategories();
-
-    const searchParams = useSearchParams();
-    const currentCategory = searchParams.get("category");
-    const currentView = searchParams.get("view");
     const menuRef = useRef<HTMLDivElement>(null);
     const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -32,6 +27,7 @@ export function NavigationMenu() {
                 !buttonRef.current.contains(event.target as Node)
             ) {
                 setIsOpen(false);
+                setIsProjectsOpen(false);
             }
         };
         if (isOpen) {
@@ -50,7 +46,14 @@ export function NavigationMenu() {
                     ref={buttonRef}
                 >
                     <span className="text-xl">
-                        <Link href={`/`} className={`text-l`}>
+                        <Link
+                            href={`/`}
+                            className={`text-l`}
+                            onClick={() => {
+                                setIsOpen(false);
+                                setIsProjectsOpen(false);
+                            }}
+                        >
                             POSITIO
                             <span
                                 style={{
@@ -64,7 +67,10 @@ export function NavigationMenu() {
                     </span>
                     <MenuIcon
                         isOpen={isOpen}
-                        handleClick={() => setIsOpen(!isOpen)}
+                        handleClick={() => {
+                            setIsOpen(!isOpen);
+                            setIsProjectsOpen(false);
+                        }}
                     />
                 </button>
                 <div
@@ -98,23 +104,22 @@ export function NavigationMenu() {
                             isProjectsOpen ? "max-h-screen" : "max-h-0"
                         }`}
                     >
-                        {categories.map((category) => (
-                            <div key={category} className="py-0">
+                        {categories.map((categoryItem) => (
+                            <div key={categoryItem} className="py-0">
                                 <Link
-                                    href={`/projects?category=${category}${
-                                        currentView
-                                            ? `&view=${currentView}`
-                                            : ""
-                                    }
-                                    `}
-                                    onClick={() => setIsOpen(false)}
+                                    href="/projects"
+                                    onClick={() => {
+                                        setCategory(categoryItem);
+                                        setIsOpen(false);
+                                        setIsProjectsOpen(false);
+                                    }}
                                     className={`text-l ${
-                                        currentCategory === category
+                                        category === categoryItem
                                             ? "text-gray-500"
                                             : ""
                                     }`}
                                 >
-                                    {category}
+                                    {categoryItem}
                                 </Link>
                             </div>
                         ))}

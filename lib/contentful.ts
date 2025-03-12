@@ -1,4 +1,9 @@
-import { dummyProjects } from "./dummy-data";
+import {
+    dummyProjects,
+    dummyEditorialImages,
+    dummyAboutCollection,
+} from "./dummy-data";
+import type { HomepageItem } from "./contentful-models";
 
 const CONTENTFUL_API_URL = `https://graphql.contentful.com/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`;
 const CONTENTFUL_HEADERS = {
@@ -19,6 +24,8 @@ async function fetchFromContentful(query: string) {
             method: "POST",
             headers: CONTENTFUL_HEADERS,
             body: JSON.stringify({ query }),
+            // cache: "no-store",
+            next: { revalidate: 0 },
         });
         const { data } = await response.json();
         return data;
@@ -40,13 +47,70 @@ export async function getProjects() {
             year
             thumbnail { url width height }
             location
+            order
+            featured
           }
         }
       }
     `;
     // const data = await fetchFromContentful(projectsQuery);
+    // console.log("data", data.projectCollection);
     // return data?.projectCollection || { items: [] };
     return dummyProjects.projectCollection;
+}
+
+export async function getAbout() {
+    const aboutQuery = `
+      query {
+        aboutCollection {
+          items {
+            sys { id }
+            about
+            contact
+            headCollection {
+              items {
+                title
+                url
+                width
+                height
+                sys { id }
+              }
+            }
+          }
+        }
+      }
+    `;
+    // const data = await fetchFromContentful(aboutQuery);
+    // console.log("data", data.aboutCollection);
+    // return data?.aboutCollection || { items: [] };
+    return dummyAboutCollection.aboutCollection.items[0];
+}
+
+export async function getEditorialImages() {
+    const editorialQuery = `
+    query {
+      editorialCollection {
+        items {
+          sys {
+            id
+          }
+          title
+          description
+          image {
+            url
+            width
+            height
+          }
+          order
+          size
+        }
+      }
+    }
+  `;
+
+    // const data = await fetchFromContentful(editorialQuery);
+    // return data?.editorialCollection || { items: [] };
+    return dummyEditorialImages.editorialCollection;
 }
 
 export async function getProjectById(id: string) {
@@ -134,9 +198,43 @@ export async function getUniqueCategories(): Promise<string[]> {
         }
       }
     `;
-    const data = await fetchFromContentful(categoryQuery);
-    const categories = data?.projectCollection.items.map(
-        (project: any) => project.category
+    // const data = await fetchFromContentful(categoryQuery);
+    // const categories = data?.projectCollection.items.map(
+    //     (project: any) => project.category
+    // );
+    const categories = dummyProjects.projectCollection.items.map(
+        (project) => project.category
     );
-    return ["All", ...Array.from(new Set(categories as string))];
+    return ["All", ...Array.from(new Set(categories as string[]))];
+}
+
+export async function getHomepageItems(): Promise<HomepageItem[]> {
+    const [projectsData, editorialData] = await Promise.all([
+        getProjects(),
+        getEditorialImages(),
+    ]);
+
+    const projectItems: HomepageItem[] = projectsData.items
+        .filter((project) => project.featured)
+        .map((project) => ({
+            type: "project" as const,
+            data: project,
+            order: project.order || 999,
+        }));
+
+    const editorialItems: HomepageItem[] = editorialData.items.map(
+        (editorial) => ({
+            type: "editorial" as const,
+            data: {
+                ...editorial,
+                description: null,
+                size: editorial.size as "small" | "medium" | "large",
+            },
+            order: editorial.order,
+        })
+    );
+
+    return [...projectItems, ...editorialItems].sort(
+        (a, b) => a.order - b.order
+    );
 }

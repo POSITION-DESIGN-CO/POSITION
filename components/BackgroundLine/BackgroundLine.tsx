@@ -1,6 +1,6 @@
 "use client";
 
-import "./BackgroundLine.css";
+import { motion } from "framer-motion";
 
 interface BackgroundLineProps {
     isProjectsOpen: boolean;
@@ -22,14 +22,58 @@ export function BackgroundLine({
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-full h-full"
             >
-                <path
-                    d={`M15 0 L15 ${isMenuOpen ? "90" : "8"} L305 ${
-                        isMenuOpen ? "13" : "8"
-                    }  L305 600`}
+                <motion.line
+                    x1="15"
+                    y1="6"
+                    x2="15"
+                    initial={{ y2: 6 }}
+                    animate={{ y2: isMenuOpen ? 90 : 6 }}
+                    transition={{
+                        duration: 0.7,
+                        ease: "circOut",
+                        delay: 0.1,
+                    }}
                     stroke="black"
-                    strokeWidth="1"
-                    fill="none"
-                    className="transition-all duration-700 ease-in-out"
+                    strokeWidth="0.9"
+                />
+
+                <motion.line
+                    x1="15"
+                    initial={{ y1: 6 }}
+                    animate={{ y1: isMenuOpen ? 90 : 6 }}
+                    x2="305"
+                    y2="6"
+                    transition={{
+                        duration: 0.7,
+                        ease: "circOut",
+                        delay: 0.1,
+                    }}
+                    stroke="black"
+                    strokeWidth="0.9"
+                />
+                <motion.line
+                    x1="305"
+                    y1="6"
+                    x2="305"
+                    initial={{ y2: 6 }}
+                    animate={{
+                        y2:
+                            isMenuOpen && !isProjectsOpen
+                                ? 300
+                                : isProjectsOpen
+                                ? 600
+                                : 6,
+                    }}
+                    transition={{
+                        duration: 1,
+                        ease:
+                            isMenuOpen && !isProjectsOpen
+                                ? "circOut"
+                                : "circInOut",
+                        delay: isMenuOpen && !isProjectsOpen ? 0.2 : 0,
+                    }}
+                    stroke="black"
+                    strokeWidth="0.9"
                 />
             </svg>
         </div>
