@@ -26,7 +26,6 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
 
     return (
         <div className="grid gap-y-6 gap-x-24 grid-cols-auto-fill-100">
-            {/* <div className="grid grid-cols-1 gap-y-6 gap-x-24 md:grid-cols-2 lg:grid-cols-8"> */}
             {projects.map((project) => (
                 <Link
                     key={project.sys.id}
@@ -45,7 +44,7 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
                             alt={project.title}
                             width={project.thumbnail.width}
                             height={project.thumbnail.height}
-                            className="transition-transform duration-300 group-hover:scale-105"
+                            className="transition-transform duration-300"
                         />
                     </div>
                     <div className="mt-2">

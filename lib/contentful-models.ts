@@ -34,12 +34,8 @@ export interface EditorialImage {
         height: number;
     };
     order: number;
-    size: "small" | "medium" | "large";
 }
 
 export type HomepageItem =
     | { type: "project"; data: Project; order: number }
-    | { type: "editorial"; data: EditorialImage; order: number }
-    | { type: "text"; data: { content: string }; order: number };
-
-export type extendedHomePageItem = HomepageItem[];
+    | { type: "editorial"; data: EditorialImage; order: number };

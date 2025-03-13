@@ -113,11 +113,7 @@ export function NavigationMenu() {
                                         setIsOpen(false);
                                         setIsProjectsOpen(false);
                                     }}
-                                    className={`text-l ${
-                                        category === categoryItem
-                                            ? "text-gray-500"
-                                            : ""
-                                    }`}
+                                    className={`text-l hover:text-gray-400`}
                                 >
                                     {categoryItem}
                                 </Link>

@@ -228,7 +228,6 @@ export async function getHomepageItems(): Promise<HomepageItem[]> {
             data: {
                 ...editorial,
                 description: null,
-                size: editorial.size as "small" | "medium" | "large",
             },
             order: editorial.order,
         })
@@ -237,4 +236,5 @@ export async function getHomepageItems(): Promise<HomepageItem[]> {
     return [...projectItems, ...editorialItems].sort(
         (a, b) => a.order - b.order
     );
+    // return [...projectItems].sort((a, b) => a.order - b.order);
 }

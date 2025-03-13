@@ -7,35 +7,24 @@ interface EditorialImageProps {
         height: number;
     };
     title: string | null;
-    description: string | null;
-    size: string;
 }
 
-export function EditorialImage({
-    image,
-    title,
-    description,
-    size,
-}: EditorialImageProps) {
+export function EditorialImage({ image, title }: EditorialImageProps) {
     return (
-        <div className="group block">
-            <div className="overflow-hidden">
+        <>
+            <div className="relative aspect-square overflow-hidden">
                 <Image
                     src={image.url || "/placeholder.svg"}
                     alt={title || "Editorial image"}
-                    width={image.width}
-                    height={image.height}
-                    className="w-full md:max-h-96 lg:max-h-[50rem] object-cover transition-transform duration-300 group-hover:scale-105"
+                    fill
+                    className="w-full h-full object-cover grayscale transition-transform duration-300 group-hover:scale-105"
                 />
             </div>
             {title && (
                 <div className="mt-2">
                     <h2 className="text-sm">{title}</h2>
-                    {description && (
-                        <p className="text-xs text-gray-500">{description}</p>
-                    )}
                 </div>
             )}
-        </div>
+        </>
     );
 }

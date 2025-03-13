@@ -3,6 +3,34 @@ export const dummyProjects = {
         items: [
             {
                 sys: { id: "1" },
+                title: "House Party",
+                description:
+                    "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
+
+                category: "Architecture",
+                year: "2024",
+                thumbnail: {
+                    url: "https://www.mplus.org.hk/api/images/352/width-1380%7Cformat-webp/",
+                    width: 400,
+                    height: 600,
+                },
+                location: "Brooklyn, NY",
+                featured: true,
+                order: 1,
+                galleryCollection: {
+                    items: [
+                        {
+                            title: "House Party - Main Hall",
+                            url: "https://www.mplus.org.hk/api/images/425/width-1380%7Cformat-webp/",
+                            width: 1200,
+                            height: 800,
+                            sys: { id: "4-1" },
+                        },
+                    ],
+                },
+            },
+            {
+                sys: { id: "2" },
                 title: "Mission Rock Block B",
                 description:
                     "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
@@ -15,7 +43,7 @@ export const dummyProjects = {
                     height: 400,
                 },
                 featured: true, // Featured on homepage
-                order: 1, // First item on homepage
+                order: 2, // First item on homepage
                 galleryCollection: {
                     items: [
                         {
@@ -41,48 +69,67 @@ export const dummyProjects = {
                             height: 800,
                             sys: { id: "1-1" },
                         },
-                        {
-                            title: "Mission Rock Block B - View 2",
-                            url: "https://www.mplus.org.hk/api/images/352/width-1380%7Cformat-webp/",
-                            width: 1200,
-                            height: 800,
-                            sys: { id: "1-2" },
-                        },
-                        {
-                            title: "Mission Rock Block B - View 1",
-                            url: "https://www.mplus.org.hk/api/images/604/width-1380%7Cformat-webp/",
+                    ],
+                },
+            },
+            {
+                sys: { id: "3" },
+                title: "Quarra Stone Company Headquarter",
+                description:
+                    "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
 
-                            width: 1200,
-                            height: 800,
-                            sys: { id: "1-1" },
-                        },
+                category: "Architecture",
+                year: "2023",
+                thumbnail: {
+                    url: "https://www.mplus.org.hk/api/images/414/width-1380%7Cformat-webp/",
+                    width: 600,
+                    height: 400,
+                },
+                location: "New York, NY",
+                featured: true,
+                order: 3,
+                galleryCollection: {
+                    items: [
                         {
-                            title: "Mission Rock Block B - View 2",
-                            url: "https://www.mplus.org.hk/api/images/421/width-1380%7Cformat-webp/",
+                            title: "Quarra Stone - Exterior",
+                            url: "https://www.mplus.org.hk/api/images/416/width-1380%7Cformat-webp/",
                             width: 1200,
                             height: 800,
-                            sys: { id: "1-2" },
-                        },
-                        {
-                            title: "Mission Rock Block B - View 1",
-                            url: "https://www.mplus.org.hk/api/images/469/width-1380%7Cformat-webp/",
-
-                            width: 1200,
-                            height: 800,
-                            sys: { id: "1-1" },
-                        },
-                        {
-                            title: "Mission Rock Block B - View 2",
-                            url: "https://www.mplus.org.hk/api/images/352/width-1380%7Cformat-webp/",
-                            width: 1200,
-                            height: 800,
-                            sys: { id: "1-2" },
+                            sys: { id: "5-1" },
                         },
                     ],
                 },
             },
             {
-                sys: { id: "2" },
+                sys: { id: "4" },
+                title: "House Party",
+                description:
+                    "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
+
+                category: "Architecture",
+                year: "2024",
+                thumbnail: {
+                    url: "https://www.mplus.org.hk/api/images/352/width-1380%7Cformat-webp/",
+                    width: 400,
+                    height: 600,
+                },
+                location: "Brooklyn, NY",
+                featured: true,
+                order: 5,
+                galleryCollection: {
+                    items: [
+                        {
+                            title: "House Party - Main Hall",
+                            url: "https://www.mplus.org.hk/api/images/425/width-1380%7Cformat-webp/",
+                            width: 1200,
+                            height: 800,
+                            sys: { id: "4-1" },
+                        },
+                    ],
+                },
+            },
+            {
+                sys: { id: "5" },
                 title: "Residence M",
                 description:
                     "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
@@ -95,8 +142,7 @@ export const dummyProjects = {
                     height: 400,
                 },
                 location: "Brooklyn, NY",
-                featured: true, // Featured on homepage
-                order: 3, // Third item on homepage
+                featured: false, // Not featured on homepage
                 galleryCollection: {
                     items: [
                         {
@@ -110,7 +156,7 @@ export const dummyProjects = {
                 },
             },
             {
-                sys: { id: "3" },
+                sys: { id: "6" },
                 title: "Bagel Joint",
                 description:
                     "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
@@ -136,64 +182,9 @@ export const dummyProjects = {
                     ],
                 },
             },
-            {
-                sys: { id: "4" },
-                title: "House Party",
-                description:
-                    "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
 
-                category: "Architecture",
-                year: "2024",
-                thumbnail: {
-                    url: "https://www.mplus.org.hk/api/images/352/width-1380%7Cformat-webp/",
-                    width: 400,
-                    height: 600,
-                },
-                location: "Brooklyn, NY",
-                featured: true, // Featured on homepage
-                order: 5, // Fifth item on homepage
-                galleryCollection: {
-                    items: [
-                        {
-                            title: "House Party - Main Hall",
-                            url: "https://www.mplus.org.hk/api/images/425/width-1380%7Cformat-webp/",
-                            width: 1200,
-                            height: 800,
-                            sys: { id: "4-1" },
-                        },
-                    ],
-                },
-            },
             {
-                sys: { id: "5" },
-                title: "Quarra Stone Company Headquarter",
-                description:
-                    "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
-
-                category: "Architecture",
-                year: "2023",
-                thumbnail: {
-                    url: "https://www.mplus.org.hk/api/images/414/width-1380%7Cformat-webp/",
-                    width: 600,
-                    height: 400,
-                },
-                location: "New York, NY",
-                featured: true, // Featured on homepage
-                order: 7, // Seventh item on homepage
-                galleryCollection: {
-                    items: [
-                        {
-                            title: "Quarra Stone - Exterior",
-                            url: "https://www.mplus.org.hk/api/images/416/width-1380%7Cformat-webp/",
-                            width: 1200,
-                            height: 800,
-                            sys: { id: "5-1" },
-                        },
-                    ],
-                },
-            },
-            {
-                sys: { id: "6" },
+                sys: { id: "7" },
                 title: "Headspace",
                 description:
                     "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
@@ -220,7 +211,7 @@ export const dummyProjects = {
                 },
             },
             {
-                sys: { id: "7" },
+                sys: { id: "8" },
                 title: "House of Bread",
                 description:
                     "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
@@ -233,8 +224,8 @@ export const dummyProjects = {
                     height: 400,
                 },
                 location: "Brooklyn, NY",
-                featured: true, // Featured on homepage
-                order: 9, // Ninth item on homepage
+                featured: true,
+                order: 6,
                 galleryCollection: {
                     items: [
                         {
@@ -248,7 +239,7 @@ export const dummyProjects = {
                 },
             },
             {
-                sys: { id: "8" },
+                sys: { id: "9" },
                 title: "Intercorp",
                 description:
                     "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
@@ -275,7 +266,35 @@ export const dummyProjects = {
                 },
             },
             {
-                sys: { id: "9" },
+                sys: { id: "10" },
+                title: "House Party",
+                description:
+                    "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
+
+                category: "Architecture",
+                year: "2024",
+                thumbnail: {
+                    url: "https://www.mplus.org.hk/api/images/352/width-1380%7Cformat-webp/",
+                    width: 400,
+                    height: 600,
+                },
+                location: "Brooklyn, NY",
+                featured: true,
+                order: 7,
+                galleryCollection: {
+                    items: [
+                        {
+                            title: "House Party - Main Hall",
+                            url: "https://www.mplus.org.hk/api/images/425/width-1380%7Cformat-webp/",
+                            width: 1200,
+                            height: 800,
+                            sys: { id: "4-1" },
+                        },
+                    ],
+                },
+            },
+            {
+                sys: { id: "11" },
                 title: "Layering the space with Hanji",
                 description:
                     "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
@@ -301,6 +320,412 @@ export const dummyProjects = {
                     ],
                 },
             },
+            {
+                sys: { id: "12" },
+                title: "Mission Rock Block B",
+                description:
+                    "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
+                location: "Brooklyn, NY",
+                category: "Architecture",
+                year: "2024",
+                thumbnail: {
+                    url: "https://www.mplus.org.hk/api/images/469/width-1380%7Cformat-webp/",
+                    width: 600,
+                    height: 400,
+                },
+                featured: true,
+                order: 9,
+                galleryCollection: {
+                    items: [
+                        {
+                            title: "Mission Rock Block B - View 1",
+                            url: "https://www.mplus.org.hk/api/images/469/width-1380%7Cformat-webp/",
+
+                            width: 1200,
+                            height: 800,
+                            sys: { id: "1-1" },
+                        },
+                        {
+                            title: "Mission Rock Block B - View 2",
+                            url: "https://www.mplus.org.hk/api/images/419/width-1380%7Cformat-webp/",
+                            width: 1200,
+                            height: 800,
+                            sys: { id: "1-2" },
+                        },
+                        {
+                            title: "Mission Rock Block B - View 1",
+                            url: "https://www.mplus.org.hk/api/images/492/width-1380%7Cformat-webp/",
+
+                            width: 1200,
+                            height: 800,
+                            sys: { id: "1-1" },
+                        },
+                    ],
+                },
+            },
+
+            {
+                sys: { id: "13" },
+                title: "House Party",
+                description:
+                    "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
+
+                category: "Architecture",
+                year: "2024",
+                thumbnail: {
+                    url: "https://www.mplus.org.hk/api/images/352/width-1380%7Cformat-webp/",
+                    width: 400,
+                    height: 600,
+                },
+                location: "Brooklyn, NY",
+                featured: true,
+                order: 11,
+                galleryCollection: {
+                    items: [
+                        {
+                            title: "House Party - Main Hall",
+                            url: "https://www.mplus.org.hk/api/images/425/width-1380%7Cformat-webp/",
+                            width: 1200,
+                            height: 800,
+                            sys: { id: "4-1" },
+                        },
+                    ],
+                },
+            },
+            {
+                sys: { id: "14" },
+                title: "Mission Rock Block B",
+                description:
+                    "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
+                location: "Brooklyn, NY",
+                category: "Architecture",
+                year: "2024",
+                thumbnail: {
+                    url: "https://www.mplus.org.hk/api/images/469/width-1380%7Cformat-webp/",
+                    width: 600,
+                    height: 400,
+                },
+                featured: true, // Featured on homepage
+                order: 12, // First item on homepage
+                galleryCollection: {
+                    items: [
+                        {
+                            title: "Mission Rock Block B - View 1",
+                            url: "https://www.mplus.org.hk/api/images/469/width-1380%7Cformat-webp/",
+
+                            width: 1200,
+                            height: 800,
+                            sys: { id: "1-1" },
+                        },
+                        {
+                            title: "Mission Rock Block B - View 2",
+                            url: "https://www.mplus.org.hk/api/images/419/width-1380%7Cformat-webp/",
+                            width: 1200,
+                            height: 800,
+                            sys: { id: "1-2" },
+                        },
+                        {
+                            title: "Mission Rock Block B - View 1",
+                            url: "https://www.mplus.org.hk/api/images/492/width-1380%7Cformat-webp/",
+
+                            width: 1200,
+                            height: 800,
+                            sys: { id: "1-1" },
+                        },
+                    ],
+                },
+            },
+            {
+                sys: { id: "15" },
+                title: "Quarra Stone Company Headquarter",
+                description:
+                    "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
+
+                category: "Architecture",
+                year: "2023",
+                thumbnail: {
+                    url: "https://www.mplus.org.hk/api/images/414/width-1380%7Cformat-webp/",
+                    width: 600,
+                    height: 400,
+                },
+                location: "New York, NY",
+                featured: true,
+                order: 13,
+                galleryCollection: {
+                    items: [
+                        {
+                            title: "Quarra Stone - Exterior",
+                            url: "https://www.mplus.org.hk/api/images/416/width-1380%7Cformat-webp/",
+                            width: 1200,
+                            height: 800,
+                            sys: { id: "5-1" },
+                        },
+                    ],
+                },
+            },
+            {
+                sys: { id: "16" },
+                title: "House Party",
+                description:
+                    "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
+
+                category: "Architecture",
+                year: "2024",
+                thumbnail: {
+                    url: "https://www.mplus.org.hk/api/images/352/width-1380%7Cformat-webp/",
+                    width: 400,
+                    height: 600,
+                },
+                location: "Brooklyn, NY",
+                featured: true,
+                order: 14,
+                galleryCollection: {
+                    items: [
+                        {
+                            title: "House Party - Main Hall",
+                            url: "https://www.mplus.org.hk/api/images/425/width-1380%7Cformat-webp/",
+                            width: 1200,
+                            height: 800,
+                            sys: { id: "4-1" },
+                        },
+                    ],
+                },
+            },
+            {
+                sys: { id: "17" },
+                title: "Residence M",
+                description:
+                    "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
+
+                category: "Interior",
+                year: "2024",
+                thumbnail: {
+                    url: "https://www.mplus.org.hk/api/images/421/width-1380%7Cformat-webp/",
+                    width: 600,
+                    height: 400,
+                },
+                location: "Brooklyn, NY",
+                featured: false, // Not featured on homepage
+                galleryCollection: {
+                    items: [
+                        {
+                            title: "Residence M - Interior 1",
+                            url: "https://www.mplus.org.hk/api/images/422/width-1380%7Cformat-webp/",
+                            width: 1200,
+                            height: 800,
+                            sys: { id: "2-1" },
+                        },
+                    ],
+                },
+            },
+            {
+                sys: { id: "18" },
+                title: "Bagel Joint",
+                description:
+                    "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
+
+                category: "Architecture",
+                year: "2024",
+                thumbnail: {
+                    url: "https://www.mplus.org.hk/api/images/199/width-1380%7Cformat-webp/",
+                    width: 600,
+                    height: 400,
+                },
+                location: "Brooklyn, NY",
+                featured: false, // Not featured on homepage
+                galleryCollection: {
+                    items: [
+                        {
+                            title: "Bagel Joint - Exterior",
+                            url: "https://www.mplus.org.hk/api/images/415/width-1380%7Cformat-webp/",
+                            width: 1200,
+                            height: 800,
+                            sys: { id: "3-1" },
+                        },
+                    ],
+                },
+            },
+
+            {
+                sys: { id: "19" },
+                title: "Headspace",
+                description:
+                    "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
+
+                category: "Interior",
+                year: "2023",
+                thumbnail: {
+                    url: "https://www.mplus.org.hk/api/images/322/width-1380%7Cformat-webp/",
+                    width: 600,
+                    height: 400,
+                },
+                location: "Taipei",
+                featured: false, // Not featured on homepage
+                galleryCollection: {
+                    items: [
+                        {
+                            title: "Headspace - Interior",
+                            url: "https://www.mplus.org.hk/api/images/428/width-1380%7Cformat-webp/",
+                            width: 1200,
+                            height: 800,
+                            sys: { id: "6-1" },
+                        },
+                    ],
+                },
+            },
+            {
+                sys: { id: "20" },
+                title: "House of Bread",
+                description:
+                    "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
+
+                category: "Fabrication",
+                year: "2023",
+                thumbnail: {
+                    url: "https://www.mplus.org.hk/api/images/431/width-1380%7Cformat-webp/",
+                    width: 600,
+                    height: 400,
+                },
+                location: "Brooklyn, NY",
+                featured: true,
+                order: 15,
+                galleryCollection: {
+                    items: [
+                        {
+                            title: "House of Bread - Interior",
+                            url: "https://www.mplus.org.hk/api/images/426/width-1380%7Cformat-webp/",
+                            width: 1200,
+                            height: 800,
+                            sys: { id: "7-1" },
+                        },
+                    ],
+                },
+            },
+            {
+                sys: { id: "21" },
+                title: "Intercorp",
+                description:
+                    "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
+
+                category: "Architecture",
+                year: "2022",
+                thumbnail: {
+                    url: "https://www.mplus.org.hk/api/images/617/width-1380%7Cformat-webp/",
+                    width: 600,
+                    height: 400,
+                },
+                location: "Lima, Peru",
+                featured: false, // Not featured on homepage
+                galleryCollection: {
+                    items: [
+                        {
+                            title: "Intercorp - Main Hall",
+                            url: "https://www.mplus.org.hk/api/images/619/width-1380%7Cformat-webp/",
+                            width: 1200,
+                            height: 800,
+                            sys: { id: "8-1" },
+                        },
+                    ],
+                },
+            },
+            {
+                sys: { id: "22" },
+                title: "House Party",
+                description:
+                    "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
+
+                category: "Architecture",
+                year: "2024",
+                thumbnail: {
+                    url: "https://www.mplus.org.hk/api/images/352/width-1380%7Cformat-webp/",
+                    width: 400,
+                    height: 600,
+                },
+                location: "Brooklyn, NY",
+                featured: true,
+                order: 16,
+                galleryCollection: {
+                    items: [
+                        {
+                            title: "House Party - Main Hall",
+                            url: "https://www.mplus.org.hk/api/images/425/width-1380%7Cformat-webp/",
+                            width: 1200,
+                            height: 800,
+                            sys: { id: "4-1" },
+                        },
+                    ],
+                },
+            },
+            {
+                sys: { id: "23" },
+                title: "Layering the space with Hanji",
+                description:
+                    "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
+
+                category: "Product",
+                year: "2022",
+                thumbnail: {
+                    url: "https://www.mplus.org.hk/api/images/143/width-1380%7Cformat-webp/",
+                    width: 600,
+                    height: 400,
+                },
+                location: "Seoul, Korea",
+                featured: false, // Not featured on homepage
+                galleryCollection: {
+                    items: [
+                        {
+                            title: "Hanji Installation",
+                            url: "https://www.mplus.org.hk/api/images/435/width-1380%7Cformat-webp/",
+                            width: 1200,
+                            height: 800,
+                            sys: { id: "9-1" },
+                        },
+                    ],
+                },
+            },
+            {
+                sys: { id: "24" },
+                title: "Mission Rock Block B",
+                description:
+                    "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
+                location: "Brooklyn, NY",
+                category: "Architecture",
+                year: "2024",
+                thumbnail: {
+                    url: "https://www.mplus.org.hk/api/images/469/width-1380%7Cformat-webp/",
+                    width: 600,
+                    height: 400,
+                },
+                featured: true,
+                order: 17,
+                galleryCollection: {
+                    items: [
+                        {
+                            title: "Mission Rock Block B - View 1",
+                            url: "https://www.mplus.org.hk/api/images/469/width-1380%7Cformat-webp/",
+
+                            width: 1200,
+                            height: 800,
+                            sys: { id: "1-1" },
+                        },
+                        {
+                            title: "Mission Rock Block B - View 2",
+                            url: "https://www.mplus.org.hk/api/images/419/width-1380%7Cformat-webp/",
+                            width: 1200,
+                            height: 800,
+                            sys: { id: "1-2" },
+                        },
+                        {
+                            title: "Mission Rock Block B - View 1",
+                            url: "https://www.mplus.org.hk/api/images/492/width-1380%7Cformat-webp/",
+
+                            width: 1200,
+                            height: 800,
+                            sys: { id: "1-1" },
+                        },
+                    ],
+                },
+            },
         ],
     },
 };
@@ -316,8 +741,7 @@ export const dummyEditorialImages = {
                     width: 800,
                     height: 800,
                 },
-                order: 2,
-                size: "small",
+                order: 4,
             },
             {
                 sys: { id: "e2" },
@@ -328,29 +752,16 @@ export const dummyEditorialImages = {
                     height: 900,
                 },
                 order: 8,
-                size: "medium",
             },
             {
                 sys: { id: "e3" },
-                title: null,
+                title: "Light & Shadow",
                 image: {
                     url: "https://www.mplus.org.hk/api/images/342/width-1380%7Cformat-webp/",
                     width: 1200,
                     height: 800,
                 },
-                order: 6, // Sixth item on homepage
-                size: "small",
-            },
-            {
-                sys: { id: "e4" },
-                title: "Concept Sketch",
-                image: {
-                    url: "https://www.mplus.org.hk/api/images/613/width-1380%7Cformat-webp/",
-                    width: 900,
-                    height: 600,
-                },
-                order: 4, // Eighth item on homepage
-                size: "large",
+                order: 10,
             },
         ],
     },
