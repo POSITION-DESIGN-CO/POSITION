@@ -70,7 +70,7 @@ export function HomePage({ homepageItems }: { homepageItems: HomepageItem[] }) {
     const [hoveredId, setHoveredId] = useState<string | null>(null);
 
     return (
-        <div className="grid lg:grid-cols-14 grid-cols-1 gap-16">
+        <div className="grid lg:grid-cols-14 grid-cols-1 lg:gap-16 gap-2">
             {homepageItems.map((item: HomepageItem, index: number) => {
                 const gridPlacement = getGridPlacement(index);
 

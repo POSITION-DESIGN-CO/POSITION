@@ -59,7 +59,7 @@ export function ViewToggle() {
                 <button
                     className={cn(
                         buttonClasses,
-                        "text-black border-none flex items-center justify-between w-full"
+                        "filter text-black border-none flex items-center justify-between w-full"
                     )}
                     onClick={() => setIsFilterActive(!isFilterActive)}
                     ref={buttonRef}

@@ -25,7 +25,7 @@
     height: 1px;
     background-color: black;
     transform-origin: center;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease-in-out;
 }
 
 .closed #line1 {
