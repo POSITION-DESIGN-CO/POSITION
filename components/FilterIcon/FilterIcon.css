@@ -33,7 +33,7 @@
 }
 
 .filterButton .open #line2 {
-    display: none;
+    transform: rotate(-180deg);
 }
 
 .filterButton .closed #line1 {
@@ -48,6 +48,3 @@
 .filter:hover .filterButton .closed #line2 {
     transform: rotate(-180deg);
 }
-/* .filter:hover .filterButton .closed #line1 {
-    transform: rotate(90deg);
-} */
