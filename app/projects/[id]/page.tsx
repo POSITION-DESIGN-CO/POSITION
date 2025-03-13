@@ -52,21 +52,53 @@ export default async function ProjectPage({
     }
 
     return (
-        <main className="min-h-[calc(100vh-50px)] p-4">
-            <div className="grid grid-cols-2 mb-80">
-                <div className="max-w-3xl text-sm md:col-start-2 col-span-2 pt-12 md:p-0">
-                    <p>{project.title}</p>
-                    <div className="flex flex-wrap gap-4 text-sm">
-                        <p className="text-gray-500">{project.category}</p>
-                        <p className="text-gray-500">{project.year}</p>
-                        <p className="text-gray-500">{project.location}</p>
-                    </div>
-                    <p>{project.description}</p>
-                </div>
+        <main className="sm:min-h-[calc(100vh-50px)] min-h-[calc(100vh-150px)] p-4">
+            <div className="grid lg:grid-cols-12 md:grid-cols-6 grid-cols-1 pt-40 md:gap-3 gap-0 text-sm max-w-7xl">
+                <p className="col-span-1 lg:col-span-3 md:col-span-2">
+                    {project.title}
+                    <Image
+                        priority
+                        src={project.thumbnail.url || "/placeholder.svg"}
+                        alt={project.title}
+                        width={project.thumbnail.width}
+                        height={project.thumbnail.height}
+                        className="w-1/2 hidden lg:block object-cover"
+                    />
+                </p>
+                <p className="col-span-1 md:col-span-2 text-gray-400">
+                    <span className="hidden md:block text-gray-400">
+                        Category:
+                    </span>
+                    {project.category}
+                </p>
+                <p className="col-span-1 md:col-span-2 text-gray-400">
+                    <span className="hidden md:block text-gray-400">
+                        Location:
+                    </span>
+                    {project.location}
+                </p>
+                <p className="col-span-1 md:col-span-2 text-gray-400">
+                    <span className="hidden md:block text-gray-400">
+                        Position:
+                    </span>
+                    {project.location}
+                </p>
+                <p className="col-span-1 md:col-span-2 text-gray-400">
+                    <span className="hidden md:block text-gray-400">Team:</span>
+                    {project.location}
+                </p>
+                <p className="col-span-1 md:col-span-1 text-gray-400">
+                    <span className="hidden md:block text-gray-400">Year:</span>
+                    {project.year}
+                </p>
             </div>
-
-            <div className="fixed top-4 right-4">
-                <div className="flex border border-gray-800 bg-white justify-self-end">
+            <div className="grid md:grid-cols-12 grid-col-1 sm:my-40 my-16 text-sm max-w-7xl">
+                <p className="text-sm col-span-1 md:col-span-6">
+                    {project.description}
+                </p>
+            </div>
+            <div className="fixed md:top-4 right-4 top-[53px]">
+                <div className="flex border border-gray-800 bg-white justify-center md:w-80 w-[calc(100vw-32px)]">
                     <Link
                         href="/projects"
                         className="rounded-none border-gray-800 px-6 py-2 text-sm transition-all duration-300 hover:text-black"

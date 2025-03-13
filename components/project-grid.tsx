@@ -25,7 +25,7 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
     const [hoveredId, setHoveredId] = useState<string | null>(null);
 
     return (
-        <div className="grid gap-y-6 gap-x-24 grid-cols-auto-fill-100">
+        <div className="grid gap-y-6 md:gap-x-24 gap-x-10 grid-cols-auto-fill-100">
             {projects.map((project) => (
                 <Link
                     key={project.sys.id}

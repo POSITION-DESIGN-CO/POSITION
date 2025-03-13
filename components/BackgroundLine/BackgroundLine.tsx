@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-
+import GetWindowDimensions from "@/lib/helper";
 interface BackgroundLineProps {
     isProjectsOpen: boolean;
     isMenuOpen: boolean;
@@ -11,6 +11,7 @@ export function BackgroundLine({
     isMenuOpen,
     isProjectsOpen,
 }: BackgroundLineProps) {
+    const { windowWidth } = GetWindowDimensions();
     return (
         <div className="absolute inset-0 pointer-events-none pb-4">
             <svg
@@ -22,58 +23,31 @@ export function BackgroundLine({
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-full h-full"
             >
-                <motion.line
-                    x1="15"
-                    y1="6"
-                    x2="15"
-                    initial={{ y2: 6 }}
-                    animate={{ y2: isMenuOpen ? 90 : 6 }}
-                    transition={{
-                        duration: 0.7,
-                        ease: "circOut",
-                        delay: 0.1,
-                    }}
-                    stroke="black"
-                    strokeWidth="0.9"
-                />
-
-                <motion.line
-                    x1="15"
-                    initial={{ y1: 6 }}
-                    animate={{ y1: isMenuOpen ? 90 : 6 }}
-                    x2="305"
-                    y2="6"
-                    transition={{
-                        duration: 0.7,
-                        ease: "circOut",
-                        delay: 0.1,
-                    }}
-                    stroke="black"
-                    strokeWidth="0.9"
-                />
-                <motion.line
-                    x1="305"
-                    y1="6"
-                    x2="305"
-                    initial={{ y2: 6 }}
+                <motion.polyline
+                    points="15,6 15,6 305,6 305,6"
                     animate={{
-                        y2:
-                            isMenuOpen && !isProjectsOpen
-                                ? 300
-                                : isProjectsOpen
-                                ? 600
-                                : 6,
+                        points: isMenuOpen
+                            ? isProjectsOpen
+                                ? `15,6 15,${
+                                      windowWidth > 767 ? "80" : "80"
+                                  } 305,6 305,600`
+                                : `15,6 15,${
+                                      windowWidth > 767 ? "80" : "80"
+                                  } 305,6 305,300`
+                            : "15,6 15,6 305,6 305,6",
                     }}
                     transition={{
-                        duration: 1,
+                        duration: 0.7,
                         ease:
                             isMenuOpen && !isProjectsOpen
                                 ? "circOut"
                                 : "circInOut",
-                        delay: isMenuOpen && !isProjectsOpen ? 0.2 : 0,
+                        delay: 0.1,
                     }}
                     stroke="black"
                     strokeWidth="0.9"
+                    fill="transparent"
+                    strokeLinejoin={"miter"}
                 />
             </svg>
         </div>

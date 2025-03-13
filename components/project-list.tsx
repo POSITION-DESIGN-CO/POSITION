@@ -26,11 +26,15 @@ export function ProjectList({ projects }: ProjectListProps) {
 
     return (
         <div className="w-full">
-            <div className="grid grid-cols-12 gap-4 text-sm">
-                <div className="col-span-3">Project</div>
-                <div className="col-span-2">Location</div>
-                <div className="col-span-5">Category</div>
-                <div className="col-span-2 place-self-end">Year</div>
+            <div className="grid md:grid-cols-12 grid-cols-2 gap-4 text-sm">
+                <div className="md:col-span-3 col-span-1">Project</div>
+                <div className="col-span-2 hidden md:block">Location</div>
+                <div className="md:col-span-5 col-span-1 md:block flex place-content-end">
+                    Category
+                </div>
+                <div className="col-span-2 place-self-end hidden md:block">
+                    Year
+                </div>
             </div>
             <div className="py-4">
                 {projects.map((project) => (
@@ -41,18 +45,20 @@ export function ProjectList({ projects }: ProjectListProps) {
                             hoveredId && hoveredId !== project.sys.id
                                 ? "opacity-10"
                                 : "opacity-100"
-                        } py-0 group grid grid-cols-12 gap-4 relative`}
+                        } py-[2px] group grid md:grid-cols-12 grid-cols-2 gap-4 relative text-sm`}
                         onMouseEnter={() => setHoveredId(project.sys.id)}
                         onMouseLeave={() => setHoveredId(null)}
                     >
-                        <div className="col-span-3">
-                            <span className="hover:underline">
-                                {project.title}
-                            </span>
+                        <div className="md:col-span-3 col-span-1">
+                            <span>{project.title}</span>
                         </div>
-                        <div className="col-span-2">{project.location}</div>
-                        <div className="col-span-5">{project.category}</div>
-                        <div className="col-span-2 place-content-end flex items-center">
+                        <div className="col-span-2 hidden md:block">
+                            {project.location}
+                        </div>
+                        <div className="md:col-span-5 col-span-1 md:block flex place-content-end">
+                            {project.category}
+                        </div>
+                        <div className="col-span-2 hidden md:flex place-content-end items-center">
                             <span>{project.year}</span>
                         </div>
                         {project.thumbnail && hoveredId === project.sys.id && (

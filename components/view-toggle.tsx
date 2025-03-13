@@ -37,7 +37,7 @@ export function ViewToggle() {
 
     return (
         <>
-            <div className="flex border border-gray-800 bg-white justify-self-end">
+            <div className="flex border border-gray-800 bg-white justify-self-end md:w-80 w-[calc(100vw-32px)]">
                 <button
                     className={cn(
                         buttonClasses,
@@ -59,7 +59,7 @@ export function ViewToggle() {
                 <button
                     className={cn(
                         buttonClasses,
-                        "text-black border-none flex items-center justify-between w-24"
+                        "text-black border-none flex items-center justify-between w-full"
                     )}
                     onClick={() => setIsFilterActive(!isFilterActive)}
                     ref={buttonRef}
@@ -71,10 +71,20 @@ export function ViewToggle() {
                     />
                 </button>
             </div>
-            {categories && isFilterActive && (
-                <div
-                    className="flex border border-gray-800 bg-white -mt-[1px] justify-self-end"
-                    ref={menuRef}
+
+            <div
+                className="flex flex-nowrap border border-gray-800 bg-white -mt-[1px] justify-self-end transition-all duration-500 ease-in-out"
+                style={{
+                    transform:
+                        categories && isFilterActive
+                            ? "translateX(0%)"
+                            : "translateX(120%)",
+                }}
+                ref={menuRef}
+            >
+                <aside
+                    className="overflow-scroll md:w-full w-[calc(100vw-34px)] flex flex-nowrap
+"
                 >
                     {categories?.map((categoryItem: any, index: number) => {
                         return (
@@ -95,8 +105,8 @@ export function ViewToggle() {
                             </>
                         );
                     })}
-                </div>
-            )}
+                </aside>
+            </div>
         </>
     );
 }

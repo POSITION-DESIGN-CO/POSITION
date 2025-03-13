@@ -1,3 +1,4 @@
+import TimeToggle from "@/components/time-toggle";
 import { getAbout } from "@/lib/contentful";
 import Image from "next/image";
 
@@ -16,8 +17,14 @@ export default async function AboutPage() {
         return configs[index % configs.length];
     };
 
+    const buttonClasses =
+        "rounded-none border-r border-gray-800 px-6 py-2 text-sm transition-all duration-300 hover:text-black";
+
     return (
         <main className="min-h-[calc(100vh-50px)] p-4">
+            <div className="fixed md:top-4 right-4 top-[53px] z-40">
+                <TimeToggle />
+            </div>
             <div className="grid md:grid-cols-2 col-span-12 mt-96">
                 <div>
                     <p className="text-sm">{about.about}</p>

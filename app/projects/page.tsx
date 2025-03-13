@@ -9,10 +9,10 @@ export default async function ProjectsPage({}: {}) {
     const categories = getUniqueCategories();
 
     return (
-        <main className="min-h-[calc(100vh-50px)] p-4">
+        <main className="sm:min-h-[calc(100vh-50px)] min-h-[calc(100vh-150px)] p-4">
             <StoreInitializer projects={allProjects} categories={categories} />
 
-            <div className="fixed top-4 right-4">
+            <div className="fixed md:top-4 right-4 top-[53px] z-40">
                 <ViewToggleWithSuspense />
             </div>
             {/* 
@@ -25,7 +25,7 @@ export default async function ProjectsPage({}: {}) {
                     materials.
                 </p>
             </div> */}
-            <div className="my-24">
+            <div className="md:my-24 my-32">
                 <ClientSideProjectsRenderer />
             </div>
         </main>

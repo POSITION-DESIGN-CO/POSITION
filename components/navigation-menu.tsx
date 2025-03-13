@@ -12,7 +12,7 @@ import { useProjectsStore } from "@/store";
 export function NavigationMenu() {
     const [isOpen, setIsOpen] = useState(false);
     const [isProjectsOpen, setIsProjectsOpen] = useState(false);
-    const { category, setCategory, categories } = useProjectsStore();
+    const { setCategory, categories } = useProjectsStore();
 
     const menuRef = useRef<HTMLDivElement>(null);
     const buttonRef = useRef<HTMLButtonElement>(null);
@@ -42,7 +42,7 @@ export function NavigationMenu() {
         <div className="relative z-50">
             <div className="fixed top-4 left-4 z-50">
                 <button
-                    className={`w-80 flex items-center justify-between border-t border-x border-gray-800 bg-white px-3 py-1 text-sm`}
+                    className={`md:w-80 w-[calc(100vw-32px)] flex items-center justify-between border-t border-x border-gray-800 bg-white px-3 py-1 text-sm`}
                     ref={buttonRef}
                 >
                     <span className="text-xl">
@@ -83,7 +83,7 @@ export function NavigationMenu() {
             </div>
 
             <div
-                className={`fixed left-4 w-80 top-12 z-40 bg-white overflow-hidden transition-[max-height] duration-1000 ease-in-out border-x border-b border-gray-800 ${
+                className={`fixed left-4 md:w-80 w-[calc(100vw-32px)] top-12 z-40 bg-white overflow-hidden transition-[max-height] duration-1000 ease-in-out border-x border-b border-gray-800 ${
                     isOpen ? "max-h-[calc(100vh-88px)]" : "max-h-0"
                 }`}
                 ref={menuRef}
