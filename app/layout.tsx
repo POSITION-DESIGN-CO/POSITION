@@ -5,7 +5,7 @@ import "../styles/index.css";
 import { cn } from "@/lib/utils";
 import { NavigationMenu } from "@/components/navigation-menu";
 import { Footer } from "@/components/Footer";
-import { getUniqueCategories } from "@/lib/contentful";
+import { PageTransitionProvider } from "@/components/page-transition";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,7 +28,7 @@ export default async function RootLayout({
             <body className={cn(inter.className, "bg-white")}>
                 {/* <NavigationMenu categories={categories} /> */}
                 <NavigationMenu />
-                {children}
+                <PageTransitionProvider>{children}</PageTransitionProvider>
                 <Footer />
             </body>
         </html>
