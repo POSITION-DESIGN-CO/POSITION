@@ -21,7 +21,7 @@ export default function AwardsPublications({
         <>
             {/* Awards */}
             <div className="my-5 max-w-5xl mb-10 sm:mb-0">
-                <h2 className="sm:mb-5 mb-0 text-sm">Award</h2>
+                <h2 className="sm:mb-5 mb-0 text-sm">Awards</h2>
                 <div className="grid sm:grid-cols-12 grid-cols-1 text-sm">
                     {awards.map((award, i) => (
                         <Fragment key={i}>
@@ -44,7 +44,7 @@ export default function AwardsPublications({
 
             {/* Publications */}
             <div className="my-5 max-w-5xl">
-                <h2 className="sm:mb-5 mb-0 text-sm">Publication</h2>
+                <h2 className="sm:mb-5 mb-0 text-sm">Publications</h2>
                 <div className="grid sm:grid-cols-12 grid-cols-1 text-sm">
                     {publications.map((pub, i) => (
                         <Fragment key={i}>
