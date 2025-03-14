@@ -2,8 +2,6 @@ import TimeToggle from "@/components/time-toggle";
 import FounderBio from "@/components/founder-bio";
 import AwardsPublications from "@/components/awards-publications";
 import { getAbout } from "@/lib/contentful";
-import Image from "next/image";
-import { Fragment } from "react";
 
 export default async function AboutPage() {
     const about = await getAbout();
@@ -18,21 +16,22 @@ export default async function AboutPage() {
             <section className="grid sm:grid-cols-2 grid-cols-1 lg:gap-16 md:gap-8 sm:gap-4 gap-2 md:pt-16 pt-24">
                 {/* Team Section */}
                 <div className="max-w-5xl">
-                    {/* Founder - now using the client component */}
                     <FounderBio founder={about.founder} />
 
                     {/* Team Members */}
                     <div className="my-12">
                         <h3 className="text-sm mb-4">Members</h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-2">
-                            {about.teamMembers.map((member, i) => (
-                                <div key={i} className="pr-4">
-                                    <p className="text-sm">{member.name}</p>
-                                    <p className="text-sm text-gray-400">
-                                        {member.role}
-                                    </p>
-                                </div>
-                            ))}
+                            {about.teamMembersCollection.items.map(
+                                (member, i) => (
+                                    <div key={i} className="pr-4">
+                                        <p className="text-sm">{member.name}</p>
+                                        <p className="text-sm text-gray-400">
+                                            {member.role}
+                                        </p>
+                                    </div>
+                                )
+                            )}
                         </div>
                     </div>
 
@@ -45,19 +44,19 @@ export default async function AboutPage() {
                     </div>
                 </div>
                 <div className="text-sm col-span-1 -order-1 sm:order-1">
-                    <p className="text-sm">{about.about}</p>
+                    <p className="text-sm">{about.description}</p>
                     <aside className="sm:block hidden">
                         <AwardsPublications
-                            awards={about.awards}
-                            publications={about.publications}
+                            awards={about.awardsCollection.items}
+                            publications={about.publicationsCollection.items}
                         />
                     </aside>
                 </div>
             </section>
             <aside className="block sm:hidden">
                 <AwardsPublications
-                    awards={about.awards}
-                    publications={about.publications}
+                    awards={about.awardsCollection.items}
+                    publications={about.publicationsCollection.items}
                 />
             </aside>
             {/* Contact */}

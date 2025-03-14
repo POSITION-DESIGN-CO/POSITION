@@ -53,9 +53,9 @@ export default async function ProjectPage({
 
     return (
         <main className="sm:min-h-[calc(100vh-50px)] min-h-[calc(100vh-150px)] p-4">
-            <div className="grid lg:grid-cols-12 md:grid-cols-6 grid-cols-1 pt-40 md:gap-3 gap-0 text-sm max-w-7xl">
-                <p className="col-span-1 lg:col-span-3 md:col-span-2">
-                    {project.title}
+            <div className="grid lg:grid-cols-12 md:grid-cols-6 grid-cols-1 pt-40 gap-6 text-sm max-w-7xl">
+                <div className="col-span-1 lg:col-span-3 md:col-span-2">
+                    <p>{project.title}</p>
                     <Image
                         priority
                         src={project.thumbnail.url || "/placeholder.svg"}
@@ -64,31 +64,33 @@ export default async function ProjectPage({
                         height={project.thumbnail.height}
                         className="w-1/2 hidden lg:block object-cover"
                     />
-                </p>
-                <p className="col-span-1 md:col-span-2 text-gray-400">
-                    <span className="hidden md:block text-gray-400">
-                        Category:
-                    </span>
+                </div>
+                <p className="col-span-1 md:col-span-2">
+                    <span className="block text-gray-400">Category</span>
                     {project.category}
                 </p>
-                <p className="col-span-1 md:col-span-2 text-gray-400">
-                    <span className="hidden md:block text-gray-400">
-                        Location:
-                    </span>
+                <p className="col-span-1 md:col-span-2">
+                    <span className="block text-gray-400">Location</span>
                     {project.location}
                 </p>
-                <p className="col-span-1 md:col-span-2 text-gray-400">
-                    <span className="hidden md:block text-gray-400">
-                        Position:
-                    </span>
-                    {project.location}
-                </p>
-                <p className="col-span-1 md:col-span-2 text-gray-400">
-                    <span className="hidden md:block text-gray-400">Team:</span>
-                    {project.location}
-                </p>
-                <p className="col-span-1 md:col-span-1 text-gray-400">
-                    <span className="hidden md:block text-gray-400">Year:</span>
+                {project.team && (
+                    <p className="col-span-1 md:col-span-2">
+                        <span className="block text-gray-400">Position</span>
+                        {project.position}
+                    </p>
+                )}
+                {project.team && (
+                    <div className="col-span-1 md:col-span-2">
+                        <span className="block text-gray-400">Team</span>
+                        <ul>
+                            {project.team?.map((person) => (
+                                <li key={person}>{person}</li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+                <p className="col-span-1 md:col-span-1">
+                    <span className="block text-gray-400">Year</span>
                     {project.year}
                 </p>
             </div>

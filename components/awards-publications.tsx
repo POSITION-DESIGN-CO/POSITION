@@ -10,7 +10,6 @@ interface AwardsPublicationsProps {
         year: number;
         title: string;
         publisher: string;
-        author: string;
     }[];
 }
 

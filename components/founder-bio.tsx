@@ -15,11 +15,14 @@ interface FounderBioProps {
         readMore?: boolean;
     };
 }
+const renderText = (text: any) => {
+    return text.split("\n");
+};
 
 export default function FounderBio({ founder }: FounderBioProps) {
     const [showFullBio, setShowFullBio] = useState(false);
-
-    const bioToShow = showFullBio ? founder.bio : [founder.bio[0]];
+    const bio = renderText(founder.bio);
+    const bioToShow = showFullBio ? bio : [bio[0]];
 
     return (
         <div className="grid md:grid-cols-3 gap-8 mb-12 sm:mt-0 mt-8">
@@ -34,7 +37,7 @@ export default function FounderBio({ founder }: FounderBioProps) {
             <div className="md:col-span-2">
                 <h3 className="text-sm">{founder.name}</h3>
                 <p className="text-sm text-gray-400 mb-5">{founder.role}</p>
-                {bioToShow.map((paragraph, i) => (
+                {bioToShow.map((paragraph: string, i: number) => (
                     <p key={i} className="text-sm mb-2.5 max-w-2xl">
                         {paragraph}
                     </p>

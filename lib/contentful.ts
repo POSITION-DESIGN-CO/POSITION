@@ -61,13 +61,13 @@ export async function getProjects() {
 
 // Define the About content type interface
 export interface AboutPage {
-    about: string;
-    studioImage: {
-        url: string;
-        title: string;
-        width: number;
-        height: number;
-    };
+    description: string;
+    // studioImage: {
+    //     url: string;
+    //     title: string;
+    //     width: number;
+    //     height: number;
+    // };
     founder: {
         name: string;
         role: string;
@@ -77,48 +77,81 @@ export interface AboutPage {
         };
         bio: string[];
     };
-    teamMembers: {
-        name: string;
-        role: string;
-    }[];
+    teamMembersCollection: {
+        items: {
+            name: string;
+            role: string;
+        }[];
+    };
     formerMembers: string[];
     contact: {
         email: string;
         instagram: string;
         secondaryIG?: string;
     };
-    awards: {
-        year: number;
-        title: string;
-        result: string;
-    }[];
-    publications: {
-        year: number;
-        title: string;
-        publisher: string;
-        author: string;
-    }[];
+    awardsCollection: {
+        items: {
+            year: number;
+            title: string;
+            result: string;
+        }[];
+    };
+    publicationsCollection: {
+        items: {
+            year: number;
+            title: string;
+            publisher: string;
+        }[];
+    };
 }
 
 export async function getAbout(): Promise<AboutPage> {
     const aboutQuery = `
-      query {
-          editorialCollection {
+        query {
+          aboutCollection {
             items {
-               sys { id }
-            about
-            studioImage { url title width height }
-            founder { name role image { url title } bio }
-            teamMembers { name role }
-            formerMembers
-            contact { email instagram secondaryIG }
-            awards { year title result }
-            publications { year title publisher author }
+              sys {
+                id
+              }
+              description
+              founder {
+                name
+                role
+                image {
+                  url
+                  title
+                }
+                bio
+              }
+              formerMembers
+              contact
+              teamMembersCollection(limit: 10)  {
+                items {
+                  name
+                  role
+                }
+              }
+              awardsCollection (limit:40) {
+                items {
+                  year
+                  title
+                  result
+                }
+              }
+              publicationsCollection (limit:40) {
+                items {
+                  year
+                  title
+                  publisher
+                }
+              }
+            }
           }
         }
-      }
     `;
-    return dummyAboutCollection.aboutCollection.items[0];
+    const data = await fetchFromContentful(aboutQuery);
+    return data?.aboutCollection.items[0] || { items: [] };
+    // return dummyAboutCollection.aboutCollection.items[0];
 }
 
 export async function getEditorialImages() {
@@ -137,7 +170,6 @@ export async function getEditorialImages() {
             height
           }
           order
-          size
         }
       }
     }
@@ -156,6 +188,8 @@ export async function getProjectById(id: string) {
           title
           description
           category
+          position
+          team
           year
           thumbnail { url width height }
           location

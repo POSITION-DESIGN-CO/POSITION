@@ -1,4 +1,5 @@
 import {
+    getAbout,
     getHomepageItems,
     getProjects,
     getUniqueCategories,
@@ -11,20 +12,15 @@ export default async function Home() {
     const homepageItems: HomepageItem[] = await getHomepageItems();
     const categories = await getUniqueCategories();
     const { items: allProjects } = await getProjects();
-
-    const aboutText = {
-        data: {
-            content:
-                "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
-        },
-    };
+    const about = await getAbout();
+    const aboutText = about.description.split(".").slice(0, 2).join(".");
 
     return (
         <main className="sm:min-h-[calc(100vh-50px)] min-h-[calc(100vh-150px)] p-4">
             <StoreInitializer projects={allProjects} categories={categories} />
             <div className="grid lg:grid-cols-2 grid-cols-1 lg:mb-12 lg:my-0 my-6 gap-16">
-                <div className="text-sm lg:col-start-2 pt-12 lg:p-0 w-full max-w-5xl">
-                    <p>{aboutText.data.content}</p>
+                <div className="text-sm lg:col-start-2 pt-8 lg:p-0 w-full max-w-5xl">
+                    <p>{aboutText}.</p>
                 </div>
             </div>
             <HomePage homepageItems={homepageItems} />

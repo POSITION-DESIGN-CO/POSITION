@@ -37,6 +37,8 @@ export const dummyProjects = {
                 location: "Brooklyn, NY",
                 category: "Architecture",
                 year: "2024",
+                position: "Design Principal",
+                team: ["Shan Chun Wen", "Jeremy Pi", "Michael Chen"],
                 thumbnail: {
                     url: "https://www.mplus.org.hk/api/images/469/width-1380%7Cformat-webp/",
                     width: 600,
@@ -772,7 +774,8 @@ export const dummyAboutCollection = {
         items: [
             {
                 sys: { id: "e1" },
-                about: "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials. Leveraging expertise in architecture and technology, we employ the most advanced digital tools to realize our approach and designs. The studio collaborates with other designers, artists, and landscape designers to engage in various types of projects and research.",
+                description:
+                    "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials. Leveraging expertise in architecture and technology, we employ the most advanced digital tools to realize our approach and designs. The studio collaborates with other designers, artists, and landscape designers to engage in various types of projects and research.",
                 studioImage: {
                     url: "https://www.mplus.org.hk/api/images/469/width-1380%7Cformat-webp/",
                     title: "POSITION Studio Sign",
@@ -795,12 +798,14 @@ export const dummyAboutCollection = {
                         "Since 2007, Poyao has worked for various offices worldwide including Steven Holl Architects, Diller Scofidio + Renfro (DS+R), and Bernard Tschumi Manhattan. Before founding POSITION, he was the design project lead at Square's Digital Architecture Lab.",
                     ],
                 },
-                teamMembers: [
-                    { name: "Wei Wang Lu", role: "Partner - Head Bu" },
-                    { name: "Michael Chen", role: "Project Architect" },
-                    { name: "Yurihito Chan", role: "Designer" },
-                    { name: "Eugene Kim", role: "Intern Designer" },
-                ],
+                teamMembersCollection: {
+                    items: [
+                        { name: "Wei Wang Lu", role: "Partner - Head Bu" },
+                        { name: "Michael Chen", role: "Project Architect" },
+                        { name: "Yurihito Chan", role: "Designer" },
+                        { name: "Eugene Kim", role: "Intern Designer" },
+                    ],
+                },
                 formerMembers: [
                     "Yanni Lu",
                     "Alan Huang",
@@ -812,82 +817,87 @@ export const dummyAboutCollection = {
                     instagram: "@position_studio",
                     secondaryIG: "@poyaoshih",
                 },
-                awards: [
-                    {
-                        year: 2023,
-                        title: "K.Tav Taipei Fine Art Museum Competition",
-                        result: "Runner-up, Second Place",
-                    },
-                    {
-                        year: 2020,
-                        title: "Seoul Design Award 2020",
-                        result: "Winner: TOP Award",
-                    },
-                    {
-                        year: 2019,
-                        title: "Architectural Competition for Kyoto Railway Museum",
-                        result: "Finalist: Third Award",
-                    },
-                    {
-                        year: 2018,
-                        title: "Harvard Tokyo Arts Festival",
-                        result: "Exhibitor",
-                    },
-                    {
-                        year: 2018,
-                        title: "Harvard GSD Platform exhibition",
-                        result: "",
-                    },
-                    {
-                        year: 2017,
-                        title: "Guggenheim Helsinki Museum + Kyoto Competition",
-                        result: "Art Tokujitsu",
-                    },
-                    {
-                        year: 2017,
-                        title: "Lost House on Manhattan, International Competition",
-                        result: "Honorable Mention",
-                    },
-                    {
-                        year: 2016,
-                        title: "International Exhibition of Architecture Exhibition",
-                        result: "Design Representative of Taiwan / US",
-                    },
-                ],
-                publications: [
-                    {
-                        year: 2021,
-                        title: "Mean Collectivism",
-                        publisher: "Drawing Review, Interview",
-                        author: "",
-                    },
-                    {
-                        year: 2020,
-                        title: "Generalists, Evos, and Legacy Architecture: The Architectural Practice of Tokyo's Kengo and NEW Architecture",
-                        publisher: "Author: Taiwan Architecture Magazine Issue",
-                        author: "",
-                    },
-                    {
-                        year: 2019,
-                        title: "Report from Japan",
-                        publisher:
-                            "Author: Taiwan Architecture Magazine Issue No.286",
-                        author: "",
-                    },
-                    {
-                        year: 2018,
-                        title: "Report from Japan: The new era of SCA Arc",
-                        publisher:
-                            "Author: Architectural Institute of Taiwan Magazine Issue No.84",
-                        author: "",
-                    },
-                    {
-                        year: 2016,
-                        title: "RETROFITE: Qingteng Theatre Redesign",
-                        publisher: "Author: Online platforms",
-                        author: "",
-                    },
-                ],
+                awardsCollection: {
+                    items: [
+                        {
+                            year: 2023,
+                            title: "K.Tav Taipei Fine Art Museum Competition",
+                            result: "Runner-up, Second Place",
+                        },
+                        {
+                            year: 2020,
+                            title: "Seoul Design Award 2020",
+                            result: "Winner: TOP Award",
+                        },
+                        {
+                            year: 2019,
+                            title: "Architectural Competition for Kyoto Railway Museum",
+                            result: "Finalist: Third Award",
+                        },
+                        {
+                            year: 2018,
+                            title: "Harvard Tokyo Arts Festival",
+                            result: "Exhibitor",
+                        },
+                        {
+                            year: 2018,
+                            title: "Harvard GSD Platform exhibition",
+                            result: "",
+                        },
+                        {
+                            year: 2017,
+                            title: "Guggenheim Helsinki Museum + Kyoto Competition",
+                            result: "Art Tokujitsu",
+                        },
+                        {
+                            year: 2017,
+                            title: "Lost House on Manhattan, International Competition",
+                            result: "Honorable Mention",
+                        },
+                        {
+                            year: 2016,
+                            title: "International Exhibition of Architecture Exhibition",
+                            result: "Design Representative of Taiwan / US",
+                        },
+                    ],
+                },
+                publicationsCollection: {
+                    items: [
+                        {
+                            year: 2021,
+                            title: "Mean Collectivism",
+                            publisher: "Drawing Review, Interview",
+                            author: "",
+                        },
+                        {
+                            year: 2020,
+                            title: "Generalists, Evos, and Legacy Architecture: The Architectural Practice of Tokyo's Kengo and NEW Architecture",
+                            publisher:
+                                "Author: Taiwan Architecture Magazine Issue",
+                            author: "",
+                        },
+                        {
+                            year: 2019,
+                            title: "Report from Japan",
+                            publisher:
+                                "Author: Taiwan Architecture Magazine Issue No.286",
+                            author: "",
+                        },
+                        {
+                            year: 2018,
+                            title: "Report from Japan: The new era of SCA Arc",
+                            publisher:
+                                "Author: Architectural Institute of Taiwan Magazine Issue No.84",
+                            author: "",
+                        },
+                        {
+                            year: 2016,
+                            title: "RETROFITE: Qingteng Theatre Redesign",
+                            publisher: "Author: Online platforms",
+                            author: "",
+                        },
+                    ],
+                },
             },
         ],
     },
