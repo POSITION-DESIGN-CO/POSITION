@@ -39,6 +39,9 @@
 .filterButton .closed #line1 {
     transform: rotate(90deg);
 }
+.filter:hover .filterButton .closed #line1 {
+    transform: rotate(-90deg);
+}
 
 .filterButton .closed #line2 {
     transform: rotate(0deg);
