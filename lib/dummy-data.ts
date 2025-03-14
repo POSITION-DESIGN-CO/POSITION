@@ -766,105 +766,128 @@ export const dummyEditorialImages = {
         ],
     },
 };
-// query {
-//     aboutCollection {
-//       items {
-//         sys { id }
-//         about
-//         contact
-//         headCollection {
-//           items {
-//             title
-//             url
-//             width
-//             height
-//             sys { id }
-//           }
-//         }
-//       }
-//     }
-//   }
+
 export const dummyAboutCollection = {
     aboutCollection: {
         items: [
             {
                 sys: { id: "e1" },
-                about: "Founded in Brooklyn, New York by Poyao Shih, POSITION is an architectural practice that explores ideas across disciplines and scales, focusing on contemporary architectural challenges through innovative forms and materials. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
-                contact:
-                    "New York / Taipei +1(323)600-5582 pshih@positiondesign.com Instagram",
-                headCollection: {
-                    items: [
-                        {
-                            title: "Max Muster",
-                            url: "https://www.mplus.org.hk/api/images/352/width-1380%7Cformat-webp/",
-                            width: 800,
-                            height: 800,
-                            sys: { id: "1" },
-                        },
-                        {
-                            title: "Max Muster",
-                            url: "https://www.mplus.org.hk/api/images/352/width-1380%7Cformat-webp/",
-                            width: 800,
-                            height: 800,
-                            sys: { id: "2" },
-                        },
-                        {
-                            title: "Max Muster",
-                            url: "https://www.mplus.org.hk/api/images/352/width-1380%7Cformat-webp/",
-                            width: 800,
-                            height: 800,
-                            sys: { id: "3" },
-                        },
-                        {
-                            title: "Max Muster",
-                            url: "https://www.mplus.org.hk/api/images/352/width-1380%7Cformat-webp/",
-                            width: 800,
-                            height: 800,
-                            sys: { id: "4" },
-                        },
-                        {
-                            title: "Max Muster",
-                            url: "https://www.mplus.org.hk/api/images/352/width-1380%7Cformat-webp/",
-                            width: 800,
-                            height: 800,
-                            sys: { id: "5" },
-                        },
-                        {
-                            title: "Max Muster",
-                            url: "https://www.mplus.org.hk/api/images/352/width-1380%7Cformat-webp/",
-                            width: 800,
-                            height: 800,
-                            sys: { id: "6" },
-                        },
+                about: "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials. Leveraging expertise in architecture and technology, we employ the most advanced digital tools to realize our approach and designs. The studio collaborates with other designers, artists, and landscape designers to engage in various types of projects and research.",
+                studioImage: {
+                    url: "https://www.mplus.org.hk/api/images/469/width-1380%7Cformat-webp/",
+                    title: "POSITION Studio Sign",
+                    width: 800,
+                    height: 600,
+                },
+                founder: {
+                    name: "Poyao Shih",
+                    role: "Founder",
+                    image: {
+                        url: "https://www.mplus.org.hk/api/images/469/width-1380%7Cformat-webp/",
+                        title: "Poyao Shih",
+                    },
+                    bio: [
+                        "Poyao Shih is the founder of POSITION, based in Brooklyn, New York. He is currently a design critic at the Harvard Graduate School of Design and art director of digital content at The Museum of Modern Art.",
+                        "Poyao holds a Bachelor's degree from the Southern California Institute of Architecture (SCI-Arc) and a Master's degree in Architecture from the Harvard Graduate School of Design with a scholarship (2009).",
+                        "Since 2007, Poyao has worked for various offices worldwide including Steven Holl Architects, Diller Scofidio + Renfro (DS+R), and Bernard Tschumi Manhattan. Before founding POSITION, he was the design project lead at Square's Digital Architecture Lab.",
+                        "Poyao Shih is the founder of POSITION, based in Brooklyn, New York. He is currently a design critic at the Harvard Graduate School of Design and art director of digital content at The Museum of Modern Art.",
+                        "Poyao holds a Bachelor's degree from the Southern California Institute of Architecture (SCI-Arc) and a Master's degree in Architecture from the Harvard Graduate School of Design with a scholarship (2009).",
+                        "Since 2007, Poyao has worked for various offices worldwide including Steven Holl Architects, Diller Scofidio + Renfro (DS+R), and Bernard Tschumi Manhattan. Before founding POSITION, he was the design project lead at Square's Digital Architecture Lab.",
                     ],
                 },
-            },
-            {
-                sys: { id: "e2" },
-                title: "Max Muster",
-                image: {
-                    url: "https://www.mplus.org.hk/api/images/272/width-1380%7Cformat-webp/",
-                    width: 800,
-                    height: 800,
+                teamMembers: [
+                    { name: "Wei Wang Lu", role: "Partner - Head Bu" },
+                    { name: "Michael Chen", role: "Project Architect" },
+                    { name: "Yurihito Chan", role: "Designer" },
+                    { name: "Eugene Kim", role: "Intern Designer" },
+                ],
+                formerMembers: [
+                    "Yanni Lu",
+                    "Alan Huang",
+                    "Shenzhou Wu",
+                    "Melody Chu",
+                ],
+                contact: {
+                    email: "info@positiondesign.co",
+                    instagram: "@position_studio",
+                    secondaryIG: "@poyaoshih",
                 },
-            },
-            {
-                sys: { id: "e3" },
-                title: "Max Muster",
-                image: {
-                    url: "https://www.mplus.org.hk/api/images/262/width-1380%7Cformat-webp/",
-                    width: 800,
-                    height: 800,
-                },
-            },
-            {
-                sys: { id: "e4" },
-                title: "Max Muster",
-                image: {
-                    url: "https://www.mplus.org.hk/api/images/252/width-1380%7Cformat-webp/",
-                    width: 800,
-                    height: 800,
-                },
+                awards: [
+                    {
+                        year: 2023,
+                        title: "K.Tav Taipei Fine Art Museum Competition",
+                        result: "Runner-up, Second Place",
+                    },
+                    {
+                        year: 2020,
+                        title: "Seoul Design Award 2020",
+                        result: "Winner: TOP Award",
+                    },
+                    {
+                        year: 2019,
+                        title: "Architectural Competition for Kyoto Railway Museum",
+                        result: "Finalist: Third Award",
+                    },
+                    {
+                        year: 2018,
+                        title: "Harvard Tokyo Arts Festival",
+                        result: "Exhibitor",
+                    },
+                    {
+                        year: 2018,
+                        title: "Harvard GSD Platform exhibition",
+                        result: "",
+                    },
+                    {
+                        year: 2017,
+                        title: "Guggenheim Helsinki Museum + Kyoto Competition",
+                        result: "Art Tokujitsu",
+                    },
+                    {
+                        year: 2017,
+                        title: "Lost House on Manhattan, International Competition",
+                        result: "Honorable Mention",
+                    },
+                    {
+                        year: 2016,
+                        title: "International Exhibition of Architecture Exhibition",
+                        result: "Design Representative of Taiwan / US",
+                    },
+                ],
+                publications: [
+                    {
+                        year: 2021,
+                        title: "Mean Collectivism",
+                        publisher: "Drawing Review, Interview",
+                        author: "",
+                    },
+                    {
+                        year: 2020,
+                        title: "Generalists, Evos, and Legacy Architecture: The Architectural Practice of Tokyo's Kengo and NEW Architecture",
+                        publisher: "Author: Taiwan Architecture Magazine Issue",
+                        author: "",
+                    },
+                    {
+                        year: 2019,
+                        title: "Report from Japan",
+                        publisher:
+                            "Author: Taiwan Architecture Magazine Issue No.286",
+                        author: "",
+                    },
+                    {
+                        year: 2018,
+                        title: "Report from Japan: The new era of SCA Arc",
+                        publisher:
+                            "Author: Architectural Institute of Taiwan Magazine Issue No.84",
+                        author: "",
+                    },
+                    {
+                        year: 2016,
+                        title: "RETROFITE: Qingteng Theatre Redesign",
+                        publisher: "Author: Online platforms",
+                        author: "",
+                    },
+                ],
             },
         ],
     },

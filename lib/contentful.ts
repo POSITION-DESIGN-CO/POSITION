@@ -59,30 +59,65 @@ export async function getProjects() {
     return dummyProjects.projectCollection;
 }
 
-export async function getAbout() {
+// Define the About content type interface
+export interface AboutPage {
+    about: string;
+    studioImage: {
+        url: string;
+        title: string;
+        width: number;
+        height: number;
+    };
+    founder: {
+        name: string;
+        role: string;
+        image: {
+            url: string;
+            title: string;
+        };
+        bio: string[];
+    };
+    teamMembers: {
+        name: string;
+        role: string;
+    }[];
+    formerMembers: string[];
+    contact: {
+        email: string;
+        instagram: string;
+        secondaryIG?: string;
+    };
+    awards: {
+        year: number;
+        title: string;
+        result: string;
+    }[];
+    publications: {
+        year: number;
+        title: string;
+        publisher: string;
+        author: string;
+    }[];
+}
+
+export async function getAbout(): Promise<AboutPage> {
     const aboutQuery = `
       query {
-        aboutCollection {
-          items {
-            sys { id }
+          editorialCollection {
+            items {
+               sys { id }
             about
-            contact
-            headCollection {
-              items {
-                title
-                url
-                width
-                height
-                sys { id }
-              }
-            }
+            studioImage { url title width height }
+            founder { name role image { url title } bio }
+            teamMembers { name role }
+            formerMembers
+            contact { email instagram secondaryIG }
+            awards { year title result }
+            publications { year title publisher author }
           }
         }
       }
     `;
-    // const data = await fetchFromContentful(aboutQuery);
-    // console.log("data", data.aboutCollection);
-    // return data?.aboutCollection || { items: [] };
     return dummyAboutCollection.aboutCollection.items[0];
 }
 
