@@ -74,7 +74,7 @@ export const dummyProjects = {
             },
             {
                 sys: { id: "3" },
-                title: "Quarra Stone Company Headquarter",
+                title: "Quarra Stone Company",
                 description:
                     "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
 
@@ -295,7 +295,7 @@ export const dummyProjects = {
             },
             {
                 sys: { id: "11" },
-                title: "Layering the space with Hanji",
+                title: "Layering the space",
                 description:
                     "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
 
@@ -437,7 +437,7 @@ export const dummyProjects = {
             },
             {
                 sys: { id: "15" },
-                title: "Quarra Stone Company Headquarter",
+                title: "Quarra Stone Company",
                 description:
                     "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
 
@@ -658,7 +658,7 @@ export const dummyProjects = {
             },
             {
                 sys: { id: "23" },
-                title: "Layering the space with Hanji",
+                title: "Layering the space",
                 description:
                     "POSITION is an architectural practice founded by Poyao Shih in Brooklyn, New York. The studio explores ideas across different disciplines and scales, focusing on responding to contemporary architectural issues through innovative forms and materials.",
 

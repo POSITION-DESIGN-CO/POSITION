@@ -59,7 +59,7 @@ export function HoverImage({ image, isVisible, alt }: HoverImageProps) {
                 opacity: isVisible ? 1 : 0,
                 pointerEvents: "none",
             }}
-            className="transition-opacity duration-300 fixed top-1/2 left-3/4 transform -translate-x-1/2 -translate-y-1/2 z-50"
+            className="transition-opacity duration-300 fixed top-1/2 left-3/4 transform -translate-x-1/2 -translate-y-1/2 z-50 hidden lg:block"
         >
             <Image
                 src={image.url || "/placeholder.svg"}
