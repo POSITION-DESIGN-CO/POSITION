@@ -5,13 +5,21 @@ import Link from "next/link";
 import MenuIcon from "./MenuIcon/MenuIcon";
 import { BackgroundLine } from "./BackgroundLine/BackgroundLine";
 import { useProjectsStore } from "@/store";
-import React, { createContext, useContext } from "react";
 import { useNavigationMenuRef } from "@/lib/useNavigationMenuRef";
+import { AboutPage } from "@/lib/contentful";
 
 // pass the categories from layout.tsx when fetching data from contentful
 // export function NavigationMenu({ categories }: { categories: string[] }) {
 
-export function NavigationMenu() {
+interface NavigationMenuProps {
+    email: string;
+    instagram?: string;
+    secondaryIG?: string;
+    phone?: string;
+    location?: string;
+}
+
+export function NavigationMenu({ contact }: { contact: NavigationMenuProps }) {
     const [isOpen, setIsOpen] = useState(false);
     const [isProjectsOpen, setIsProjectsOpen] = useState(false);
     const { setCategory, categories } = useProjectsStore();
@@ -136,10 +144,23 @@ export function NavigationMenu() {
 
                 <div className="mt-auto pt-8 p-3">
                     <div className="text-l">
-                        <p>New York / Taipei</p>
-                        <p>+1(323)600-5582</p>
-                        <p>pshih@positiondesign.co</p>
-                        <p>Instagram</p>
+                        <p>{contact?.location}</p>
+                        <p>{contact?.phone}</p>
+                        <p>
+                            <a href={`mailto:${contact.email}`}>
+                                {contact.email.replace(/@/g, "[at]")}
+                            </a>
+                        </p>
+                        <p>
+                            <a
+                                target="_blank"
+                                href={`https://www.instagram.com/${contact?.instagram
+                                    ?.split("@")
+                                    .join("")}/`}
+                            >
+                                Instagram
+                            </a>
+                        </p>
                     </div>
                 </div>
             </div>

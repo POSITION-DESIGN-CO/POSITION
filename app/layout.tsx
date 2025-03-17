@@ -10,6 +10,7 @@ import { FirstVisitVideo } from "@/components/FirstVisitVideo";
 import { StoreInitializer } from "@/components/store-initializer";
 import { getProjects, getUniqueCategories } from "@/lib/contentful";
 import { NavigationMenuRefProvider } from "@/lib/useNavigationMenuRef";
+import { getAbout } from "@/lib/contentful";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,6 +26,7 @@ export default async function RootLayout({
     children: React.ReactNode;
 }) {
     const categories = await getUniqueCategories();
+    const { contact } = await getAbout();
     const { items: allProjects } = await getProjects();
     return (
         <html lang="en">
@@ -33,7 +35,7 @@ export default async function RootLayout({
             <body className={cn(inter.className, "bg-white")}>
                 <FirstVisitVideo />
                 <NavigationMenuRefProvider>
-                    <NavigationMenu />
+                    <NavigationMenu contact={contact} />
                     <PageTransitionProvider>{children}</PageTransitionProvider>
                 </NavigationMenuRefProvider>
                 <Footer />

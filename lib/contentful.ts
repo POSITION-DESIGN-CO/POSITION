@@ -61,8 +61,10 @@ export interface AboutPage {
     formerMembers: string[];
     contact: {
         email: string;
-        instagram: string;
+        instagram?: string;
         secondaryIG?: string;
+        phone?: string;
+        location?: string;
     };
     awardsCollection: {
         items: {

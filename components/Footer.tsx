@@ -1,7 +1,7 @@
 import { getAbout } from "@/lib/contentful";
 
 export async function Footer() {
-    const about = await getAbout();
+    const { contact } = await getAbout();
     const currentYear = new Date().getFullYear();
 
     return (
@@ -14,14 +14,18 @@ export async function Footer() {
                 <p>
                     <a
                         target="_blank"
-                        href={`https://www.instagram.com/${about?.contact?.instagram
+                        href={`https://www.instagram.com/${contact?.instagram
                             ?.split("@")
                             .join("")}/`}
                     >
                         Instagram
                     </a>
                 </p>
-                <p>{about.contact.email}</p>
+                <p>
+                    <a href={`mailto:${contact.email}`}>
+                        {contact.email.replace(/@/g, "[at]")}
+                    </a>
+                </p>
             </div>
             <div className="sm:col-span-2 col-span-1">
                 <p>
