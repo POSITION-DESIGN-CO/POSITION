@@ -903,9 +903,9 @@ export const dummyAboutCollection = {
     },
 };
 
-export const getUniqueCategories = () => {
-    const categories = dummyProjects.projectCollection.items.map(
-        (project) => project.category
-    );
-    return ["All", ...Array.from(new Set(categories))];
-};
+// export const getUniqueCategories = () => {
+//     const categories = dummyProjects.projectCollection.items.map(
+//         (project) => project.category
+//     );
+//     return ["All", ...Array.from(new Set(categories))];
+// };

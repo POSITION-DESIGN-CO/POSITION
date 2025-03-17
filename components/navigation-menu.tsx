@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { getUniqueCategories } from "@/lib/dummy-data";
 import MenuIcon from "./MenuIcon/MenuIcon";
 import { BackgroundLine } from "./BackgroundLine/BackgroundLine";
 import { useProjectsStore } from "@/store";
@@ -104,21 +103,22 @@ export function NavigationMenu() {
                             isProjectsOpen ? "max-h-screen" : "max-h-0"
                         }`}
                     >
-                        {categories.map((categoryItem) => (
-                            <div key={categoryItem} className="py-0">
-                                <Link
-                                    href="/projects"
-                                    onClick={() => {
-                                        setCategory(categoryItem);
-                                        setIsOpen(false);
-                                        setIsProjectsOpen(false);
-                                    }}
-                                    className={`text-l hover:text-gray-400`}
-                                >
-                                    {categoryItem}
-                                </Link>
-                            </div>
-                        ))}
+                        {categories.length &&
+                            categories?.map((categoryItem) => (
+                                <div key={categoryItem} className="py-0">
+                                    <Link
+                                        href="/projects"
+                                        onClick={() => {
+                                            setCategory(categoryItem);
+                                            setIsOpen(false);
+                                            setIsProjectsOpen(false);
+                                        }}
+                                        className={`text-l hover:text-gray-400`}
+                                    >
+                                        {categoryItem}
+                                    </Link>
+                                </div>
+                            ))}
                     </div>
 
                     <Link

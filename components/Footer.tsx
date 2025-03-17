@@ -1,6 +1,7 @@
-"use client";
+import { getAbout } from "@/lib/contentful";
 
-export function Footer() {
+export async function Footer() {
+    const about = await getAbout();
     const currentYear = new Date().getFullYear();
 
     return (
@@ -10,12 +11,31 @@ export function Footer() {
                 <p>All rights reserved</p>
             </div>
             <div className="sm:col-span-2 col-span-1">
-                <p>Instagram</p>
-                <p>info@positiondesign.co </p>
+                <p>
+                    <a
+                        target="_blank"
+                        href={`https://www.instagram.com/${about.contact.instagram
+                            .split("@")
+                            .join("")}/`}
+                    >
+                        Instagram
+                    </a>
+                </p>
+                <p>{about.contact.email}</p>
             </div>
             <div className="sm:col-span-2 col-span-1">
-                <p>Design by Hyphen Works</p>
-                <p>Coding Stille Studio</p>
+                <p>
+                    Design by{" "}
+                    <a target="_blank" href="https://hyphen.works/">
+                        Hyphen Works
+                    </a>
+                </p>
+                <p>
+                    Coding{" "}
+                    <a target="_blank" href="https://www.stillestudio.com">
+                        Stille Studio
+                    </a>
+                </p>
             </div>
         </footer>
     );

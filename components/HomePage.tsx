@@ -108,7 +108,7 @@ export function HomePage({ homepageItems }: { homepageItems: HomepageItem[] }) {
                         )}
                     >
                         <Link
-                            href={`/projects/${item.data.sys.id}`}
+                            href={`/projects/${item.data.slug}`}
                             onMouseEnter={() => setHoveredId(item.data.sys.id)}
                             onMouseLeave={() => setHoveredId(null)}
                             className={`block h-full group transition-opacity duration-300 pointer ${

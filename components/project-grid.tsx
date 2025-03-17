@@ -8,6 +8,7 @@ type Project = {
     sys: { id: string };
     title: string;
     category: string;
+    slug: string;
     year: string;
     thumbnail: {
         url: string;
@@ -29,7 +30,7 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
             {projects.map((project) => (
                 <Link
                     key={project.sys.id}
-                    href={`/projects/${project.sys.id}`}
+                    href={`/projects/${project.slug}`}
                     className={`group block transition-opacity duration-300 ${
                         hoveredId && hoveredId !== project.sys.id
                             ? "opacity-10"

@@ -90,6 +90,7 @@ export function ViewToggle() {
                         return (
                             <>
                                 <button
+                                    key={categoryItem}
                                     className={cn(
                                         "rounded-none border-r border-gray-800 px-6 py-2 text-sm transition-all duration-300",
                                         index === categories.length - 1 &&

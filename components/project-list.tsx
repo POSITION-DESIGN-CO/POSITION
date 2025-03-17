@@ -8,6 +8,7 @@ import Image from "next/image";
 type Project = {
     sys: { id: string };
     title: string;
+    slug: string;
     category: string;
     year: string;
     thumbnail: {
@@ -75,7 +76,7 @@ export function ProjectList({ projects }: ProjectListProps) {
                     <>
                         <Link
                             key={project.sys.id}
-                            href={`/projects/${project.sys.id}`}
+                            href={`/projects/${project.slug}`}
                             className={`transition-opacity duration-100 ${
                                 (!expandedId &&
                                     hoveredId &&

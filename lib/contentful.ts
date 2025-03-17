@@ -1,8 +1,8 @@
-import {
-    dummyProjects,
-    dummyEditorialImages,
-    dummyAboutCollection,
-} from "./dummy-data";
+// import {
+//     dummyProjects,
+//     dummyEditorialImages,
+//     dummyAboutCollection,
+// } from "./dummy-data";
 import type { HomepageItem } from "./contentful-models";
 
 const CONTENTFUL_API_URL = `https://graphql.contentful.com/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`;
@@ -24,8 +24,8 @@ async function fetchFromContentful(query: string) {
             method: "POST",
             headers: CONTENTFUL_HEADERS,
             body: JSON.stringify({ query }),
-            // cache: "no-store",
-            next: { revalidate: 0 },
+            cache: "no-store",
+            // next: { revalidate: 0 },
         });
         const { data } = await response.json();
         return data;
@@ -35,31 +35,6 @@ async function fetchFromContentful(query: string) {
     }
 }
 
-export async function getProjects() {
-    const projectsQuery = `
-      query {
-        projectCollection {
-          items {
-            sys { id }
-            title
-            description
-            category
-            year
-            thumbnail { url width height }
-            location
-            order
-            featured
-          }
-        }
-      }
-    `;
-    // const data = await fetchFromContentful(projectsQuery);
-    // console.log("data", data.projectCollection);
-    // return data?.projectCollection || { items: [] };
-    return dummyProjects.projectCollection;
-}
-
-// Define the About content type interface
 export interface AboutPage {
     description: string;
     // studioImage: {
@@ -175,42 +150,69 @@ export async function getEditorialImages() {
     }
   `;
 
-    // const data = await fetchFromContentful(editorialQuery);
-    // return data?.editorialCollection || { items: [] };
-    return dummyEditorialImages.editorialCollection;
+    const data = await fetchFromContentful(editorialQuery);
+    return data?.editorialCollection || { items: [] };
+    // return dummyEditorialImages.editorialCollection;
 }
 
-export async function getProjectById(id: string) {
-    const query = `
+export async function getProjects() {
+    const projectsQuery = `
       query {
-        project(id: "${id}") {
-          sys { id }
-          title
-          description
-          category
-          position
-          team
-          year
-          thumbnail { url width height }
-          location
-          galleryCollection {
-            items {
-              title
-              url
-              width
-              height
-              sys { id }
+        projectCollection {
+          items {
+            sys { id }
+            slug
+            title
+            description
+            category
+            year
+            thumbnail { url width height }
+            location
+            order
+            featured
+          }
+        }
+      }
+    `;
+    const data = await fetchFromContentful(projectsQuery);
+    return data?.projectCollection || { items: [] };
+    // return dummyProjects.projectCollection;
+}
+
+export async function getProjectBySlug(slug: string) {
+    const query = `
+        query {
+        projectCollection(where: { slug: "${slug}" }, limit: 1) {
+          items {
+            sys { id }
+            slug
+            title
+            description
+            category
+            position
+            team
+            year
+            thumbnail { url width height }
+            location
+            galleryCollection {
+              items {
+                title
+                url
+                width
+                height
+                sys { id }
+              }
             }
           }
         }
       }
     `;
-    // const data = await fetchFromContentful(query);
-    // return data?.project || null;
-    const project = dummyProjects.projectCollection.items.find(
-        (project) => project.sys.id === id
-    );
-    return project || null;
+    const data = await fetchFromContentful(query);
+    return data?.projectCollection.items[0] || null;
+    // const project = dummyProjects.projectCollection.items.find(
+    //     (project) => project.sys.id === id
+    // );
+    // return project || null;
 }
 
 export async function getProjectsByCategory(category: string) {
@@ -221,6 +223,7 @@ export async function getProjectsByCategory(category: string) {
         projectCollection {
           items {
             sys { id }
+            slug
             title
             category
             year
@@ -235,6 +238,7 @@ export async function getProjectsByCategory(category: string) {
         projectCollection(where: { category: "${category}" }) {
           items {
             sys { id }
+            slug
             title
             category
             year
@@ -244,17 +248,17 @@ export async function getProjectsByCategory(category: string) {
         }
       }
     `;
-    // const data = await fetchFromContentful(query);
-    // return data?.projectCollection || { items: [] };
-    if (category === "All") {
-        return dummyProjects.projectCollection;
-    }
+    const data = await fetchFromContentful(query);
+    return data?.projectCollection || { items: [] };
+    // if (category === "All") {
+    //     return dummyProjects.projectCollection;
+    // }
 
-    return {
-        items: dummyProjects.projectCollection.items.filter(
-            (project) => project.category === category
-        ),
-    };
+    // return {
+    //     items: dummyProjects.projectCollection.items.filter(
+    //         (project) => project.category === category
+    //     ),
+    // };
 }
 
 export async function getUniqueCategories(): Promise<string[]> {
@@ -267,13 +271,13 @@ export async function getUniqueCategories(): Promise<string[]> {
         }
       }
     `;
-    // const data = await fetchFromContentful(categoryQuery);
-    // const categories = data?.projectCollection.items.map(
-    //     (project: any) => project.category
-    // );
-    const categories = dummyProjects.projectCollection.items.map(
-        (project) => project.category
+    const data = await fetchFromContentful(categoryQuery);
+    const categories = data?.projectCollection.items.map(
+        (project: any) => project.category
     );
+    // const categories = dummyProjects.projectCollection.items.map(
+    //     (project) => project.category
+    // );
     return ["All", ...Array.from(new Set(categories as string[]))];
 }
 
@@ -284,15 +288,15 @@ export async function getHomepageItems(): Promise<HomepageItem[]> {
     ]);
 
     const projectItems: HomepageItem[] = projectsData.items
-        .filter((project) => project.featured)
-        .map((project) => ({
+        .filter((project: any) => project.featured)
+        .map((project: any) => ({
             type: "project" as const,
             data: project,
             order: project.order || 999,
         }));
 
     const editorialItems: HomepageItem[] = editorialData.items.map(
-        (editorial) => ({
+        (editorial: any) => ({
             type: "editorial" as const,
             data: {
                 ...editorial,

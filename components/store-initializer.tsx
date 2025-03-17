@@ -6,7 +6,7 @@ import type { Project } from "@/lib/contentful-models";
 
 interface StoreInitializerProps {
     projects: Project[];
-    categories: string[];
+    categories: string[] | null;
 }
 
 export function StoreInitializer({
@@ -17,7 +17,7 @@ export function StoreInitializer({
     const { setProjects, setCategories } = useProjectsStore();
 
     useEffect(() => {
-        if (!initialized.current) {
+        if (!initialized.current && categories && projects) {
             setProjects(projects);
             setCategories(categories);
             initialized.current = true;
