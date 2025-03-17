@@ -114,7 +114,7 @@ export function ProjectList({ projects }: ProjectListProps) {
                         </Link>
                         {project.thumbnail && expandedId === project.sys.id && (
                             <Link
-                                href={`/projects/${project.sys.id}`}
+                                href={`/projects/${project.slug}`}
                                 onClick={(e) =>
                                     handleProjectClick(e, project.sys.id)
                                 }
