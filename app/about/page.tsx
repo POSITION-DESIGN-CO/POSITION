@@ -6,6 +6,10 @@ import { getAbout } from "@/lib/contentful";
 export default async function AboutPage() {
     const about = await getAbout();
 
+    if (!about) {
+        return;
+    }
+
     return (
         <main className="min-h-[calc(100vh-50px)] p-4">
             <div className="fixed md:top-4 right-4 top-[53px] z-40">

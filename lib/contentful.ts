@@ -24,8 +24,8 @@ async function fetchFromContentful(query: string) {
             method: "POST",
             headers: CONTENTFUL_HEADERS,
             body: JSON.stringify({ query }),
-            cache: "no-store",
-            // next: { revalidate: 0 },
+            next: { revalidate: 1000 },
+            // cache: "no-store",
         });
         const { data } = await response.json();
         return data;

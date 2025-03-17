@@ -14,8 +14,8 @@ export async function Footer() {
                 <p>
                     <a
                         target="_blank"
-                        href={`https://www.instagram.com/${about.contact.instagram
-                            .split("@")
+                        href={`https://www.instagram.com/${about?.contact?.instagram
+                            ?.split("@")
                             .join("")}/`}
                     >
                         Instagram
