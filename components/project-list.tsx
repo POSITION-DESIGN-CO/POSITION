@@ -1,7 +1,5 @@
-"use client";
-
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { RefObject, useEffect, useRef, useState } from "react";
 import { HoverImage } from "./hover-image";
 import Image from "next/image";
 
@@ -21,9 +19,10 @@ type Project = {
 
 interface ProjectListProps {
     projects: Project[];
+    filterRef: RefObject<HTMLDivElement>;
 }
 
-export function ProjectList({ projects }: ProjectListProps) {
+export function ProjectList({ projects, filterRef }: ProjectListProps) {
     const [hoveredId, setHoveredId] = useState<string | null>(null);
     const [expandedId, setExpandedId] = useState<string | null>(null);
     const projectRef = useRef<HTMLDivElement>(null);
@@ -41,7 +40,9 @@ export function ProjectList({ projects }: ProjectListProps) {
         const handleClickOutside = (event: MouseEvent) => {
             if (
                 expandedId &&
+                filterRef.current &&
                 projectRef.current &&
+                !filterRef.current.contains(event.target as Node) &&
                 !projectRef.current.contains(event.target as Node)
             ) {
                 setExpandedId(null);

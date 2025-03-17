@@ -3,10 +3,10 @@
 import { Suspense } from "react";
 import { ViewToggle } from "./view-toggle";
 
-export function ViewToggleWithSuspense() {
+export function ViewToggleWithSuspense({ filterRef }: { filterRef: any }) {
     return (
         <Suspense fallback={<ViewToggleFallback />}>
-            <ViewToggle />
+            <ViewToggle filterRef={filterRef} />
         </Suspense>
     );
 }

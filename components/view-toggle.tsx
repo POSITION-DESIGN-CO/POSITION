@@ -1,11 +1,13 @@
-"use client";
-
 import { cn } from "@/lib/utils";
-import { useEffect, useRef, useState } from "react";
+import { RefObject, useEffect, useRef, useState } from "react";
 import FilterIcon from "./FilterIcon/FilterIcon";
 import { useProjectsStore } from "@/store";
 
-export function ViewToggle() {
+export function ViewToggle({
+    filterRef,
+}: {
+    filterRef: RefObject<HTMLDivElement>;
+}) {
     const { view, category, categories, setView, setCategory } =
         useProjectsStore();
     const [isFilterActive, setIsFilterActive] = useState(false);
@@ -20,8 +22,10 @@ export function ViewToggle() {
             if (
                 isFilterActive &&
                 menuRef.current &&
+                filterRef.current &&
                 buttonRef.current &&
                 !menuRef.current.contains(event.target as Node) &&
+                !filterRef.current.contains(event.target as Node) &&
                 !buttonRef.current.contains(event.target as Node)
             ) {
                 setIsFilterActive(false);
@@ -37,7 +41,10 @@ export function ViewToggle() {
 
     return (
         <>
-            <div className="flex border border-gray-800 bg-white justify-self-end md:w-80 w-[calc(100vw-32px)]">
+            <div
+                className="flex border border-gray-800 bg-white justify-self-end md:w-80 w-[calc(100vw-32px)]"
+                ref={filterRef}
+            >
                 <button
                     className={cn(
                         buttonClasses,
