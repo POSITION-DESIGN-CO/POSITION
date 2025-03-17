@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { RefObject, useEffect, useRef, useState } from "react";
+import { Fragment, RefObject, useEffect, useRef, useState } from "react";
 import { HoverImage } from "./hover-image";
 import Image from "next/image";
+import { useNavigationMenuRef } from "@/lib/useNavigationMenuRef";
 
 type Project = {
     sys: { id: string };
@@ -26,6 +27,7 @@ export function ProjectList({ projects, filterRef }: ProjectListProps) {
     const [hoveredId, setHoveredId] = useState<string | null>(null);
     const [expandedId, setExpandedId] = useState<string | null>(null);
     const projectRef = useRef<HTMLDivElement>(null);
+    const menuRef = useNavigationMenuRef();
 
     const handleProjectClick = (e: React.MouseEvent, projectId: string) => {
         if (window.innerWidth < 1023) {
@@ -42,7 +44,9 @@ export function ProjectList({ projects, filterRef }: ProjectListProps) {
                 expandedId &&
                 filterRef.current &&
                 projectRef.current &&
+                menuRef?.current &&
                 !filterRef.current.contains(event.target as Node) &&
+                !menuRef.current.contains(event.target as Node) &&
                 !projectRef.current.contains(event.target as Node)
             ) {
                 setExpandedId(null);
@@ -74,7 +78,7 @@ export function ProjectList({ projects, filterRef }: ProjectListProps) {
             </div>
             <div className="py-4">
                 {projects.map((project) => (
-                    <>
+                    <Fragment key={project.sys.id}>
                         <Link
                             key={project.sys.id}
                             href={`/projects/${project.slug}`}
@@ -147,7 +151,7 @@ export function ProjectList({ projects, filterRef }: ProjectListProps) {
                                 </aside>
                             </Link>
                         )}
-                    </>
+                    </Fragment>
                 ))}
             </div>
         </div>

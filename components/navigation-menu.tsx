@@ -5,9 +5,12 @@ import Link from "next/link";
 import MenuIcon from "./MenuIcon/MenuIcon";
 import { BackgroundLine } from "./BackgroundLine/BackgroundLine";
 import { useProjectsStore } from "@/store";
+import React, { createContext, useContext } from "react";
+import { useNavigationMenuRef } from "@/lib/useNavigationMenuRef";
 
 // pass the categories from layout.tsx when fetching data from contentful
 // export function NavigationMenu({ categories }: { categories: string[] }) {
+
 export function NavigationMenu() {
     const [isOpen, setIsOpen] = useState(false);
     const [isProjectsOpen, setIsProjectsOpen] = useState(false);
@@ -15,6 +18,7 @@ export function NavigationMenu() {
 
     const menuRef = useRef<HTMLDivElement>(null);
     const buttonRef = useRef<HTMLButtonElement>(null);
+    const mainMenuRef = useNavigationMenuRef();
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -38,7 +42,7 @@ export function NavigationMenu() {
     }, [isOpen]);
 
     return (
-        <div className="relative z-50">
+        <div className="relative z-50" ref={mainMenuRef}>
             <div className="fixed top-4 left-4 z-50">
                 <button
                     className={`md:w-80 w-[calc(100vw-32px)] flex items-center justify-between border-t border-x border-gray-800 bg-white px-3 py-1 text-sm`}

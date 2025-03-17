@@ -9,6 +9,7 @@ import { PageTransitionProvider } from "@/components/page-transition";
 import { FirstVisitVideo } from "@/components/FirstVisitVideo";
 import { StoreInitializer } from "@/components/store-initializer";
 import { getProjects, getUniqueCategories } from "@/lib/contentful";
+import { NavigationMenuRefProvider } from "@/lib/useNavigationMenuRef";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,8 +32,10 @@ export default async function RootLayout({
             <StoreInitializer projects={allProjects} categories={categories} />
             <body className={cn(inter.className, "bg-white")}>
                 <FirstVisitVideo />
-                <NavigationMenu />
-                <PageTransitionProvider>{children}</PageTransitionProvider>
+                <NavigationMenuRefProvider>
+                    <NavigationMenu />
+                    <PageTransitionProvider>{children}</PageTransitionProvider>
+                </NavigationMenuRefProvider>
                 <Footer />
             </body>
         </html>

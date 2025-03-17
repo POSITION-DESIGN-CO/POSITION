@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { RefObject, useEffect, useRef, useState } from "react";
+import { Fragment, RefObject, useEffect, useRef, useState } from "react";
 import FilterIcon from "./FilterIcon/FilterIcon";
 import { useProjectsStore } from "@/store";
 
@@ -95,9 +95,8 @@ export function ViewToggle({
                 >
                     {categories?.map((categoryItem: any, index: number) => {
                         return (
-                            <>
+                            <Fragment key={categoryItem}>
                                 <button
-                                    key={categoryItem}
                                     className={cn(
                                         "rounded-none border-r border-gray-800 px-6 py-2 text-sm transition-all duration-300",
                                         index === categories.length - 1 &&
@@ -110,7 +109,7 @@ export function ViewToggle({
                                 >
                                     {categoryItem}
                                 </button>
-                            </>
+                            </Fragment>
                         );
                     })}
                 </aside>
