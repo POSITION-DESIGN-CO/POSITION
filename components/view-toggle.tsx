@@ -42,7 +42,7 @@ export function ViewToggle({
     return (
         <>
             <div
-                className="grid grid-cols-3 border border-gray-800 bg-white justify-self-end md:w-80 w-[calc(100vw-32px)]"
+                className="grid grid-cols-3 border border-gray-800 bg-white justify-self-end md:w-80 w-[calc(100vw-32px)] md:fixed md:top-[16px] md:right-4"
                 ref={filterRef}
             >
                 <button
@@ -80,7 +80,7 @@ export function ViewToggle({
             </div>
 
             <div
-                className={`md:z-50 absolute md:relative right-0 flex flex-nowrap flex-col md:flex-row md:w-full w-[calc(calc(100vw-28px)/3)] bg-white border border-gray-800 -mt-[1px] justify-self-end transition-all duration-500 ease-in-out ${
+                className={`md:z-50 absolute md:top-[38px] md:relative right-0 flex flex-nowrap flex-col md:flex-row md:w-full w-[calc(calc(100vw-28px)/3)] bg-white border border-gray-800 -mt-[1px] justify-self-end transition-all duration-500 ease-in-out ${
                     isFilterActive ? "" : ""
                 }`}
                 ref={menuRef}
