@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export default function TimeToggle() {
     const buttonClasses =
-        "rounded-none border-r border-gray-800 px-6 py-2 text-sm transition-all duration-300 hover:text-black";
+        "rounded-none border-r border-gray-800 px-2 py-2 text-sm transition-all duration-300 hover:text-black";
 
     const [location, setLocation] = useState("taiwan");
 
@@ -19,7 +19,7 @@ export default function TimeToggle() {
         });
     }
     return (
-        <div className="flex border border-gray-800 bg-white justify-self-end md:w-80 w-[calc(100vw-32px)]">
+        <div className="grid grid-cols-3 border border-gray-800 bg-white justify-self-end md:w-80 w-[calc(100vw-32px)]">
             <button
                 className={cn(
                     buttonClasses,

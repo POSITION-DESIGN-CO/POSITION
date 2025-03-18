@@ -53,7 +53,7 @@ export function NavigationMenu({ contact }: { contact: NavigationMenuProps }) {
         <div className="relative z-50" ref={mainMenuRef}>
             <div className="fixed top-4 left-4 z-50">
                 <button
-                    className={`md:w-80 w-[calc(100vw-32px)] flex items-center justify-between border-t border-x border-gray-800 bg-white px-3 py-1 text-sm`}
+                    className={`md:w-80 w-[calc(100vw-32px)] flex items-center justify-between border-t border-x bg-white border-gray-800 px-3 py-1 text-sm`}
                     ref={buttonRef}
                 >
                     <span className="text-xl">
@@ -84,17 +84,10 @@ export function NavigationMenu({ contact }: { contact: NavigationMenuProps }) {
                         }}
                     />
                 </button>
-                <div
-                    className={`w-full h-[1px] bg-gray-800 transition-transform origin-center ${
-                        !isOpen
-                            ? "scale-x-100 delay-700 duration-500"
-                            : "scale-x-0 duration-100"
-                    }`}
-                />
             </div>
 
             <div
-                className={`fixed left-4 md:w-80 w-[calc(100vw-32px)] top-12 z-40 bg-white overflow-hidden transition-[max-height] duration-1000 ease-in-out border-x border-b border-gray-800 ${
+                className={`fixed left-4 md:w-80 w-[calc(100vw-32px)] top-[53px] z-40 bg-white overflow-hidden transition-[max-height] duration-1000 ease-in-out border-x border-b border-gray-800 ${
                     isOpen ? "max-h-[calc(100vh-88px)]" : "max-h-0"
                 }`}
                 ref={menuRef}

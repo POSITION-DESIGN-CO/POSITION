@@ -6,63 +6,74 @@ import { EditorialImage } from "@/components/editorial-image";
 import { ProjectImage } from "@/components/project-image";
 import { cn } from "@/lib/utils";
 import { HomepageItem } from "@/lib/contentful-models";
+import GetWindowDimensions from "@/lib/helper";
 
 export function HomePage({ homepageItems }: { homepageItems: HomepageItem[] }) {
+    const { windowWidth } = GetWindowDimensions();
     const getGridPlacement = (index: number) => {
         const configs = [
-            { colSpan: "lg:col-start-1 lg:col-span-6 lg:row-span-2" },
-            { colSpan: "lg:col-start-8 lg:col-span-7" },
+            { colSpan: "lg:col-start-1 lg:col-span-5 lg:row-span-4" },
+            { colSpan: "lg:col-start-8 lg:col-span-5" },
             {
                 colSpan:
-                    "lg:col-start-7 lg:row-start-2 lg:row-span-3 lg:col-span-6",
+                    "lg:col-start-7 lg:row-start-5 lg:row-span-4 lg:col-span-4",
             },
             {
                 colSpan:
-                    "lg:col-start-2 lg:col-span-3 lg:row-span-3 lg:row-start-3",
+                    "lg:col-start-2 lg:col-span-3 lg:row-span-3 lg:row-start-8 lg:w-3/4 w-full",
             },
             {
                 colSpan:
-                    "lg:col-start-8 lg:col-span-6 lg:row-start-5 lg:row-span-3",
-            },
-            { colSpan: "lg:col-start-1 lg:col-span-6 lg:row-start-6" },
-            {
-                colSpan:
-                    "lg:col-start-3 lg:col-span-4 lg:row-start-7 lg:row-span-2",
-            },
-            { colSpan: "lg:col-start-10 lg:col-span-3 lg:row-start-8" },
-            { colSpan: "lg:col-start-8 lg:col-span-7 lg:row-start-9" },
-            { colSpan: "lg:col-start-1 lg:col-span-3 lg:row-start-9" },
-            {
-                colSpan:
-                    "lg:col-start-2 lg:col-span-5 lg:row-start-10 lg:row-span-2",
-            },
-            { colSpan: "lg:col-start-7 lg:col-span-6 lg:row-start-10" },
-            {
-                colSpan:
-                    "lg:col-start-10 lg:col-span-4 lg:row-start-11 lg:row-span-3",
+                    "lg:col-start-8 lg:col-span-4 lg:row-start-8 lg:row-span-8",
             },
             {
                 colSpan:
-                    "lg:col-start-4 lg:col-span-4 lg:row-start-12 lg:row-span-2",
+                    "lg:col-start-1 lg:col-span-5 lg:row-start-11 lg:row-span-4",
             },
             {
                 colSpan:
-                    "lg:col-start-1 lg:col-span-6 lg:row-start-14 lg:row-span-3",
+                    "lg:col-start-3 lg:col-span-3 lg:row-start-[15] lg:row-span-4",
             },
             {
                 colSpan:
-                    "lg:col-start-8 lg:col-span-6 lg:row-start-13 row-span-2",
+                    "lg:col-start-9 lg:col-span-3 lg:row-start-[13] lg:w-2/3 w-full",
+            },
+            { colSpan: "lg:col-start-8 lg:col-span-5 lg:row-start-[17]" },
+            {
+                colSpan:
+                    "lg:col-start-1 lg:col-span-3 lg:row-start-[19] lg:w-2/3 w-full",
             },
             {
                 colSpan:
-                    "lg:col-start-4 lg:col-span-3 lg:row-start-15 lg:row-span-2",
+                    "lg:col-start-5 lg:col-span-6 lg:row-start-[21] lg:row-span-2",
             },
-            { colSpan: "lg:col-start-9 lg:col-span-4 lg:row-start-15" },
-            { colSpan: "lg:col-start-2 lg:col-span-6 lg:row-start-16" },
+            { colSpan: "lg:col-start-2 lg:col-span-4 lg:row-start-[25]" },
             {
                 colSpan:
-                    "lg:col-start-10 col-span-3 lg:row-start-16 lg:row-span-2",
+                    "lg:col-start-8 lg:col-span-3 lg:row-start-[27] lg:row-span-3",
             },
+            {
+                colSpan:
+                    "lg:col-start-1 lg:col-span-3 lg:row-start-[30] lg:row-span-3 lg:w-2/3 w-full",
+            },
+            {
+                colSpan:
+                    "lg:col-start-5 lg:col-span-6 lg:row-start-[31] lg:row-span-3",
+            },
+            // {
+            //     colSpan:
+            //         "lg:col-start-8 lg:col-span-6 lg:row-start-13 row-span-2",
+            // },
+            // {
+            //     colSpan:
+            //         "lg:col-start-4 lg:col-span-3 lg:row-start-15 lg:row-span-2",
+            // },
+            // { colSpan: "lg:col-start-9 lg:col-span-4 lg:row-start-15" },
+            // { colSpan: "lg:col-start-2 lg:col-span-6 lg:row-start-16" },
+            // {
+            //     colSpan:
+            //         "lg:col-start-10 col-span-3 lg:row-start-16 lg:row-span-2",
+            // },
         ];
         return configs[index];
     };
@@ -70,7 +81,7 @@ export function HomePage({ homepageItems }: { homepageItems: HomepageItem[] }) {
     const [hoveredId, setHoveredId] = useState<string | null>(null);
 
     return (
-        <div className="grid lg:grid-cols-14 grid-cols-1 lg:gap-16 gap-2">
+        <div className="grid lg:grid-cols-12 lg:grid-rows-[repeat(30,minmax(0,120px))] grid-rows-none grid-cols-1 lg:gap-4 gap-2">
             {homepageItems.map((item: HomepageItem, index: number) => {
                 const gridPlacement = getGridPlacement(index);
 
@@ -122,30 +133,7 @@ export function HomePage({ homepageItems }: { homepageItems: HomepageItem[] }) {
                                 title={item.data.title}
                                 isHorizontal={isHorizontal}
                             />
-                            <div className="mt-2">
-                                <h2 className="text-sm">{item.data.title}</h2>
-                                <p
-                                    className={`text-xs text-gray-500 transition-opacity duration-300 ${
-                                        hoveredId === item.data.sys.id
-                                            ? "opacity-100"
-                                            : "opacity-0"
-                                    }`}
-                                >
-                                    {item.data.category}, {item.data.year}
-                                </p>
-                            </div>
-                            {/* <div
-                                className={`mt-2 ${
-                                    !isHorizontal
-                                        ? "absolute -top-3 -right-3 z-50"
-                                        : ""
-                                }`}
-                                style={{
-                                    transform: !isHorizontal
-                                        ? "translateX(100%)"
-                                        : "",
-                                }}
-                            >
+                            {/* <div className="mt-2">
                                 <h2 className="text-sm">{item.data.title}</h2>
                                 <p
                                     className={`text-xs text-gray-500 transition-opacity duration-300 ${
@@ -157,6 +145,38 @@ export function HomePage({ homepageItems }: { homepageItems: HomepageItem[] }) {
                                     {item.data.category}, {item.data.year}
                                 </p>
                             </div> */}
+                            <div
+                                className={`mt-2 ${
+                                    !isHorizontal && windowWidth > 1024
+                                        ? "absolute -top-3 -right-3 z-50"
+                                        : ""
+                                }`}
+                                style={{
+                                    transform:
+                                        !isHorizontal && windowWidth > 1024
+                                            ? "translateX(100%)"
+                                            : "",
+                                }}
+                            >
+                                <h2
+                                    className={`text-sm break-words overflow-hidden whitespace-normal ${
+                                        !isHorizontal &&
+                                        windowWidth > 1024 &&
+                                        "max-w-[100px]"
+                                    } `}
+                                >
+                                    {item.data.title}
+                                </h2>
+                                <p
+                                    className={`text-xs text-gray-500 transition-opacity duration-300 ${
+                                        hoveredId === item.data.sys.id
+                                            ? "opacity-100"
+                                            : "opacity-0"
+                                    }`}
+                                >
+                                    {item.data.category}, {item.data.year}
+                                </p>
+                            </div>
                         </Link>
                     </div>
                 );
