@@ -118,13 +118,20 @@ export function ProjectList({ projects, filterRef }: ProjectListProps) {
                                 )}
                         </Link>
                         {project.thumbnail && expandedId === project.sys.id && (
-                            <Link
-                                href={`/projects/${project.slug}`}
+                            <div
                                 onClick={(e) =>
                                     handleProjectClick(e, project.sys.id)
                                 }
                                 className="flex flex-col mb-2"
                             >
+                                <aside className="flex justify-between text-xs">
+                                    <div className="col-span-1">
+                                        {project.location}
+                                    </div>
+                                    <div className="col-span-1 place-self-end">
+                                        <span>{project.year}</span>
+                                    </div>
+                                </aside>
                                 <div
                                     className={`${
                                         project.thumbnail.width >=
@@ -138,18 +145,16 @@ export function ProjectList({ projects, filterRef }: ProjectListProps) {
                                         height={project.thumbnail.height}
                                         src={project.thumbnail.url}
                                         alt={project.title}
-                                        className="w-full h-auto"
+                                        className="w-full h-auto mb-3"
                                     />
                                 </div>
-                                <aside className="flex justify-between text-xs">
-                                    <div className="col-span-1">
-                                        {project.location}
-                                    </div>
-                                    <div className="col-span-1 place-self-end">
-                                        <span>{project.year}</span>
-                                    </div>
-                                </aside>
-                            </Link>
+                                <Link
+                                    href={`/projects/${project.slug}`}
+                                    className="rounded-none text-center border-gray-800 mb-3 border bg-white px-3 py-2 w-[calc(320px/3)] self-center text-sm transition-all duration-300 hover:text-black"
+                                >
+                                    View
+                                </Link>
+                            </div>
                         )}
                     </Fragment>
                 ))}

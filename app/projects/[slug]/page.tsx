@@ -106,17 +106,19 @@ export default async function ProjectPage({
                 </section>
                 <section className="grid sm:grid-cols-6 grid-cols-3 sm:col-start-3 sm:col-span-8 gap-0">
                     <aside className="self-start">
+                        <p className="text-gray-400">Project</p>
+                        <p className="text-gray-400">Year</p>
                         <p className="text-gray-400">Category</p>
                         <p className="text-gray-400">Location</p>
                         <p className="text-gray-400">Position</p>
-                        <p className="text-gray-400">Year</p>
                         <p className="text-gray-400">Team</p>
                     </aside>
                     <aside className="sm:col-span-4 col-span-2 self-end">
+                        <p>{project.title}</p>
+                        <p>{project.year}</p>
                         <p>{project.category}</p>
                         <p>{project.location}</p>
                         <p>{project.position}</p>
-                        <p>{project.year}</p>
                         <ul className="flex gap-0 flex-col sm:flex-row sm:gap-1">
                             {project.team?.map(
                                 (person: string, index: number) => (
