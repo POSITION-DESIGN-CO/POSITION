@@ -14,7 +14,7 @@ export default function ProjectsPage() {
                 {/* <ViewToggleWithSuspense filterRef={filterRef} /> */}
                 <ViewToggle filterRef={filterRef} />
             </div>
-            <div className="md:my-24 my-32">
+            <div className="md:my-24 my-28">
                 <ClientSideProjectsRenderer filterRef={filterRef} />
             </div>
         </main>

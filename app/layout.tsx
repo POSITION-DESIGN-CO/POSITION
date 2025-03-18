@@ -30,9 +30,8 @@ export default async function RootLayout({
     const { items: allProjects } = await getProjects();
     return (
         <html lang="en">
-            {/* <body className={cn(inter.className, "bg-[#F8F8F5]")}> */}
             <StoreInitializer projects={allProjects} categories={categories} />
-            <body className={cn(inter.className, "bg-white")}>
+            <body className={cn(inter.className, "bg-[#F8F8F5]")}>
                 <FirstVisitVideo />
                 <NavigationMenuRefProvider>
                     <NavigationMenu contact={contact} />

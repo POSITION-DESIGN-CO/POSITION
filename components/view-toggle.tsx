@@ -12,7 +12,7 @@ export function ViewToggle({
         useProjectsStore();
     const [isFilterActive, setIsFilterActive] = useState(false);
     const buttonClasses =
-        "rounded-none border-r border-gray-800 px-8 py-2 text-sm transition-all duration-300 hover:text-black";
+        "rounded-none border-r border-gray-800 px-2 py-2 text-sm transition-all duration-300 hover:text-black";
 
     const menuRef = useRef<HTMLDivElement>(null);
     const buttonRef = useRef<HTMLButtonElement>(null);

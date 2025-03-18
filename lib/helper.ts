@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from "react";
 
-export default function GetWindowDimensions() {
+export default function useWindowDimensions() {
     const [dimensions, setDimensions] = useState({
-        windowWidth: typeof window !== "undefined" ? window.innerWidth : 0,
-        windowHeight: typeof window !== "undefined" ? window.innerHeight : 0,
+        windowWidth: 0,
+        windowHeight: 0,
     });
 
     useEffect(() => {
@@ -16,13 +16,10 @@ export default function GetWindowDimensions() {
             });
         };
 
-        if (typeof window !== "undefined") {
-            window.addEventListener("resize", handleResize);
-            handleResize();
-            return () => {
-                window.removeEventListener("resize", handleResize);
-            };
-        }
+        handleResize(); // Set initial dimensions
+
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
     }, []);
 
     return dimensions;

@@ -24,8 +24,8 @@ async function fetchFromContentful(query: string) {
             method: "POST",
             headers: CONTENTFUL_HEADERS,
             body: JSON.stringify({ query }),
-            next: { revalidate: 1000 },
-            // cache: "no-store",
+            // next: { revalidate: 1000 },
+            cache: "no-store",
         });
         const { data } = await response.json();
         return data;
@@ -37,12 +37,12 @@ async function fetchFromContentful(query: string) {
 
 export interface AboutPage {
     description: string;
-    // studioImage: {
-    //     url: string;
-    //     title: string;
-    //     width: number;
-    //     height: number;
-    // };
+    studioImage: {
+        url: string;
+        title: string;
+        width: number;
+        height: number;
+    };
     founder: {
         name: string;
         role: string;
@@ -90,6 +90,12 @@ export async function getAbout(): Promise<AboutPage> {
               sys {
                 id
               }
+              studioImage {
+              url
+              title
+              width
+              height
+              }
               description
               founder {
                 name
@@ -97,6 +103,8 @@ export async function getAbout(): Promise<AboutPage> {
                 image {
                   url
                   title
+                  width
+                  height
                 }
                 bio
               }

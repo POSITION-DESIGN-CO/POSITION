@@ -35,7 +35,7 @@ export function HoverImage({ image, isVisible, alt }: HoverImageProps) {
         const availableSpace = containerWidth * 0.5;
 
         if (isHorizontal) {
-            const width = Math.min(availableSpace * 0.9, 1800);
+            const width = Math.min(availableSpace * 0.7, 900);
             return {
                 width: `${width}px`,
                 height: "auto",
@@ -43,7 +43,7 @@ export function HoverImage({ image, isVisible, alt }: HoverImageProps) {
                 objectFit: "contain" as const,
             };
         } else {
-            const width = Math.min(availableSpace * 0.6, 600);
+            const width = Math.min(availableSpace * 0.6, 900);
             return {
                 width: `${width}px`,
                 height: "auto",
@@ -55,10 +55,11 @@ export function HoverImage({ image, isVisible, alt }: HoverImageProps) {
 
     return (
         <div
-            style={{
-                opacity: isVisible ? 1 : 0,
-                pointerEvents: "none",
-            }}
+            // style={{
+            //     opacity: isVisible ? 1 : 0,
+            //     pointerEvents: "none",
+            // }}
+            style={getImageStyle()}
             className="transition-opacity duration-300 fixed top-1/2 left-3/4 transform -translate-x-1/2 -translate-y-1/2 z-50 hidden lg:block"
         >
             <Image
