@@ -101,10 +101,10 @@ export default async function ProjectPage({
                 </p>
             </div>
             <div className="grid md:grid-cols-12 grid-col-1 text-sm mb-16">
-                <section className="grid sm:grid-cols-6 grid-cols-3 sm:col-start-3 sm:col-span-8 gap-0">
+                <section className="grid sm:grid-cols-6 grid-cols-3 lg:col-start-3 lg:col-span-8 col-start-1 md:col-start-2 col-span-8 gap-0">
                     <p className="text-gray-400 mb-5">Overview</p>
                 </section>
-                <section className="grid sm:grid-cols-6 grid-cols-3 sm:col-start-3 sm:col-span-8 gap-0">
+                <section className="grid sm:grid-cols-6 grid-cols-3 lg:col-start-3 lg:col-span-8 col-start-1 md:col-start-2 col-span-8 gap-0">
                     <aside className="self-start">
                         <p className="text-gray-400">Project</p>
                         <p className="text-gray-400">Year</p>
@@ -156,7 +156,7 @@ export default async function ProjectPage({
                         return (
                             <div
                                 key={image.sys.id}
-                                className="md:col-start-3 md:col-span-8 my-3 flex justify-center"
+                                className="lg:col-start-3 lg:col-span-8 sm:col-start-2 col-start-1 col-span-10 my-3 flex justify-center"
                             >
                                 <Image
                                     priority
