@@ -8,7 +8,7 @@ interface FilterIconProps {
 export default function FilterIcon({ handleClick, isOpen }: FilterIconProps) {
     return (
         <aside
-            className={`absolute right-2 py-1 px-1 flex items-center gap-3 mt-1 mr-[3px]`}
+            className={`py-1 px-1 flex items-center mt-1`}
             onClick={handleClick}
         >
             <section className="filterButton">

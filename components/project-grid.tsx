@@ -31,7 +31,7 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
                 <Link
                     key={project.sys.id}
                     href={`/projects/${project.slug}`}
-                    className={`group block transition-opacity duration-300 ${
+                    className={`group block transition-opacity duration-500 ${
                         hoveredId && hoveredId !== project.sys.id
                             ? "opacity-10"
                             : "opacity-100"
