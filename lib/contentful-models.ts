@@ -19,6 +19,7 @@ export interface About {
         items: {
             name: string;
             role: string;
+            bio?: string | null;
         }[];
     };
     formerMembers: string[];

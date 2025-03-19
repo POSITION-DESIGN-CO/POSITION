@@ -24,8 +24,8 @@ async function fetchFromContentful(query: string) {
             method: "POST",
             headers: CONTENTFUL_HEADERS,
             body: JSON.stringify({ query }),
-            next: { revalidate: 1000 },
-            // cache: "no-store",
+            // next: { revalidate: 1000 },
+            cache: "no-store",
         });
         const { data } = await response.json();
         return data;
@@ -67,6 +67,7 @@ export async function getAbout(): Promise<About> {
                 items {
                   name
                   role
+                  bio
                 }
               }
               awardsCollection (limit:40) {
