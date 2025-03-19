@@ -15,7 +15,7 @@ type Project = {
         width: number;
         height: number;
     };
-    location: string;
+    location?: string | null;
 };
 
 interface ProjectListProps {

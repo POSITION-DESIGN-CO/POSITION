@@ -59,8 +59,9 @@ export default async function ProjectPage({
                                     <li key={person}>
                                         <span>
                                             {person}
-                                            {index !==
-                                                project.team.length - 1 &&
+                                            {project.team &&
+                                                index !==
+                                                    project.team.length - 1 &&
                                                 ","}{" "}
                                         </span>
                                     </li>

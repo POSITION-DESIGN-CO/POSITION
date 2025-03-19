@@ -3,7 +3,7 @@
 //     dummyEditorialImages,
 //     dummyAboutCollection,
 // } from "./dummy-data";
-import type { HomepageItem } from "./contentful-models";
+import type { HomepageItem, Project, About } from "./contentful-models";
 
 const CONTENTFUL_API_URL = `https://graphql.contentful.com/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`;
 const CONTENTFUL_HEADERS = {
@@ -35,54 +35,7 @@ async function fetchFromContentful(query: string) {
     }
 }
 
-export interface AboutPage {
-    description: string;
-    studioImage: {
-        url: string;
-        title: string;
-        width: number;
-        height: number;
-    };
-    founder: {
-        name: string;
-        role: string;
-        image: {
-            url: string;
-            title: string;
-        };
-        bio: string[];
-    };
-    teamMembersCollection: {
-        items: {
-            name: string;
-            role: string;
-        }[];
-    };
-    formerMembers: string[];
-    contact: {
-        email: string;
-        instagram?: string;
-        secondaryIG?: string;
-        phone?: string;
-        location?: string;
-    };
-    awardsCollection: {
-        items: {
-            year: number;
-            title: string;
-            result: string;
-        }[];
-    };
-    publicationsCollection: {
-        items: {
-            year: number;
-            title: string;
-            publisher: string;
-        }[];
-    };
-}
-
-export async function getAbout(): Promise<AboutPage> {
+export async function getAbout(): Promise<About> {
     const aboutQuery = `
         query {
           aboutCollection {
@@ -189,7 +142,7 @@ export async function getProjects() {
     // return dummyProjects.projectCollection;
 }
 
-export async function getProjectBySlug(slug: string) {
+export async function getProjectBySlug(slug: string): Promise<Project> {
     const query = `
         query {
         projectCollection(where: { slug: "${slug}" }, limit: 1) {

@@ -44,8 +44,8 @@ export const dummyProjects = {
                     width: 600,
                     height: 400,
                 },
-                featured: true, // Featured on homepage
-                order: 2, // First item on homepage
+                featured: true,
+                order: 2,
                 galleryCollection: {
                     items: [
                         {
@@ -144,7 +144,7 @@ export const dummyProjects = {
                     height: 400,
                 },
                 location: "Brooklyn, NY",
-                featured: false, // Not featured on homepage
+                featured: false,
                 galleryCollection: {
                     items: [
                         {
@@ -171,7 +171,7 @@ export const dummyProjects = {
                     height: 400,
                 },
                 location: "Brooklyn, NY",
-                featured: false, // Not featured on homepage
+                featured: false,
                 galleryCollection: {
                     items: [
                         {
@@ -199,7 +199,7 @@ export const dummyProjects = {
                     height: 400,
                 },
                 location: "Taipei",
-                featured: false, // Not featured on homepage
+                featured: false,
                 galleryCollection: {
                     items: [
                         {
@@ -254,7 +254,7 @@ export const dummyProjects = {
                     height: 400,
                 },
                 location: "Lima, Peru",
-                featured: false, // Not featured on homepage
+                featured: false,
                 galleryCollection: {
                     items: [
                         {
@@ -309,7 +309,7 @@ export const dummyProjects = {
                     height: 400,
                 },
                 location: "Seoul, Korea",
-                featured: false, // Not featured on homepage
+                featured: false,
                 galleryCollection: {
                     items: [
                         {
@@ -407,8 +407,8 @@ export const dummyProjects = {
                     width: 600,
                     height: 400,
                 },
-                featured: true, // Featured on homepage
-                order: 12, // First item on homepage
+                featured: true,
+                order: 12,
                 galleryCollection: {
                     items: [
                         {
@@ -507,7 +507,7 @@ export const dummyProjects = {
                     height: 400,
                 },
                 location: "Brooklyn, NY",
-                featured: false, // Not featured on homepage
+                featured: false,
                 galleryCollection: {
                     items: [
                         {
@@ -534,7 +534,7 @@ export const dummyProjects = {
                     height: 400,
                 },
                 location: "Brooklyn, NY",
-                featured: false, // Not featured on homepage
+                featured: false,
                 galleryCollection: {
                     items: [
                         {
@@ -562,7 +562,7 @@ export const dummyProjects = {
                     height: 400,
                 },
                 location: "Taipei",
-                featured: false, // Not featured on homepage
+                featured: false,
                 galleryCollection: {
                     items: [
                         {
@@ -617,7 +617,7 @@ export const dummyProjects = {
                     height: 400,
                 },
                 location: "Lima, Peru",
-                featured: false, // Not featured on homepage
+                featured: false,
                 galleryCollection: {
                     items: [
                         {
@@ -672,7 +672,7 @@ export const dummyProjects = {
                     height: 400,
                 },
                 location: "Seoul, Korea",
-                featured: false, // Not featured on homepage
+                featured: false,
                 galleryCollection: {
                     items: [
                         {
