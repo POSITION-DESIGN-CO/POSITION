@@ -10,7 +10,7 @@ export default function NotFound() {
                 <p className="text-lg mb-8">
                     The page you are looking for does not exist.
                 </p>
-                <Link href="/" className="text-black underline">
+                <Link href="/" className="text-[#3B3B3B] underline">
                     Return to Home
                 </Link>
             </div>

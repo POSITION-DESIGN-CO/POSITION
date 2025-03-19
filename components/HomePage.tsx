@@ -171,7 +171,8 @@ export function HomePage({ homepageItems }: { homepageItems: HomepageItem[] }) {
                                 </h2>
                                 <p
                                     className={`text-xs text-gray-500 transition-opacity duration-300 ${
-                                        hoveredId === item.data.sys.id
+                                        hoveredId === item.data.sys.id ||
+                                        windowWidth < 910
                                             ? "opacity-100"
                                             : "opacity-0"
                                     }`}

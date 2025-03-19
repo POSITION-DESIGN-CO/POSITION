@@ -8,7 +8,7 @@ interface MenuIconProps {
 export default function MenuIcon({ handleClick, isOpen }: MenuIconProps) {
     return (
         <aside
-            className={`absolute right-1 py-1 px-1 flex items-center gap-3`}
+            className={`absolute right-0 pr-4 flex items-center gap-3`}
             onClick={handleClick}
         >
             <section className="menuButton">

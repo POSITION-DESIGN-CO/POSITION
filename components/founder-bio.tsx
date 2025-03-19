@@ -43,7 +43,10 @@ export default function FounderBio({ founder }: FounderBioProps) {
             <div className="col-span-1">
                 <div className="sm:block hidden">
                     {bioToShow.map((paragraph: string, i: number) => (
-                        <p key={i} className="text-sm mb-2.5 max-w-2xl">
+                        <p
+                            key={i}
+                            className="text-sm mb-2.5 max-w-2xl leading-[1.3]"
+                        >
                             {paragraph}
                         </p>
                     ))}

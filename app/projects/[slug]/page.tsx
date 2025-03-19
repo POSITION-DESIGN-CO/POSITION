@@ -30,15 +30,15 @@ export default async function ProjectPage({
     return (
         <main className="sm:min-h-[calc(100vh-50px)] min-h-[calc(100vh-150px)] p-4">
             <div className="grid md:grid-cols-12 grid-col-1 mt-24 mb-16 max-w-7xl lg:text-lg text-sm">
-                <p className="col-span-1 md:col-span-8 pt-2 lg:p-0 md:leading-tight">
+                <p className="col-span-1 md:col-span-8 pt-2 lg:p-0 leading-[1.3]">
                     {project.description}
                 </p>
             </div>
             <div className="grid md:grid-cols-12 grid-col-1 text-sm mb-16">
-                <section className="grid sm:grid-cols-6 grid-cols-3 lg:col-start-3 lg:col-span-8 col-start-1 md:col-start-2 col-span-8 gap-0">
+                <section className="grid sm:grid-cols-6 grid-cols-3 lg:col-start-3 lg:col-span-8 col-start-2 md:col-start-2 col-span-7 gap-0">
                     <p className="text-gray-400 mb-5">Overview</p>
                 </section>
-                <section className="grid sm:grid-cols-6 grid-cols-3 lg:col-start-3 lg:col-span-8 col-start-1 md:col-start-2 col-span-8 gap-0">
+                <section className="grid sm:grid-cols-6 grid-cols-3 lg:col-start-3 lg:col-span-8 col-start-2 md:col-start-2 col-span-7 gap-0">
                     <aside className="self-start">
                         <p className="text-gray-400">Project</p>
                         <p className="text-gray-400">Year</p>
@@ -72,12 +72,12 @@ export default async function ProjectPage({
                 </section>
             </div>
             <div className="fixed md:top-4 right-4 top-[53px]">
-                <div className="grid grid-cols-3 md:grid-cols-1 border border-gray-800 bg-white justify-center md:w-[calc(320px/3)] w-[calc(100vw-32px)]">
+                <div className="grid grid-cols-3 md:grid-cols-1 border border-[#3B3B3B] bg-white justify-center md:w-[calc(320px/3)] w-[calc(100vw-32px)]">
                     <div className="md:hidden block"></div>
                     <div className="md:hidden block"></div>
                     <Link
                         href={referer}
-                        className="rounded-none text-center border-gray-800 md:border-l-0 border-l px-6 py-2 text-sm transition-all duration-300 hover:text-black"
+                        className="rounded-none text-center border-[#3B3B3B] md:border-l-0 border-l px-6 py-2 text-sm transition-all duration-300 hover:text-[#3B3B3B]"
                     >
                         Back
                     </Link>

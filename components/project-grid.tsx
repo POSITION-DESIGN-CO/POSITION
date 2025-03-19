@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import GetWindowDimensions from "@/lib/helper";
 
 type Project = {
     sys: { id: string };
@@ -24,6 +25,7 @@ interface ProjectGridProps {
 
 export function ProjectGrid({ projects }: ProjectGridProps) {
     const [hoveredId, setHoveredId] = useState<string | null>(null);
+    const { windowWidth } = GetWindowDimensions();
 
     return (
         <div className="grid gap-y-6 md:gap-x-24 gap-x-10 grid-cols-auto-fill-100">
@@ -52,7 +54,9 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
                         <h3 className="text-sm">{project.title}</h3>
                         <p
                             className={`text-xs text-gray-500 ${
-                                hoveredId !== project.sys.id && "opacity-0"
+                                hoveredId !== project.sys.id &&
+                                windowWidth > 910 &&
+                                "opacity-0"
                             }`}
                         >
                             {project.category}, {project.year}

@@ -6,7 +6,7 @@ import MenuIcon from "./MenuIcon/MenuIcon";
 import { BackgroundLine } from "./BackgroundLine/BackgroundLine";
 import { useProjectsStore } from "@/store";
 import { useNavigationMenuRef } from "@/lib/useNavigationMenuRef";
-import { AboutPage } from "@/lib/contentful";
+import { Logo } from "./Logo";
 
 // pass the categories from layout.tsx when fetching data from contentful
 // export function NavigationMenu({ categories }: { categories: string[] }) {
@@ -38,7 +38,9 @@ export function NavigationMenu({ contact }: { contact: NavigationMenuProps }) {
                 !buttonRef.current.contains(event.target as Node)
             ) {
                 setIsOpen(false);
-                setIsProjectsOpen(false);
+                setTimeout(() => {
+                    setIsProjectsOpen(false);
+                }, 500);
             }
         };
         if (isOpen) {
@@ -53,7 +55,7 @@ export function NavigationMenu({ contact }: { contact: NavigationMenuProps }) {
         <div className="relative z-50" ref={mainMenuRef}>
             <div className="fixed top-4 left-4 z-50">
                 <button
-                    className={`md:w-80 w-[calc(100vw-32px)] flex items-center justify-between border-t border-x bg-white border-gray-800 px-3 py-1 text-sm`}
+                    className={`md:w-80 w-[calc(100vw-32px)] flex items-center justify-between border-t border-x bg-white border-[#3B3B3B] px-4 py-2 text-sm`}
                     ref={buttonRef}
                 >
                     <span className="text-xl">
@@ -62,10 +64,13 @@ export function NavigationMenu({ contact }: { contact: NavigationMenuProps }) {
                             className={`text-l`}
                             onClick={() => {
                                 setIsOpen(false);
-                                setIsProjectsOpen(false);
+                                setTimeout(() => {
+                                    setIsProjectsOpen(false);
+                                }, 500);
                             }}
                         >
-                            POSITIO
+                            <Logo />
+                            {/* POSITIO
                             <span
                                 style={{
                                     transform: "scale(-1,1)",
@@ -73,50 +78,61 @@ export function NavigationMenu({ contact }: { contact: NavigationMenuProps }) {
                                 }}
                             >
                                 N
-                            </span>
+                            </span> */}
                         </Link>
                     </span>
                     <MenuIcon
                         isOpen={isOpen}
                         handleClick={() => {
                             setIsOpen(!isOpen);
-                            setIsProjectsOpen(false);
+                            setTimeout(() => {
+                                setIsProjectsOpen(false);
+                            }, 500);
                         }}
                     />
                 </button>
             </div>
 
             <div
-                className={`fixed left-4 md:w-80 w-[calc(100vw-32px)] top-[53px] z-40 bg-white overflow-hidden transition-[max-height] duration-1000 ease-in-out border-x border-b border-gray-800 ${
+                className={`fixed left-4 md:w-80 w-[calc(100vw-32px)] top-[53px] z-40 bg-white overflow-hidden transition-[max-height] duration-1000 ease-in-out border-x border-b border-[#3B3B3B] ${
                     isOpen ? "max-h-[calc(100vh-88px)]" : "max-h-0"
                 }`}
                 ref={menuRef}
             >
-                <div className="flex flex-col p-3 pt-24 w-full">
+                <div className="flex flex-col p-4 pt-24 w-full">
                     <BackgroundLine
                         isMenuOpen={isOpen}
                         isProjectsOpen={isProjectsOpen}
                     />
                     <button
                         onClick={() => setIsProjectsOpen(!isProjectsOpen)}
-                        className="flex w-full items-start justify-start text-left text-l"
+                        className={`flex w-full items-start justify-start text-left pb-2 pt-2`}
                     >
-                        PROJECTS
+                        Projects
                     </button>
                     <div
-                        className={`overflow-hidden transition-[max-height] duration-700 ease-in-out ${
+                        className={`overflow-hidden transition-[max-height] duration-300 ease-in-out ${
                             isProjectsOpen ? "max-h-screen" : "max-h-0"
                         }`}
                     >
                         {categories.length &&
-                            categories?.map((categoryItem) => (
-                                <div key={categoryItem} className="py-0">
+                            categories?.map((categoryItem, index) => (
+                                <div
+                                    key={categoryItem}
+                                    className={`${
+                                        index === categories.length - 1
+                                            ? "pb-3"
+                                            : "py-0 leading-[1.5]"
+                                    }`}
+                                >
                                     <Link
                                         href="/projects"
                                         onClick={() => {
                                             setCategory(categoryItem);
                                             setIsOpen(false);
-                                            setIsProjectsOpen(false);
+                                            setTimeout(() => {
+                                                setIsProjectsOpen(false);
+                                            }, 500);
                                         }}
                                         className={`text-l hover:text-gray-400`}
                                     >
@@ -126,17 +142,13 @@ export function NavigationMenu({ contact }: { contact: NavigationMenuProps }) {
                             ))}
                     </div>
 
-                    <Link
-                        href="/about"
-                        onClick={() => setIsOpen(false)}
-                        className="text-l pt-2"
-                    >
-                        ABOUT
+                    <Link href="/about" onClick={() => setIsOpen(false)}>
+                        About
                     </Link>
                 </div>
 
-                <div className="mt-auto pt-8 p-3">
-                    <div className="text-l">
+                <div className="mt-auto pt-8 pl-4 pb-2">
+                    <div className="sm:text-sm text-base">
                         <p>{contact?.location}</p>
                         <p>{contact?.phone}</p>
                         <p>

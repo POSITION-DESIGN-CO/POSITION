@@ -1,8 +1,8 @@
 /*********** FILTER MENU ***********/
 
 .menuButton {
-    width: 25px;
-    height: 25px;
+    width: 17px;
+    height: 17px;
     position: relative;
     cursor: pointer;
     display: flex;
@@ -17,13 +17,13 @@
     height: 17px;
 }
 
-.line {
+.menuButton .line {
     position: absolute;
     left: 50%;
-    top: 50%;
-    width: 14px;
+    top: 55%;
+    width: 17px;
     height: 1px;
-    background-color: black;
+    background-color: #3b3b3b;
     transform-origin: center;
     transition: all 0.3s ease-in-out;
 }

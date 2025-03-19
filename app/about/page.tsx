@@ -17,7 +17,9 @@ export default async function AboutPage() {
             {/* Studio Description */}
             <section className="lg:col-start-3 lg:col-span-8 col-start-2 col-span-10">
                 <div className="text-sm pt-2 lg:p-0 mt-24">
-                    <p className="text-sm">{about.description}</p>
+                    <p className="lg:text-lg leading-[1.3]">
+                        {about.description}
+                    </p>
                 </div>
                 {/* </section> */}
 
@@ -34,15 +36,13 @@ export default async function AboutPage() {
                 {/* Contact */}
                 <div className="grid grid-cols-2">
                     <section>
-                        <h2 className="mb-4 text-sm lg:text-lg">Contact</h2>
+                        <h2 className="sm:mb-4 mb-2 text-lg">Contact</h2>
                         <div>
                             <p className="text-sm">{about.contact.email}</p>
                         </div>
                     </section>
                     <section>
-                        <h2 className="mb-4 text-sm lg:text-lg">
-                            Social Media
-                        </h2>
+                        <h2 className="sm:mb-4 mb-2 text-lg">Social Media</h2>
                         <div>
                             <p className="text-sm">{about.contact.instagram}</p>
                             {about.contact.secondaryIG && (
@@ -56,18 +56,18 @@ export default async function AboutPage() {
 
                 {/* Team Section */}
                 <div className="my-16 max-w-5xl">
-                    <h2 className="mb-6 text-sm lg:text-lg">Team</h2>
+                    <h2 className="sm:mb-4 mb-2 text-lg">Team</h2>
 
                     {/* Founder - now using the client component */}
                     <FounderBio founder={about.founder} />
 
                     {/* Team Members */}
                     <div className="my-12 max-w-7xl">
-                        <h3 className="text-sm lg:text-base mb-4">Members</h3>
+                        <h3 className="text-base sm:mb-4 mb-2">Members</h3>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-y-3 gap-8">
                             {about.teamMembersCollection.items.map(
                                 (member, i) => (
-                                    <div key={i} className="pr-4">
+                                    <div key={i} className="pr-4 ">
                                         <p className="text-sm">{member.name}</p>
                                         <p className="text-sm text-gray-500">
                                             {member.role}
@@ -80,7 +80,7 @@ export default async function AboutPage() {
 
                     {/* Former Members */}
                     <div className="my-12">
-                        <h3 className="text-sm lg:text-base mb-4">
+                        <h3 className="text-base sm:mb-4 mb-2">
                             Former Members
                         </h3>
                         <p className="text-sm">
@@ -91,13 +91,19 @@ export default async function AboutPage() {
 
                 {/* Awards */}
                 <div className="my-16 max-w-5xl sm:block hidden">
-                    <h2 className="mb-4 text-sm lg:text-lg">Award</h2>
+                    <h2 className="sm:mb-4 mb-2 text-lg">Award</h2>
                     <div className="grid grid-cols-12 text-sm">
                         {about.awardsCollection.items.map((award, i) => (
                             <Fragment key={i}>
-                                <div className="col-span-1">{award.year}</div>
-                                <div className="col-span-7">{award.title}</div>
-                                <div className="col-span-4">{award.result}</div>
+                                <div className="col-span-1 leading-[1.3]">
+                                    {award.year}
+                                </div>
+                                <div className="col-span-7 leading-[1.3]">
+                                    {award.title}
+                                </div>
+                                <div className="col-span-4 leading-[1.3]">
+                                    {award.result}
+                                </div>
                             </Fragment>
                         ))}
                     </div>
@@ -105,13 +111,17 @@ export default async function AboutPage() {
 
                 {/* Publications */}
                 <div className="my-16 max-w-5xl sm:block hidden">
-                    <h2 className="mb-4 text-sm lg:text-lg">Publication</h2>
+                    <h2 className="sm:mb-4 mb-2 text-lg">Publication</h2>
                     <div className="grid grid-cols-12 text-sm">
                         {about.publicationsCollection.items.map((pub, i) => (
                             <Fragment key={i}>
-                                <div className="col-span-1">{pub.year}</div>
-                                <div className="col-span-7">{pub.title}</div>
-                                <div className="col-span-4">
+                                <div className="col-span-1 leading-[1.3]">
+                                    {pub.year}
+                                </div>
+                                <div className="col-span-7 leading-[1.3]">
+                                    {pub.title}
+                                </div>
+                                <div className="col-span-4 leading-[1.3]">
                                     {pub.publisher}
                                 </div>
                             </Fragment>

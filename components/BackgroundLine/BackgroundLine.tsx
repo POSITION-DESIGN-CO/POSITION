@@ -24,17 +24,17 @@ export function BackgroundLine({
                 className="w-full h-full"
             >
                 <motion.polyline
-                    points="15,6 15,6 305,6 305,6"
+                    points="17,2 17,2 304,2 304,2"
                     animate={{
                         points: isMenuOpen
                             ? isProjectsOpen
-                                ? `15,6 15,${
+                                ? `16,2 16,${
                                       windowWidth > 767 ? "80" : "80"
-                                  } 305,6 305,600`
-                                : `15,6 15,${
+                                  } 304,2 304,600`
+                                : `16,2 16,${
                                       windowWidth > 767 ? "80" : "80"
-                                  } 305,6 305,300`
-                            : "15,6 15,6 305,6 305,6",
+                                  } 304,2 304,300`
+                            : "16,2 16,2 304,2 304,2",
                     }}
                     transition={{
                         duration: 0.7,
@@ -44,8 +44,8 @@ export function BackgroundLine({
                                 : "circInOut",
                         delay: 0.1,
                     }}
-                    stroke="black"
-                    strokeWidth="0.9"
+                    stroke="#3B3B3B"
+                    strokeWidth="1"
                     fill="transparent"
                     strokeLinejoin={"miter"}
                 />

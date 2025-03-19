@@ -31,7 +31,12 @@ export default async function RootLayout({
     return (
         <html lang="en">
             <StoreInitializer projects={allProjects} categories={categories} />
-            <body className={cn(inter.className, "bg-[#F8F8F5]")}>
+            <body
+                className={cn(
+                    inter.className,
+                    "bg-[#F8F8F5] text-[#3B3B3B] pt-8 sm:pt-0"
+                )}
+            >
                 <FirstVisitVideo />
                 <NavigationMenuRefProvider>
                     <NavigationMenu contact={contact} />

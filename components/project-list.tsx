@@ -34,6 +34,9 @@ export function ProjectList({ projects, filterRef }: ProjectListProps) {
             if (expandedId !== projectId) {
                 e.preventDefault();
                 setExpandedId(projectId);
+            } else {
+                e.preventDefault();
+                setExpandedId(null);
             }
         }
     };
@@ -117,45 +120,66 @@ export function ProjectList({ projects, filterRef }: ProjectListProps) {
                                     />
                                 )}
                         </Link>
-                        {project.thumbnail && expandedId === project.sys.id && (
-                            <div
-                                onClick={(e) =>
-                                    handleProjectClick(e, project.sys.id)
-                                }
-                                className="flex flex-col mb-2"
-                            >
-                                <aside className="flex justify-between text-xs">
-                                    <div className="col-span-1">
-                                        {project.location}
-                                    </div>
-                                    <div className="col-span-1 place-self-end">
-                                        <span>{project.year}</span>
-                                    </div>
-                                </aside>
-                                <div
-                                    className={`${
-                                        project.thumbnail.width >=
-                                        project.thumbnail.height
-                                            ? "sm:w-1/2 w-full"
-                                            : "sm:w-1/3 w-1/2"
-                                    } lg:hidden mt-1 mb-2 self-center`}
-                                >
-                                    <Image
-                                        width={project.thumbnail.width}
-                                        height={project.thumbnail.height}
-                                        src={project.thumbnail.url}
-                                        alt={project.title}
-                                        className="w-full h-auto mb-3"
-                                    />
-                                </div>
-                                <Link
-                                    href={`/projects/${project.slug}`}
-                                    className="rounded-none text-center border-gray-800 mb-3 border bg-white px-3 py-2 w-[calc(320px/3)] self-center text-sm transition-all duration-300 hover:text-black"
-                                >
-                                    View
-                                </Link>
-                            </div>
-                        )}
+                        {/* {project.thumbnail && expandedId === project.sys.id && ( */}
+                        <div
+                            onClick={(e) =>
+                                handleProjectClick(e, project.sys.id)
+                            }
+                            className="flex flex-col mb-0 transition-all duration-300 ease-in-out"
+                            style={{
+                                height:
+                                    project.thumbnail &&
+                                    expandedId === project.sys.id
+                                        ? "auto"
+                                        : 0,
+
+                                opacity:
+                                    project.thumbnail &&
+                                    expandedId === project.sys.id
+                                        ? 1
+                                        : 0,
+                            }}
+                        >
+                            {project.thumbnail &&
+                                expandedId === project.sys.id && (
+                                    <>
+                                        <aside className="flex justify-between text-xs">
+                                            <div className="col-span-1">
+                                                {project.location}
+                                            </div>
+                                            <div className="col-span-1 place-self-end">
+                                                <span>{project.year}</span>
+                                            </div>
+                                        </aside>
+
+                                        <div
+                                            className={`${
+                                                project.thumbnail.width >=
+                                                project.thumbnail.height
+                                                    ? "sm:w-1/2 w-full"
+                                                    : "sm:w-1/3 w-1/2"
+                                            } lg:hidden mt-1 mb-2 self-center`}
+                                        >
+                                            <Image
+                                                width={project.thumbnail.width}
+                                                height={
+                                                    project.thumbnail.height
+                                                }
+                                                src={project.thumbnail.url}
+                                                alt={project.title}
+                                                className="w-full h-auto mb-3"
+                                            />
+                                        </div>
+                                        <Link
+                                            href={`/projects/${project.slug}`}
+                                            className="rounded-none text-center border-[#3B3B3B] mb-3 border bg-white px-[20px] py-[6px] self-center text-sm transition-all duration-300 hover:text-[#3B3B3B]"
+                                        >
+                                            View
+                                        </Link>
+                                    </>
+                                )}
+                        </div>
+                        {/* )} */}
                     </Fragment>
                 ))}
             </div>

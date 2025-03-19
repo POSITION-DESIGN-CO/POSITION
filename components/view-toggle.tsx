@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { Fragment, RefObject, useEffect, useRef, useState } from "react";
 import FilterIcon from "./FilterIcon/FilterIcon";
 import { useProjectsStore } from "@/store";
+import GetWindowDimensions from "@/lib/helper";
 
 export function ViewToggle({
     filterRef,
@@ -13,10 +14,11 @@ export function ViewToggle({
     const [isFilterActive, setIsFilterActive] = useState(false);
     const [hideFilter, setHideFilter] = useState(true);
     const buttonClasses =
-        "rounded-none border-r border-gray-800 px-2 py-2 text-sm transition-all duration-300 hover:text-black";
+        "rounded-none border-r border-[#3B3B3B] px-2 py-2 text-sm transition-all duration-300 hover:text-[#3B3B3B]";
 
     const menuRef = useRef<HTMLDivElement>(null);
     const buttonRef = useRef<HTMLButtonElement>(null);
+    const { windowWidth } = GetWindowDimensions();
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -44,13 +46,13 @@ export function ViewToggle({
     return (
         <>
             <div
-                className="grid grid-cols-3 border border-gray-800 bg-white justify-self-end md:w-80 w-[calc(100vw-32px)] md:fixed md:top-[16px] md:right-4"
+                className="grid grid-cols-3 border border-[#3B3B3B] bg-white justify-self-end md:w-80 w-[calc(100vw-32px)] md:fixed md:top-[16px] md:right-4 z-50"
                 ref={filterRef}
             >
                 <button
                     className={cn(
                         buttonClasses,
-                        view === "grid" ? "text-black" : "text-gray-300"
+                        view === "grid" ? "text-[#3B3B3B]" : "text-gray-300"
                     )}
                     onClick={() => setView("grid")}
                 >
@@ -59,7 +61,7 @@ export function ViewToggle({
                 <button
                     className={cn(
                         buttonClasses,
-                        view === "list" ? "text-black" : "text-gray-300"
+                        view === "list" ? "text-[#3B3B3B]" : "text-gray-300"
                     )}
                     onClick={() => setView("list")}
                 >
@@ -68,7 +70,7 @@ export function ViewToggle({
                 <button
                     className={cn(
                         buttonClasses,
-                        "filter text-black border-none flex gap-3 items-center justify-center"
+                        "filter text-[#3B3B3B] border-none flex gap-3 items-center justify-center"
                     )}
                     onClick={() => {
                         setHideFilter(!hideFilter);
@@ -88,16 +90,20 @@ export function ViewToggle({
             </div>
 
             <div
-                className={`md:z-50 absolute md:top-[38px] md:relative right-0 flex flex-nowrap flex-col md:flex-row md:w-full w-[calc(calc(100vw-28px)/3)] bg-white border border-gray-800 -mt-[1px] justify-self-end transition-all duration-300 ease-in-out ${
+                className={`-z-10 lg:z-50 absolute md:top-[38px] lg:relative right-0 flex flex-nowrap flex-col lg:flex-row lg:w-full md:w-[calc(324px/3)] w-[calc(calc(100vw-28px)/3)] bg-white border border-[#3B3B3B] -mt-[1px] justify-self-end transition-all duration-300 ease-in-out ${
                     isFilterActive ? "" : ""
                 }`}
                 ref={menuRef}
                 style={{
                     visibility: hideFilter ? "hidden" : "visible",
                     transform:
-                        categories && isFilterActive
-                            ? "translateX(0%)"
-                            : "translateX(30%)",
+                        windowWidth > 1024 && categories && !isFilterActive
+                            ? "translateX(30%)"
+                            : windowWidth < 1024 &&
+                              categories &&
+                              !isFilterActive
+                            ? "translateY(-30%)"
+                            : "translateX(0%) translateY(0%)",
                     opacity: categories && isFilterActive ? 1 : 0,
                 }}
             >
@@ -106,12 +112,12 @@ export function ViewToggle({
                         <Fragment key={categoryItem}>
                             <button
                                 className={cn(
-                                    `rounded-none md:border-r md:border-b-0 border-b w-full border-gray-800 md:px-8 py-2 text-sm transition-all duration-300`,
+                                    `rounded-none lg:border-r lg:border-b-0 border-b w-full border-[#3B3B3B] lg:px-8 py-2 text-sm transition-all duration-300`,
                                     index === categories.length - 1 &&
                                         "border-none",
                                     categoryItem === category
-                                        ? "text-black"
-                                        : "text-gray-300 hover:text-black"
+                                        ? "text-[#3B3B3B]"
+                                        : "text-gray-300 hover:text-[#3B3B3B]"
                                 )}
                                 onClick={() => setCategory(categoryItem)}
                             >
