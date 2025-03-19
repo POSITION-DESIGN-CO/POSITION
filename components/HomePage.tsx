@@ -120,11 +120,9 @@ export function HomePage({ homepageItems }: { homepageItems: HomepageItem[] }) {
                     >
                         <Link
                             href={`/projects/${item.data.slug}`}
-                            onMouseEnter={() => setHoveredId(item.data.sys.id)}
-                            onMouseLeave={() => setHoveredId(null)}
-                            className={`block h-full group transition-opacity duration-300 pointer ${
+                            className={`block h-full group transition-opacity duration-500 cursor-default ${
                                 hoveredId && hoveredId !== item.data.sys.id
-                                    ? "opacity-10"
+                                    ? "opacity-20"
                                     : "opacity-100"
                             }`}
                         >
@@ -132,6 +130,10 @@ export function HomePage({ homepageItems }: { homepageItems: HomepageItem[] }) {
                                 thumbnail={item.data.thumbnail}
                                 title={item.data.title}
                                 isHorizontal={isHorizontal}
+                                onMouseEnter={() =>
+                                    setHoveredId(item.data.sys.id)
+                                }
+                                onMouseLeave={() => setHoveredId(null)}
                             />
                             {/* <div className="mt-2">
                                 <h2 className="text-sm">{item.data.title}</h2>

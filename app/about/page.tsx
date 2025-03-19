@@ -34,13 +34,15 @@ export default async function AboutPage() {
                 {/* Contact */}
                 <div className="grid grid-cols-2">
                     <section>
-                        <h2 className="mb-4 text-sm">Contact</h2>
+                        <h2 className="mb-4 text-sm lg:text-lg">Contact</h2>
                         <div>
                             <p className="text-sm">{about.contact.email}</p>
                         </div>
                     </section>
                     <section>
-                        <h2 className="mb-4 text-sm">Social Media</h2>
+                        <h2 className="mb-4 text-sm lg:text-lg">
+                            Social Media
+                        </h2>
                         <div>
                             <p className="text-sm">{about.contact.instagram}</p>
                             {about.contact.secondaryIG && (
@@ -54,14 +56,14 @@ export default async function AboutPage() {
 
                 {/* Team Section */}
                 <div className="my-16 max-w-5xl">
-                    <h2 className="mb-6 text-sm">Team</h2>
+                    <h2 className="mb-6 text-sm lg:text-lg">Team</h2>
 
                     {/* Founder - now using the client component */}
                     <FounderBio founder={about.founder} />
 
                     {/* Team Members */}
                     <div className="my-12 max-w-7xl">
-                        <h3 className="text-sm mb-4">Members</h3>
+                        <h3 className="text-sm lg:text-base mb-4">Members</h3>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-y-3 gap-8">
                             {about.teamMembersCollection.items.map(
                                 (member, i) => (
@@ -78,7 +80,9 @@ export default async function AboutPage() {
 
                     {/* Former Members */}
                     <div className="my-12">
-                        <h3 className="text-sm mb-4">Former Members</h3>
+                        <h3 className="text-sm lg:text-base mb-4">
+                            Former Members
+                        </h3>
                         <p className="text-sm">
                             {about.formerMembers.join(", ")}
                         </p>
@@ -87,7 +91,7 @@ export default async function AboutPage() {
 
                 {/* Awards */}
                 <div className="my-16 max-w-5xl sm:block hidden">
-                    <h2 className="mb-4 text-sm">Award</h2>
+                    <h2 className="mb-4 text-sm lg:text-lg">Award</h2>
                     <div className="grid grid-cols-12 text-sm">
                         {about.awardsCollection.items.map((award, i) => (
                             <Fragment key={i}>
@@ -101,7 +105,7 @@ export default async function AboutPage() {
 
                 {/* Publications */}
                 <div className="my-16 max-w-5xl sm:block hidden">
-                    <h2 className="mb-4 text-sm">Publication</h2>
+                    <h2 className="mb-4 text-sm lg:text-lg">Publication</h2>
                     <div className="grid grid-cols-12 text-sm">
                         {about.publicationsCollection.items.map((pub, i) => (
                             <Fragment key={i}>

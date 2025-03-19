@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { getProjectBySlug } from "@/lib/contentful";
 import Link from "next/link";
+import { headers } from "next/headers";
 
 interface Image {
     title: string;
@@ -15,33 +16,8 @@ export default async function ProjectPage({
 }: {
     params: { slug: string };
 }) {
-    // const getGridConfig = (item: any, index: number) => {
-    //     const configs = [
-    //         {
-    //             colSpan: "col-span-12 md:col-span-6 place-content-end",
-    //         },
-    //         {
-    //             colSpan:
-    //                 "col-span-12 md:col-span-4 md:col-start-9 place-self-end",
-    //         },
-    //         {
-    //             colSpan: "col-span-12 md:col-start-2 md:col-end-7",
-    //         },
-    //         {
-    //             colSpan:
-    //                 "col-span-12 md:col-span-4 md:col-start-7 place-self-end",
-    //         },
-    //         {
-    //             colSpan: "col-span-12 md:col-span-5",
-    //         },
-    //         {
-    //             colSpan:
-    //                 "col-span-12 md:col-span-4 md:col-start-8 place-self-end",
-    //         },
-    //     ];
-    //     return configs[index % configs.length];
-    // };
     const project = await getProjectBySlug(params.slug);
+    const referer = headers().get("referer") || "/projects";
 
     if (!project) {
         return (
@@ -53,50 +29,8 @@ export default async function ProjectPage({
 
     return (
         <main className="sm:min-h-[calc(100vh-50px)] min-h-[calc(100vh-150px)] p-4">
-            {/* <div className="grid lg:grid-cols-12 md:grid-cols-6 grid-cols-1 pt-40 gap-6 text-sm max-w-7xl">
-                <div className="col-span-1 lg:col-span-3 md:col-span-2">
-                    <p>{project.title}</p>
-                    <Image
-                        priority
-                        src={project.thumbnail.url || "/placeholder.svg"}
-                        alt={project.title}
-                        width={project.thumbnail.width}
-                        height={project.thumbnail.height}
-                        className="w-1/2 hidden lg:block object-cover"
-                    />
-                </div>
-                <p className="col-span-1 md:col-span-2">
-                    <span className="block text-gray-400">Category</span>
-                    {project.category}
-                </p>
-                <p className="col-span-1 md:col-span-2">
-                    <span className="block text-gray-400">Location</span>
-                    {project.location}
-                </p>
-                {project.team && (
-                    <p className="col-span-1 md:col-span-2">
-                        <span className="block text-gray-400">Position</span>
-                        {project.position}
-                    </p>
-                )}
-                {project.team && (
-                    <div className="col-span-1 md:col-span-2">
-                        <span className="block text-gray-400">Team</span>
-                        <ul>
-                            {project.team?.map((person: string) => (
-                                <li key={person}>{person}</li>
-                            ))}
-                        </ul>
-                    </div>
-                )}
-                <p className="col-span-1 md:col-span-1">
-                    <span className="block text-gray-400">Year</span>
-                    {project.year}
-                </p>
-            </div> */}
-
-            <div className="grid md:grid-cols-12 grid-col-1 mt-24 mb-16 text-sm max-w-7xl">
-                <p className="col-span-1 md:col-span-6 pt-2 lg:p-0">
+            <div className="grid md:grid-cols-12 grid-col-1 mt-24 mb-16 max-w-7xl lg:text-lg text-sm">
+                <p className="col-span-1 md:col-span-8 pt-2 lg:p-0 md:leading-tight">
                     {project.description}
                 </p>
             </div>
@@ -141,7 +75,7 @@ export default async function ProjectPage({
                     <div className="md:hidden block"></div>
                     <div className="md:hidden block"></div>
                     <Link
-                        href="/projects"
+                        href={referer}
                         className="rounded-none text-center border-gray-800 md:border-l-0 border-l px-6 py-2 text-sm transition-all duration-300 hover:text-black"
                     >
                         Back
@@ -152,7 +86,6 @@ export default async function ProjectPage({
             <div className="gap-2 grid md:grid-cols-12">
                 {project.galleryCollection.items.map(
                     (image: Image, index: number) => {
-                        // const config = getGridConfig(image, index);
                         return (
                             <div
                                 key={image.sys.id}

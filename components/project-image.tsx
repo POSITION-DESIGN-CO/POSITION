@@ -9,9 +9,13 @@ interface ProjectImageProps {
     };
     isHorizontal: boolean;
     title: string | null;
+    onMouseEnter: () => void;
+    onMouseLeave: () => void;
 }
 
 export function ProjectImage({
+    onMouseEnter,
+    onMouseLeave,
     thumbnail,
     title,
     isHorizontal,
@@ -25,10 +29,12 @@ export function ProjectImage({
                 )}
             >
                 <Image
+                    onMouseEnter={onMouseEnter}
+                    onMouseLeave={onMouseLeave}
                     src={thumbnail.url || "/placeholder.svg"}
                     alt={title || "Editorial image"}
                     fill
-                    className="w-full h-full object-cover transition-transform duration-300"
+                    className="w-full h-full object-cover transition-transform duration-300 cursor-pointer"
                 />
             </div>
         </>

@@ -33,7 +33,7 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
                     href={`/projects/${project.slug}`}
                     className={`group block transition-opacity duration-500 ${
                         hoveredId && hoveredId !== project.sys.id
-                            ? "opacity-10"
+                            ? "opacity-20"
                             : "opacity-100"
                     }`}
                     onMouseEnter={() => setHoveredId(project.sys.id)}

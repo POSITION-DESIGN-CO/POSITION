@@ -17,7 +17,7 @@ export function EditorialImage({ image, title }: EditorialImageProps) {
                     src={image.url || "/placeholder.svg"}
                     alt={title || "Editorial image"}
                     fill
-                    className="w-full h-full object-cover grayscale transition-transform duration-300 group-hover:scale-105"
+                    className="w-full h-full object-cover grayscale transition-transform duration-1000 group-hover:scale-125 ease-in-out"
                 />
             </div>
             {title && (

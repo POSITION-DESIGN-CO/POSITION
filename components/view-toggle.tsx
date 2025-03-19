@@ -80,7 +80,7 @@ export function ViewToggle({
             </div>
 
             <div
-                className={`md:z-50 absolute md:top-[38px] md:relative right-0 flex flex-nowrap flex-col md:flex-row md:w-full w-[calc(calc(100vw-28px)/3)] bg-white border border-gray-800 -mt-[1px] justify-self-end transition-all duration-500 ease-in-out ${
+                className={`md:z-50 absolute md:top-[38px] md:relative right-0 flex flex-nowrap flex-col md:flex-row md:w-full w-[calc(calc(100vw-28px)/3)] bg-white border border-gray-800 -mt-[1px] justify-self-end transition-all duration-300 ease-in-out ${
                     isFilterActive ? "" : ""
                 }`}
                 ref={menuRef}
@@ -88,7 +88,8 @@ export function ViewToggle({
                     transform:
                         categories && isFilterActive
                             ? "translateX(0%)"
-                            : "translateX(120%)",
+                            : "translateX(30%)",
+                    opacity: categories && isFilterActive ? 1 : 0,
                 }}
             >
                 {categories?.map((categoryItem: any, index: number) => {
