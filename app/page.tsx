@@ -1,11 +1,17 @@
-import { getAbout, getHomepageItems } from "@/lib/contentful";
+import {
+    getAbout,
+    getHomepageItems,
+    getPageAnimations,
+} from "@/lib/contentful";
 import { HomePage } from "@/components/HomePage";
 import type { HomepageItem } from "@/lib/contentful-models";
+import ClientAnimation from "@/components/ClientAnimation";
 
 export default async function Home() {
     const homepageItems: HomepageItem[] = await getHomepageItems();
     const about = await getAbout();
     const aboutText = about.description.split(".").slice(0, 3).join(".");
+    const { homepageAnimation } = await getPageAnimations();
 
     return (
         <main className="sm:min-h-[calc(100vh-50px)] min-h-[calc(100vh-150px)] p-4">
@@ -15,6 +21,7 @@ export default async function Home() {
                 </div>
             </div>
             <HomePage homepageItems={homepageItems} />
+            <ClientAnimation animationUrl={homepageAnimation.url} />
         </main>
     );
 }

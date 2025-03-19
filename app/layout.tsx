@@ -8,7 +8,11 @@ import { Footer } from "@/components/Footer";
 import { PageTransitionProvider } from "@/components/page-transition";
 import { FirstVisitVideo } from "@/components/FirstVisitVideo";
 import { StoreInitializer } from "@/components/store-initializer";
-import { getProjects, getUniqueCategories } from "@/lib/contentful";
+import {
+    getPageAnimations,
+    getProjects,
+    getUniqueCategories,
+} from "@/lib/contentful";
 import { NavigationMenuRefProvider } from "@/lib/useNavigationMenuRef";
 import { getAbout } from "@/lib/contentful";
 
@@ -28,6 +32,8 @@ export default async function RootLayout({
     const categories = await getUniqueCategories();
     const { contact } = await getAbout();
     const { items: allProjects } = await getProjects();
+    const { loadingAnimation } = await getPageAnimations();
+
     return (
         <html lang="en">
             <StoreInitializer projects={allProjects} categories={categories} />
@@ -37,7 +43,7 @@ export default async function RootLayout({
                     "bg-[#F8F8F5] text-[#3B3B3B] pt-8 sm:pt-0"
                 )}
             >
-                <FirstVisitVideo />
+                <FirstVisitVideo animationUrl={loadingAnimation.url} />
                 <NavigationMenuRefProvider>
                     <NavigationMenu contact={contact} />
                     <PageTransitionProvider>{children}</PageTransitionProvider>

@@ -1,3 +1,14 @@
+interface Animation {
+    url: string;
+}
+
+export interface PageAnimations {
+    loadingAnimation: Animation;
+    homepageAnimation: Animation;
+    projectPageAnimation: Animation;
+    aboutPageAnimation: Animation;
+}
+
 export interface About {
     description: string;
     studioImage: {

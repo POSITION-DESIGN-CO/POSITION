@@ -16,7 +16,6 @@ export const AboutComponent = ({ about }: { about: About }) => {
             <div className="fixed md:top-4 right-4 top-[53px] z-40">
                 <TimeToggle />
             </div>
-            );
             {/* Studio Description */}
             <section className="lg:col-start-3 lg:col-span-8 col-start-2 col-span-10">
                 <div className="text-sm pt-2 lg:p-0 mt-24">

@@ -3,7 +3,12 @@
 //     dummyEditorialImages,
 //     dummyAboutCollection,
 // } from "./dummy-data";
-import type { HomepageItem, Project, About } from "./contentful-models";
+import type {
+    HomepageItem,
+    Project,
+    About,
+    PageAnimations,
+} from "./contentful-models";
 
 const CONTENTFUL_API_URL = `https://graphql.contentful.com/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`;
 const CONTENTFUL_HEADERS = {
@@ -24,8 +29,8 @@ async function fetchFromContentful(query: string) {
             method: "POST",
             headers: CONTENTFUL_HEADERS,
             body: JSON.stringify({ query }),
-            next: { revalidate: 1000 },
-            // cache: "no-store",
+            // next: { revalidate: 1000 },
+            cache: "no-store",
         });
         const { data } = await response.json();
         return data;
@@ -33,6 +38,31 @@ async function fetchFromContentful(query: string) {
         console.error("Error fetching data from Contentful:", error);
         return null;
     }
+}
+
+export async function getPageAnimations(): Promise<PageAnimations> {
+    const query = `
+      query {
+        pageAnimationsCollection(limit: 1) {
+          items {
+            loadingAnimation {
+              url
+              }
+            homepageAnimation {
+              url
+              }
+            projectPageAnimation {
+              url
+              }
+            aboutPageAnimation {
+              url
+              }
+          }
+        }
+      }
+    `;
+    const data = await fetchFromContentful(query);
+    return data?.pageAnimationsCollection?.items[0] || {};
 }
 
 export async function getAbout(): Promise<About> {

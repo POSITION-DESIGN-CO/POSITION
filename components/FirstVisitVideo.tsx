@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export const FirstVisitVideo = () => {
+export const FirstVisitVideo = ({ animationUrl }: { animationUrl: string }) => {
     const [shouldShow, setShouldShow] = useState(false);
     const [hideVideo, setHideVideo] = useState(false);
 
@@ -27,7 +27,7 @@ export const FirstVisitVideo = () => {
 
     return (
         <div
-            className="fixed inset-0 top-0 left-0 flex items-center justify-center z-[999] w-screen h-screen transition-all duration-700 ease-in-out bg-white"
+            className="fixed inset-0 top-0 left-0 flex items-center justify-center z-[999999] w-screen h-screen transition-all duration-700 ease-in-out bg-white"
             style={{ opacity: shouldShow ? 1 : 0 }}
         >
             <video
@@ -37,7 +37,7 @@ export const FirstVisitVideo = () => {
                 onEnded={handleClose}
                 className="max-w-full w-screen"
             >
-                <source src="./position_anim.mp4" type="video/mp4" />
+                <source src={animationUrl} type="video/mp4" />
             </video>
         </div>
     );
