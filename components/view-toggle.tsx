@@ -11,6 +11,7 @@ export function ViewToggle({
     const { view, category, categories, setView, setCategory } =
         useProjectsStore();
     const [isFilterActive, setIsFilterActive] = useState(false);
+    const [hideFilter, setHideFilter] = useState(true);
     const buttonClasses =
         "rounded-none border-r border-gray-800 px-2 py-2 text-sm transition-all duration-300 hover:text-black";
 
@@ -29,6 +30,7 @@ export function ViewToggle({
                 !buttonRef.current.contains(event.target as Node)
             ) {
                 setIsFilterActive(false);
+                setHideFilter(true);
             }
         };
         if (isFilterActive) {
@@ -68,12 +70,18 @@ export function ViewToggle({
                         buttonClasses,
                         "filter text-black border-none flex gap-3 items-center justify-center"
                     )}
-                    onClick={() => setIsFilterActive(!isFilterActive)}
+                    onClick={() => {
+                        setHideFilter(!hideFilter);
+                        setIsFilterActive(!isFilterActive);
+                    }}
                     ref={buttonRef}
                 >
                     <p>Filter</p>
                     <FilterIcon
-                        handleClick={() => setIsFilterActive(!isFilterActive)}
+                        handleClick={() => {
+                            setHideFilter(!hideFilter);
+                            setIsFilterActive(!isFilterActive);
+                        }}
                         isOpen={isFilterActive}
                     />
                 </button>
@@ -85,6 +93,7 @@ export function ViewToggle({
                 }`}
                 ref={menuRef}
                 style={{
+                    visibility: hideFilter ? "hidden" : "visible",
                     transform:
                         categories && isFilterActive
                             ? "translateX(0%)"
