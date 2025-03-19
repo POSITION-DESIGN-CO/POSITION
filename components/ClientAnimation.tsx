@@ -20,10 +20,14 @@ const ClientAnimation: React.FC<ClientAnimationProps> = ({ animationUrl }) => {
                 bottom: "30px",
                 left: "30px",
                 zIndex: 1000,
+                pointerEvents: "none",
             }}
+            playsInline
+            webkit-playsinline
+            muted
             autoPlay
             loop
-            muted
+            controlsList="nodownload nofullscreen noremoteplayback"
         />
     ) : (
         <video
@@ -35,10 +39,14 @@ const ClientAnimation: React.FC<ClientAnimationProps> = ({ animationUrl }) => {
                 bottom: "30px",
                 right: "30px",
                 zIndex: 1000,
+                pointerEvents: "none",
             }}
+            playsInline
+            webkit-playsinline
+            muted
             autoPlay
             loop
-            muted
+            controlsList="nodownload nofullscreen noremoteplayback"
         />
     );
 };

@@ -31,11 +31,17 @@ export const FirstVisitVideo = ({ animationUrl }: { animationUrl: string }) => {
             style={{ opacity: shouldShow ? 1 : 0 }}
         >
             <video
-                autoPlay
-                playsInline
-                muted
                 onEnded={handleClose}
                 className="max-w-full w-screen"
+                style={{
+                    pointerEvents: "none",
+                }}
+                playsInline
+                webkit-playsinline
+                muted
+                autoPlay
+                loop
+                controlsList="nodownload nofullscreen noremoteplayback"
             >
                 <source src={animationUrl} type="video/mp4" />
             </video>
