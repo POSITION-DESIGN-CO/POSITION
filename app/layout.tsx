@@ -43,7 +43,7 @@ export default async function RootLayout({
                     "bg-[#F8F8F5] text-[#3B3B3B] pt-4 sm:pt-0"
                 )}
             >
-                {/* <FirstVisitVideo animationUrl={loadingAnimation?.url} /> */}
+                <FirstVisitVideo animationUrl={loadingAnimation?.url} />
                 <NavigationMenuRefProvider>
                     <NavigationMenu contact={contact} />
                     <PageTransitionProvider>{children}</PageTransitionProvider>
