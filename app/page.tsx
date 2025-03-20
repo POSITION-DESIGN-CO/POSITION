@@ -13,6 +13,10 @@ export default async function Home() {
     const aboutText = about.description.split(".").slice(0, 3).join(".");
     const { homepageAnimation } = await getPageAnimations();
 
+    if (!homepageItems || !about) {
+        return;
+    }
+
     return (
         <main className="sm:min-h-[calc(100vh-50px)] min-h-[calc(100vh-150px)] p-4">
             <div className="grid lg:grid-cols-12 grid-cols-1 lg:mb-12 lg:my-0 my-6 gap-2">
@@ -21,7 +25,7 @@ export default async function Home() {
                 </div>
             </div>
             <HomePage homepageItems={homepageItems} />
-            <ClientAnimation animationUrl={homepageAnimation.url} />
+            <ClientAnimation animationUrl={homepageAnimation?.url} />
         </main>
     );
 }
