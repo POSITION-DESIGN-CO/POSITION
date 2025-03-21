@@ -13,8 +13,8 @@ const ClientAnimation: React.FC<ClientAnimationProps> = ({ animationUrl }) => {
     return windowWidth > 639 ? (
         <video
             src={animationUrl as string}
-            width="200"
-            height="200"
+            width="100"
+            height="100"
             style={{
                 position: "fixed",
                 bottom: "30px",
@@ -32,8 +32,8 @@ const ClientAnimation: React.FC<ClientAnimationProps> = ({ animationUrl }) => {
     ) : (
         <video
             src={animationUrl as string}
-            width="200"
-            height="200"
+            width="100"
+            height="100"
             style={{
                 position: "fixed",
                 bottom: "30px",
