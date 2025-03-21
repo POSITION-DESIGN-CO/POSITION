@@ -3,10 +3,16 @@ interface Animation {
 }
 
 export interface PageAnimations {
-    loadingAnimation: Animation;
-    homepageAnimation: Animation;
-    projectPageAnimation: Animation;
-    aboutPageAnimation: Animation;
+    loadingAnimationWebm: Animation;
+    loadingAnimationMov: Animation;
+    homepageAnimationWebm: Animation;
+    homepageAnimationMov: Animation;
+    projectListAnimationWebm: Animation;
+    projectListAnimationMov: Animation;
+    projectGridAnimationWebm: Animation;
+    projectGridAnimationMov: Animation;
+    aboutPageAnimationWebm: Animation;
+    aboutPageAnimationMov: Animation;
 }
 
 export interface About {

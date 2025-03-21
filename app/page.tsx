@@ -11,7 +11,8 @@ export default async function Home() {
     const homepageItems: HomepageItem[] = await getHomepageItems();
     const about = await getAbout();
     const aboutText = about.description.split(".").slice(0, 3).join(".");
-    const { homepageAnimation } = await getPageAnimations();
+    const { aboutPageAnimationMov, aboutPageAnimationWebm } =
+        await getPageAnimations();
 
     if (!homepageItems || !about) {
         return;
@@ -25,7 +26,10 @@ export default async function Home() {
                 </div>
             </div>
             <HomePage homepageItems={homepageItems} />
-            <ClientAnimation animationUrl={homepageAnimation?.url} />
+            <ClientAnimation
+                webmUrl={aboutPageAnimationWebm?.url}
+                movUrl={aboutPageAnimationMov?.url}
+            />
         </main>
     );
 }

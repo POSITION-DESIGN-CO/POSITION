@@ -1,7 +1,8 @@
 import Image from "next/image";
-import { getProjectBySlug } from "@/lib/contentful";
+import { getPageAnimations, getProjectBySlug } from "@/lib/contentful";
 import Link from "next/link";
 import { headers } from "next/headers";
+import ClientAnimation from "@/components/ClientAnimation";
 
 interface Image {
     title: string;
@@ -18,6 +19,8 @@ export default async function ProjectPage({
 }) {
     const project = await getProjectBySlug(params.slug);
     const referer = headers().get("referer") || "/projects";
+    const { projectGridAnimationMov, projectGridAnimationWebm } =
+        await getPageAnimations();
 
     if (!project) {
         return (
@@ -109,6 +112,10 @@ export default async function ProjectPage({
                     }
                 )}
             </div>
+            <ClientAnimation
+                webmUrl={projectGridAnimationWebm?.url}
+                movUrl={projectGridAnimationMov?.url}
+            />
         </main>
     );
 }

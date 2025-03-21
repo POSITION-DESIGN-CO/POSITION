@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import GetWindowDimensions from "@/lib/helper";
+import ClientAnimation from "./ClientAnimation";
 
 type Project = {
     sys: { id: string };
@@ -21,9 +22,15 @@ type Project = {
 
 interface ProjectGridProps {
     projects: Project[];
+    projectGridAnimationWebm: string;
+    projectGridAnimationMov: string;
 }
 
-export function ProjectGrid({ projects }: ProjectGridProps) {
+export function ProjectGrid({
+    projects,
+    projectGridAnimationMov,
+    projectGridAnimationWebm,
+}: ProjectGridProps) {
     const [hoveredId, setHoveredId] = useState<string | null>(null);
     const { windowWidth } = GetWindowDimensions();
 
@@ -64,6 +71,10 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
                     </div>
                 </Link>
             ))}
+            <ClientAnimation
+                movUrl={projectGridAnimationMov}
+                webmUrl={projectGridAnimationWebm}
+            />
         </div>
     );
 }

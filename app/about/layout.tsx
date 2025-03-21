@@ -9,12 +9,16 @@ export default async function AboutLayout({
 }: {
     children: React.ReactNode;
 }) {
-    const { aboutPageAnimation } = await getPageAnimations();
+    const { aboutPageAnimationMov, aboutPageAnimationWebm } =
+        await getPageAnimations();
 
     return (
         <>
             {children}
-            <ClientAnimation animationUrl={aboutPageAnimation.url} />
+            <ClientAnimation
+                movUrl={aboutPageAnimationMov?.url}
+                webmUrl={aboutPageAnimationWebm?.url}
+            />
         </>
     );
 }

@@ -3,6 +3,7 @@ import { Fragment, RefObject, useEffect, useRef, useState } from "react";
 import { HoverImage } from "./hover-image";
 import Image from "next/image";
 import { useNavigationMenuRef } from "@/lib/useNavigationMenuRef";
+import ClientAnimation from "./ClientAnimation";
 
 type Project = {
     sys: { id: string };
@@ -21,9 +22,16 @@ type Project = {
 interface ProjectListProps {
     projects: Project[];
     filterRef: RefObject<HTMLDivElement>;
+    projectListAnimationMov: string;
+    projectListAnimationWebm: string;
 }
 
-export function ProjectList({ projects, filterRef }: ProjectListProps) {
+export function ProjectList({
+    projects,
+    filterRef,
+    projectListAnimationMov,
+    projectListAnimationWebm,
+}: ProjectListProps) {
     const [hoveredId, setHoveredId] = useState<string | null>(null);
     const [expandedId, setExpandedId] = useState<string | null>(null);
     const projectRef = useRef<HTMLDivElement>(null);
@@ -183,6 +191,10 @@ export function ProjectList({ projects, filterRef }: ProjectListProps) {
                     </Fragment>
                 ))}
             </div>
+            <ClientAnimation
+                movUrl={projectListAnimationMov}
+                webmUrl={projectListAnimationWebm}
+            />
         </div>
     );
 }

@@ -29,8 +29,8 @@ async function fetchFromContentful(query: string) {
             method: "POST",
             headers: CONTENTFUL_HEADERS,
             body: JSON.stringify({ query }),
-            next: { revalidate: 1000 },
-            // cache: "no-store",
+            // next: { revalidate: 1000 },
+            cache: "no-store",
         });
         const { data } = await response.json();
         return data;
@@ -42,25 +42,24 @@ async function fetchFromContentful(query: string) {
 
 export async function getPageAnimations(): Promise<PageAnimations> {
     const query = `
-      query {
-        pageAnimationsCollection(limit: 1) {
-          items {
-            loadingAnimation {
-              url
-              }
-            homepageAnimation {
-              url
-              }
-            projectPageAnimation {
-              url
-              }
-            aboutPageAnimation {
-              url
-              }
-          }
+    query {
+      pageAnimationsCollection(limit: 1) {
+        items {
+          loadingAnimationWebm { url }
+          loadingAnimationMov { url }
+
+          projectListAnimationWebm { url }
+          projectListAnimationMov { url }
+   
+          projectGridAnimationWebm { url }
+          projectGridAnimationMov { url }
+
+          aboutPageAnimationWebm { url }
+          aboutPageAnimationMov { url }
         }
       }
-    `;
+    }
+  `;
     const data = await fetchFromContentful(query);
     return data?.pageAnimationsCollection?.items[0] || {};
 }

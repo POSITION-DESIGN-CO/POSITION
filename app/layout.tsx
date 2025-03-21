@@ -32,7 +32,8 @@ export default async function RootLayout({
     const categories = await getUniqueCategories();
     const { contact } = await getAbout();
     const { items: allProjects } = await getProjects();
-    const { loadingAnimation } = await getPageAnimations();
+    const { loadingAnimationWebm, loadingAnimationMov } =
+        await getPageAnimations();
 
     return (
         <html lang="en">
@@ -43,7 +44,10 @@ export default async function RootLayout({
                     "bg-[#F8F8F5] text-[#3B3B3B] pt-4 sm:pt-0"
                 )}
             >
-                <FirstVisitVideo animationUrl={loadingAnimation?.url} />
+                <FirstVisitVideo
+                    webmUrl={loadingAnimationWebm?.url}
+                    movUrl={loadingAnimationMov?.url}
+                />
                 <NavigationMenuRefProvider>
                     <NavigationMenu contact={contact} />
                     <PageTransitionProvider>{children}</PageTransitionProvider>

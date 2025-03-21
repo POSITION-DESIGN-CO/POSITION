@@ -2,11 +2,14 @@ import { useProjectsStore } from "@/store";
 import { ProjectGrid } from "./project-grid";
 import { ProjectList } from "./project-list";
 import { RefObject } from "react";
+import { Animations } from "./Projects";
 
 export function ClientSideProjectsRenderer({
     filterRef,
+    animations,
 }: {
     filterRef: RefObject<HTMLDivElement>;
+    animations: Animations;
 }) {
     const { view, getFilteredProjects } = useProjectsStore();
     const filteredProjects = getFilteredProjects();
@@ -20,8 +23,17 @@ export function ClientSideProjectsRenderer({
     }
 
     return view === "grid" ? (
-        <ProjectGrid projects={filteredProjects} />
+        <ProjectGrid
+            projects={filteredProjects}
+            projectGridAnimationMov={animations.gridMov}
+            projectGridAnimationWebm={animations.gridWebm}
+        />
     ) : (
-        <ProjectList projects={filteredProjects} filterRef={filterRef} />
+        <ProjectList
+            projects={filteredProjects}
+            filterRef={filterRef}
+            projectListAnimationMov={animations.listMov}
+            projectListAnimationWebm={animations.listWebm}
+        />
     );
 }

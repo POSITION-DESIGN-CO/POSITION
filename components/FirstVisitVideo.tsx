@@ -2,7 +2,13 @@
 
 import { useEffect, useState } from "react";
 
-export const FirstVisitVideo = ({ animationUrl }: { animationUrl: string }) => {
+export const FirstVisitVideo = ({
+    webmUrl,
+    movUrl,
+}: {
+    movUrl?: string;
+    webmUrl?: string;
+}) => {
     const [shouldShow, setShouldShow] = useState(false);
     const [hideVideo, setHideVideo] = useState(false);
 
@@ -32,17 +38,21 @@ export const FirstVisitVideo = ({ animationUrl }: { animationUrl: string }) => {
         >
             <video
                 onEnded={handleClose}
-                className="max-w-full w-screen"
                 style={{
+                    position: "fixed",
+                    zIndex: 1000,
                     pointerEvents: "none",
                 }}
+                className="max-w-full md:max-w-xl bg-white"
                 playsInline
-                webkit-playsinline
                 muted
                 autoPlay
                 controlsList="nodownload nofullscreen noremoteplayback"
             >
-                <source src={animationUrl} type="video/mp4" />
+                {movUrl && (
+                    <source src={movUrl} type='video/mp4; codecs="hvc1"' />
+                )}
+                {webmUrl && <source src={webmUrl} type="video/webm" />}
             </video>
         </div>
     );
