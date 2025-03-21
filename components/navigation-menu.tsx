@@ -52,7 +52,7 @@ export function NavigationMenu({ contact }: { contact: NavigationMenuProps }) {
     }, [isOpen]);
 
     return (
-        <div className="relative z-50" ref={mainMenuRef}>
+        <div className="relative z-[999]" ref={mainMenuRef}>
             <div className="fixed top-4 left-4 z-50">
                 <button
                     className={`md:w-80 w-[calc(100vw-32px)] flex items-center justify-between border-t border-x bg-white border-[#3B3B3B] px-4 py-2 text-sm`}
