@@ -40,7 +40,6 @@ export const FirstVisitVideo = ({ animationUrl }: { animationUrl: string }) => {
                 webkit-playsinline
                 muted
                 autoPlay
-                loop
                 controlsList="nodownload nofullscreen noremoteplayback"
             >
                 <source src={animationUrl} type="video/mp4" />
