@@ -79,13 +79,7 @@ export function ViewToggle({
                     ref={buttonRef}
                 >
                     <p>Filter</p>
-                    <FilterIcon
-                        // handleClick={() => {
-                        //     setHideFilter(!hideFilter);
-                        //     setIsFilterActive(!isFilterActive);
-                        // }}
-                        isOpen={isFilterActive}
-                    />
+                    <FilterIcon isOpen={isFilterActive} />
                 </button>
             </div>
 

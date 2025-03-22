@@ -1,16 +1,12 @@
 import "./FilterIcon.css";
 
 interface FilterIconProps {
-    // handleClick: () => void;
     isOpen: boolean;
 }
 
 export default function FilterIcon({ isOpen }: FilterIconProps) {
     return (
-        <aside
-            className={`py-1 px-1 flex items-center mt-1`}
-            // onClick={handleClick}
-        >
+        <aside className={`py-1 px-1 flex items-center mt-1`}>
             <section className="filterButton">
                 <div
                     className={`filterButton-inner ${
