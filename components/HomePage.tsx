@@ -76,7 +76,7 @@ export function HomePage({ homepageItems }: { homepageItems: HomepageItem[] }) {
     const [hoveredId, setHoveredId] = useState<string | null>(null);
 
     return (
-        <div className="grid md:grid-cols-12 md:grid-rows-[repeat(30,minmax(0,100%))] grid-rows-none grid-cols-6 gap-16 md:gap-0">
+        <div className="grid md:grid-cols-12 md:grid-rows-[repeat(30,minmax(0,100%))] grid-rows-none grid-cols-6 gap-16 md:gap-0 overflow-x-hidden">
             {homepageItems.map((item: HomepageItem, index: number) => {
                 const gridPlacement = getGridPlacement(index);
 
@@ -149,13 +149,13 @@ export function HomePage({ homepageItems }: { homepageItems: HomepageItem[] }) {
                                 <h2
                                     className={`text-sm break-words overflow-hidden whitespace-normal ${
                                         !isHorizontal &&
-                                        "max-w-[100px] md:max-w-[65px] lg:max-w-[100px]"
+                                        "max-w-[70px] md:max-w-[65px] lg:max-w-[100px]"
                                     } `}
                                 >
                                     {item.data.title}
                                 </h2>
                                 <p
-                                    className={`text-xs text-gray-500 transition-opacity duration-300 ease-in-out max-w-[100px] md:max-w-[65px] lg:max-w-[100px] ${
+                                    className={`text-xs text-gray-500 transition-opacity duration-300 ease-in-out max-w-[70px] md:max-w-[65px] lg:max-w-[100px] ${
                                         hoveredId === item.data.sys.id ||
                                         windowWidth < 1024
                                             ? "opacity-100"

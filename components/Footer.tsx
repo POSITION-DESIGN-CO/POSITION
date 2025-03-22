@@ -7,7 +7,7 @@ export async function Footer() {
         return;
     }
     return (
-        <footer className="relative mb-3 ml-4 text-xs z-10 grid sm:grid-cols-12 grid-cols-1 mr-4 xl:text-right text-left">
+        <footer className="relative mb-3 ml-4 text-xs z-[99999] grid sm:grid-cols-12 grid-cols-1 mr-4 xl:text-right text-left">
             <div className="lg:col-start-7 sm:col-start-6 col-span-1 sm:col-span-3 md:col-start-4 md:col-span-3 lg:col-span-2">
                 <p className="inline sm:block">
                     © {currentYear} Position
