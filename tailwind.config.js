@@ -19,6 +19,9 @@ module.exports = {
             },
         },
         extend: {
+            fontFamily: {
+                grotesk: ['"Normal Grotesk"', "sans-serif"],
+            },
             gridTemplateColumns: {
                 "auto-fill-100": "repeat(auto-fill, minmax(148px, 1fr))",
                 14: "repeat(14, minmax(0, 1fr))",

@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: "Normal Grotesk";
+    src: url("/fonts/Normal-GroteskRegular.woff2") format("woff2"),
+        url("/fonts/Normal-GroteskRegular.woff") format("woff"),
+        url("/fonts/Normal-GroteskRegular.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Normal Grotesk";
+    src: url("/fonts/Normal-GroteskNormal.woff2") format("woff2"),
+        url("/fonts/Normal-GroteskNormal.woff") format("woff"),
+        url("/fonts/Normal-GroteskNormal.otf") format("opentype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
 * {
     margin: 0;
     padding: 0;

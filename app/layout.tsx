@@ -45,7 +45,7 @@ export default async function RootLayout({
             <body
                 className={cn(
                     inter.className,
-                    "bg-[#F8F8F5] text-[#3B3B3B] pt-4 sm:pt-0"
+                    "bg-[#F8F8F5] text-[#3B3B3B] pt-4 sm:pt-0 font-grotesk"
                 )}
             >
                 <NavigationMenuRefProvider>
