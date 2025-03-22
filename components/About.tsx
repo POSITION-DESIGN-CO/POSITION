@@ -40,16 +40,36 @@ export const AboutComponent = ({ about }: { about: About }) => {
                     <section>
                         <h2 className="sm:mb-4 mb-2 text-lg">Contact</h2>
                         <div>
-                            <p className="text-sm">{about.contact.email}</p>
+                            <p>
+                                <a href={`mailto:${about.contact.email}`}>
+                                    {about.contact.email.replace(/@/g, "[at]")}
+                                </a>
+                            </p>
                         </div>
                     </section>
                     <section>
                         <h2 className="sm:mb-4 mb-2 text-lg">Social Media</h2>
                         <div>
-                            <p className="text-sm">{about.contact.instagram}</p>
+                            <p className="text-sm">
+                                <a
+                                    target="_blank"
+                                    href={`https://www.instagram.com/${about.contact?.instagram
+                                        ?.split("@")
+                                        .join("")}/`}
+                                >
+                                    {about.contact?.instagram}
+                                </a>
+                            </p>
                             {about.contact.secondaryIG && (
                                 <p className="text-sm">
-                                    {about.contact.secondaryIG}
+                                    <a
+                                        target="_blank"
+                                        href={`https://www.instagram.com/${about.contact?.secondaryIG
+                                            ?.split("@")
+                                            .join("")}/`}
+                                    >
+                                        {about.contact?.secondaryIG}
+                                    </a>
                                 </p>
                             )}
                         </div>
