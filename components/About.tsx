@@ -40,7 +40,7 @@ export const AboutComponent = ({ about }: { about: About }) => {
                     <section>
                         <h2 className="sm:mb-4 mb-2 text-lg">Contact</h2>
                         <div>
-                            <p>
+                            <p className="text-sm">
                                 <a href={`mailto:${about.contact.email}`}>
                                     {about.contact.email.replace(/@/g, "[at]")}
                                 </a>
