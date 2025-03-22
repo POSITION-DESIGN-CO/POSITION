@@ -96,13 +96,13 @@ export interface Project {
 export interface EditorialImage {
     sys: { id: string };
     title: string | null;
-    description: string | null;
     image: {
         url: string;
         width: number;
         height: number;
     };
     order: number;
+    description?: string | null;
 }
 
 export type HomepageItem =

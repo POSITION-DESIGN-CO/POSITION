@@ -293,7 +293,6 @@ export async function getHomepageItems(): Promise<HomepageItem[]> {
             type: "editorial" as const,
             data: {
                 ...editorial,
-                description: null,
             },
             order: editorial.order,
         })

@@ -7,6 +7,7 @@ interface EditorialImageProps {
         height: number;
     };
     title: string | null;
+    description?: string | null;
     onMouseEnter: () => void;
     onMouseLeave: () => void;
 }
@@ -14,6 +15,7 @@ interface EditorialImageProps {
 export function EditorialImage({
     image,
     title,
+    description,
     onMouseEnter,
     onMouseLeave,
 }: EditorialImageProps) {
@@ -32,6 +34,9 @@ export function EditorialImage({
             {title && (
                 <div className="mt-2">
                     <h2 className="text-sm">{title}</h2>
+                    {description && (
+                        <p className="text-xs w-3/4">{description}</p>
+                    )}
                 </div>
             )}
         </>
