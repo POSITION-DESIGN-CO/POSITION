@@ -64,7 +64,7 @@ export function ProjectGrid({
                         <p
                             className={`text-xs text-gray-500 duration-300 ease-in-out ${
                                 hoveredId !== project.sys.id &&
-                                windowWidth > 910 &&
+                                windowWidth > 1024 &&
                                 "opacity-0"
                             }`}
                         >
