@@ -9,7 +9,7 @@ export default async function ProjectsPage() {
         projectListAnimationWebm,
     } = await getPageAnimations();
     return (
-        <main className="sm:min-h-[calc(100vh-50px)] min-h-[calc(100vh-80px)] p-4">
+        <main className="sm:min-h-[calc(100vh-50px)] min-h-[calc(100vh-150px)] p-4">
             <Projects
                 animations={{
                     gridMov: projectGridAnimationMov?.url,
