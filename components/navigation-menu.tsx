@@ -23,6 +23,7 @@ export function NavigationMenu({ contact }: { contact: NavigationMenuProps }) {
     const [isOpen, setIsOpen] = useState(false);
     const [isProjectsOpen, setIsProjectsOpen] = useState(false);
     const { setCategory, categories } = useProjectsStore();
+    const [isLoading, setIsLoading] = useState(false);
 
     const menuRef = useRef<HTMLDivElement>(null);
     const buttonRef = useRef<HTMLButtonElement>(null);
@@ -50,6 +51,20 @@ export function NavigationMenu({ contact }: { contact: NavigationMenuProps }) {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, [isOpen]);
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            const hasVisited = localStorage.getItem("visited");
+            if (!hasVisited) {
+                setIsLoading(false);
+                setTimeout(() => setIsLoading(true), 1000);
+            } else {
+                setIsLoading(true);
+            }
+        }
+    }, []);
+
+    if (!isLoading) return null;
 
     return (
         <div className="relative z-[999]" ref={mainMenuRef}>
@@ -134,7 +149,7 @@ export function NavigationMenu({ contact }: { contact: NavigationMenuProps }) {
                                                 setIsProjectsOpen(false);
                                             }, 500);
                                         }}
-                                        className={`text-l hover:text-gray-400`}
+                                        className={`text-l hover:text-gray-400 transition-all duration-300`}
                                     >
                                         {categoryItem}
                                     </Link>
@@ -147,7 +162,7 @@ export function NavigationMenu({ contact }: { contact: NavigationMenuProps }) {
                     </Link>
                 </div>
 
-                <div className="mt-auto pt-8 pl-4 pb-2">
+                <div className="mt-auto pt-8 pl-4 pb-3">
                     <div className="sm:text-sm text-base">
                         <p>{contact?.location}</p>
                         <p>{contact?.phone}</p>

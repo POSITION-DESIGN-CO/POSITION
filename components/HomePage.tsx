@@ -69,20 +69,6 @@ export function HomePage({ homepageItems }: { homepageItems: HomepageItem[] }) {
                 colSpan:
                     "md:col-start-5 md:col-span-6 md:row-start-[31] md:row-span-3 col-span-5",
             },
-            // {
-            //     colSpan:
-            //         "lg:col-start-8 lg:col-span-6 lg:row-start-13 row-span-2",
-            // },
-            // {
-            //     colSpan:
-            //         "lg:col-start-4 lg:col-span-3 lg:row-start-15 lg:row-span-2",
-            // },
-            // { colSpan: "lg:col-start-9 lg:col-span-4 lg:row-start-15" },
-            // { colSpan: "lg:col-start-2 lg:col-span-6 lg:row-start-16" },
-            // {
-            //     colSpan:
-            //         "lg:col-start-10 col-span-3 lg:row-start-16 lg:row-span-2",
-            // },
         ];
         return configs[index];
     };
@@ -90,7 +76,7 @@ export function HomePage({ homepageItems }: { homepageItems: HomepageItem[] }) {
     const [hoveredId, setHoveredId] = useState<string | null>(null);
 
     return (
-        <div className="grid md:grid-cols-12 md:grid-rows-[repeat(30,minmax(0,120px))] grid-rows-none grid-cols-6 md:gap-4 gap-16">
+        <div className="grid md:grid-cols-12 2xl:grid-rows-[repeat(30,minmax(0,100%))] lg:grid-rows-[repeat(30,minmax(0,120px))] md:grid-rows-[repeat(30,minmax(0,90px))] grid-rows-none grid-cols-6 gap-10 md:gap-0 lg:gap-0 xl:gap-4 2xl:gap-y-6">
             {homepageItems.map((item: HomepageItem, index: number) => {
                 const gridPlacement = getGridPlacement(index);
 
@@ -100,9 +86,10 @@ export function HomePage({ homepageItems }: { homepageItems: HomepageItem[] }) {
                             key={`editorial-${item.data.sys.id}`}
                             className={cn(
                                 gridPlacement.colSpan,
-                                // "col-span-1",
-                                `block h-full group transition-opacity duration-300 ${
-                                    hoveredId && hoveredId !== item.data.sys.id
+                                `block h-full group transition-opacity duration-1000 ease-in-out ${
+                                    hoveredId &&
+                                    hoveredId !== item.data.sys.id &&
+                                    windowWidth > 1024
                                         ? "opacity-10"
                                         : "opacity-100"
                                 }`
@@ -111,6 +98,10 @@ export function HomePage({ homepageItems }: { homepageItems: HomepageItem[] }) {
                             <EditorialImage
                                 image={item.data.image}
                                 title={item.data.title}
+                                onMouseEnter={() =>
+                                    setHoveredId(item.data.sys.id)
+                                }
+                                onMouseLeave={() => setHoveredId(null)}
                             />
                         </div>
                     );
@@ -122,16 +113,14 @@ export function HomePage({ homepageItems }: { homepageItems: HomepageItem[] }) {
                 return (
                     <div
                         key={`project-${item.data.sys.id}`}
-                        className={cn(
-                            gridPlacement.colSpan,
-                            "relative"
-                            // "col-span-1 relative"
-                        )}
+                        className={cn(gridPlacement.colSpan, "relative")}
                     >
                         <Link
                             href={`/projects/${item.data.slug}`}
-                            className={`block h-full group transition-opacity duration-500 cursor-default ${
-                                hoveredId && hoveredId !== item.data.sys.id
+                            className={`block h-full group transition-opacity duration-1000 ease-in-out cursor-default ${
+                                hoveredId &&
+                                hoveredId !== item.data.sys.id &&
+                                windowWidth > 1024
                                     ? "opacity-20"
                                     : "opacity-100"
                             }`}
@@ -145,18 +134,6 @@ export function HomePage({ homepageItems }: { homepageItems: HomepageItem[] }) {
                                 }
                                 onMouseLeave={() => setHoveredId(null)}
                             />
-                            {/* <div className="mt-2">
-                                <h2 className="text-sm">{item.data.title}</h2>
-                                <p
-                                    className={`text-xs text-gray-500 transition-opacity duration-300 ${
-                                        hoveredId === item.data.sys.id
-                                            ? "opacity-100"
-                                            : "opacity-0"
-                                    }`}
-                                >
-                                    {item.data.category}, {item.data.year}
-                                </p>
-                            </div> */}
                             <div
                                 className={`mt-2 ${
                                     !isHorizontal
@@ -178,9 +155,9 @@ export function HomePage({ homepageItems }: { homepageItems: HomepageItem[] }) {
                                     {item.data.title}
                                 </h2>
                                 <p
-                                    className={`text-xs text-gray-500 transition-opacity duration-300 md:max-w-[120px] max-w-[70px] ${
+                                    className={`text-xs text-gray-500 transition-opacity duration-300 ease-in-out md:max-w-[120px] max-w-[70px] ${
                                         hoveredId === item.data.sys.id ||
-                                        windowWidth < 910
+                                        windowWidth < 1024
                                             ? "opacity-100"
                                             : "opacity-0"
                                     }`}
@@ -195,118 +172,3 @@ export function HomePage({ homepageItems }: { homepageItems: HomepageItem[] }) {
         </div>
     );
 }
-
-// "use client";
-
-// import Link from "next/link";
-// import { useState, useMemo } from "react";
-// import { EditorialImage } from "@/components/editorial-image";
-// import { ProjectImage } from "@/components/project-image";
-// import { cn } from "@/lib/utils";
-// import { HomepageItem } from "@/lib/contentful-models";
-
-// export function HomePage({ homepageItems }: { homepageItems: HomepageItem[] }) {
-//     const getGridPlacement = (index: number) => {
-//         const configs = [
-//             { colSpan: "md:col-start-1" },
-//             { colSpan: "md:col-start-7 place-content-center" },
-//             { colSpan: "md:col-start-6" },
-//             { colSpan: "md:col-start-1 place-content-center" },
-//             { colSpan: "md:col-start-7" },
-//             { colSpan: "md:col-start-3" },
-//             { colSpan: "md:col-start-8" },
-//             { colSpan: "md:col-start-1" },
-//             { colSpan: "md:col-start-5" },
-//             { colSpan: "md:col-start-10" },
-//         ];
-//         return configs[index % configs.length];
-//     };
-
-//     const [hoveredId, setHoveredId] = useState<string | null>(null);
-
-//     const layoutConfig = useMemo(() => {
-//         return homepageItems.map((_, index) => {
-//             const randomEditorialCols = ["col-span-3"];
-//             const randomFlat = ["col-span-4", "col-span-5", "col-span-6"];
-//             const randomPortrait = ["col-span-3", "col-span-4", "col-span-5"];
-
-//             return {
-//                 gridPlacement: getGridPlacement(index),
-//                 editorialCol:
-//                     randomEditorialCols[Math.floor(Math.random() * 1)],
-//                 flatCol: randomFlat[Math.floor(Math.random() * 3)],
-//                 portraitCol: randomPortrait[Math.floor(Math.random() * 3)],
-//             };
-//         });
-//     }, [homepageItems]);
-
-//     return (
-//         <div className="grid grid-cols-12 gap-10">
-//             {homepageItems.map((item: HomepageItem, index: number) => {
-//                 const { gridPlacement, editorialCol, flatCol, portraitCol } =
-//                     layoutConfig[index];
-
-//                 if (item.type === "editorial") {
-//                     return (
-//                         <div
-//                             key={`editorial-${item.data.sys.id}`}
-//                             className={cn(
-//                                 gridPlacement.colSpan,
-//                                 editorialCol,
-//                                 `block h-full group transition-opacity duration-300 ${
-//                                     hoveredId && hoveredId !== item.data.sys.id
-//                                         ? "opacity-10"
-//                                         : "opacity-100"
-//                                 }`
-//                             )}
-//                         >
-//                             <EditorialImage
-//                                 image={item.data.image}
-//                                 title={item.data.title}
-//                             />
-//                         </div>
-//                     );
-//                 }
-
-//                 const isHorizontal =
-//                     item.data.thumbnail.width >= item.data.thumbnail.height;
-
-//                 return (
-//                     <div
-//                         key={`project-${item.data.sys.id}`}
-//                         className={cn(
-//                             gridPlacement.colSpan,
-//                             isHorizontal ? flatCol : portraitCol
-//                         )}
-//                     >
-//                         <Link
-//                             href={`/projects/${item.data.sys.id}`}
-//                             onMouseEnter={() => setHoveredId(item.data.sys.id)}
-//                             onMouseLeave={() => setHoveredId(null)}
-//                             className={`block h-full group transition-opacity duration-300 ${
-//                                 hoveredId && hoveredId !== item.data.sys.id
-//                                     ? "opacity-10"
-//                                     : "opacity-100"
-//                             }`}
-//                         >
-//                             <ProjectImage
-//                                 thumbnail={item.data.thumbnail}
-//                                 title={item.data.title}
-//                                 isHorizontal={isHorizontal}
-//                             />
-//                             <p
-//                                 className={`text-xs text-gray-500 transition-opacity duration-300 ${
-//                                     hoveredId === item.data.sys.id
-//                                         ? "opacity-100"
-//                                         : "opacity-0"
-//                                 }`}
-//                             >
-//                                 {item.data.category}, {item.data.year}
-//                             </p>
-//                         </Link>
-//                     </div>
-//                 );
-//             })}
-//         </div>
-//     );
-// }

@@ -40,7 +40,7 @@ export function ProjectGrid({
                 <Link
                     key={project.sys.id}
                     href={`/projects/${project.slug}`}
-                    className={`group block transition-opacity duration-500 ${
+                    className={`group block transition-opacity duration-1000 ease-in-out ${
                         hoveredId && hoveredId !== project.sys.id
                             ? "opacity-20"
                             : "opacity-100"
@@ -60,7 +60,7 @@ export function ProjectGrid({
                     <div className="mt-2">
                         <h3 className="text-sm">{project.title}</h3>
                         <p
-                            className={`text-xs text-gray-500 ${
+                            className={`text-xs text-gray-500 duration-300 ease-in-out ${
                                 hoveredId !== project.sys.id &&
                                 windowWidth > 910 &&
                                 "opacity-0"
@@ -71,7 +71,9 @@ export function ProjectGrid({
                     </div>
                 </Link>
             ))}
+
             <ClientAnimation
+                grid
                 movUrl={projectGridAnimationMov}
                 webmUrl={projectGridAnimationWebm}
             />

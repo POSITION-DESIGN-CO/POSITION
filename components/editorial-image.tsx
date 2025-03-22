@@ -7,9 +7,16 @@ interface EditorialImageProps {
         height: number;
     };
     title: string | null;
+    onMouseEnter: () => void;
+    onMouseLeave: () => void;
 }
 
-export function EditorialImage({ image, title }: EditorialImageProps) {
+export function EditorialImage({
+    image,
+    title,
+    onMouseEnter,
+    onMouseLeave,
+}: EditorialImageProps) {
     return (
         <>
             <div className="relative aspect-square overflow-hidden">
@@ -17,7 +24,9 @@ export function EditorialImage({ image, title }: EditorialImageProps) {
                     src={image.url || "/placeholder.svg"}
                     alt={title || "Editorial image"}
                     fill
-                    className="w-full h-full object-cover grayscale transition-transform duration-1000 group-hover:scale-125 ease-in-out"
+                    className="w-full h-full object-cover grayscale"
+                    onMouseEnter={onMouseEnter}
+                    onMouseLeave={onMouseLeave}
                 />
             </div>
             {title && (

@@ -80,7 +80,7 @@ export default async function ProjectPage({
                     <div className="md:hidden block"></div>
                     <Link
                         href={referer}
-                        className="rounded-none text-center border-[#3B3B3B] md:border-l-0 border-l px-6 py-2 text-sm transition-all duration-300 hover:text-[#3B3B3B]"
+                        className="rounded-none text-center border-[#3B3B3B] md:border-l-0 border-l px-6 py-2 text-sm transition-all duration-300 hover:text-gray-400"
                     >
                         Back
                     </Link>
@@ -112,7 +112,9 @@ export default async function ProjectPage({
                     }
                 )}
             </div>
+
             <ClientAnimation
+                grid
                 webmUrl={projectGridAnimationWebm?.url}
                 movUrl={projectGridAnimationMov?.url}
             />

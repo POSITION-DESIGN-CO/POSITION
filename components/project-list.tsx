@@ -119,14 +119,14 @@ export function ProjectList({
                             <div className="lg:col-span-2 md:col-span-1 place-self-end hidden md:block">
                                 <span>{project.year}</span>
                             </div>
-                            {project.thumbnail &&
-                                hoveredId === project.sys.id && (
-                                    <HoverImage
-                                        image={project.thumbnail}
-                                        isVisible={hoveredId === project.sys.id}
-                                        alt={project.title}
-                                    />
-                                )}
+                            {/* {project.thumbnail &&
+                                hoveredId === project.sys.id && ( */}
+                            <HoverImage
+                                image={project.thumbnail}
+                                isVisible={hoveredId === project.sys.id}
+                                alt={project.title}
+                            />
+                            {/* )} */}
                         </Link>
                         {/* {project.thumbnail && expandedId === project.sys.id && ( */}
                         <div

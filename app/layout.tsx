@@ -38,16 +38,16 @@ export default async function RootLayout({
     return (
         <html lang="en">
             <StoreInitializer projects={allProjects} categories={categories} />
+            <FirstVisitVideo
+                webmUrl={loadingAnimationWebm?.url}
+                movUrl={loadingAnimationMov?.url}
+            />
             <body
                 className={cn(
                     inter.className,
                     "bg-[#F8F8F5] text-[#3B3B3B] pt-4 sm:pt-0"
                 )}
             >
-                <FirstVisitVideo
-                    webmUrl={loadingAnimationWebm?.url}
-                    movUrl={loadingAnimationMov?.url}
-                />
                 <NavigationMenuRefProvider>
                     <NavigationMenu contact={contact} />
                     <PageTransitionProvider>{children}</PageTransitionProvider>

@@ -38,11 +38,7 @@ export function BackgroundLine({
                     }}
                     transition={{
                         duration: 0.7,
-                        ease:
-                            isMenuOpen && !isProjectsOpen
-                                ? "circOut"
-                                : "circInOut",
-                        delay: 0.1,
+                        delay: isMenuOpen && !isProjectsOpen ? 0.2 : 0,
                     }}
                     stroke="#3B3B3B"
                     strokeWidth="1"

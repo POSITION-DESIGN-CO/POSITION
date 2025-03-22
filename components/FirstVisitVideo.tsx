@@ -43,7 +43,7 @@ export const FirstVisitVideo = ({
                     zIndex: 1000,
                     pointerEvents: "none",
                 }}
-                className="max-w-full md:max-w-xl bg-white"
+                className="max-w-full md:max-w-2xl bg-white -translate-y-5"
                 playsInline
                 muted
                 autoPlay
