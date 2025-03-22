@@ -176,6 +176,7 @@ export function ProjectList({
                                                 src={project.thumbnail.url}
                                                 alt={project.title}
                                                 className="w-full h-auto mb-3"
+                                                priority
                                             />
                                         </div>
                                         <Link
