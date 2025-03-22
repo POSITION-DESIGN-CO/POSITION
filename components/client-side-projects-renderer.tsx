@@ -24,13 +24,17 @@ export function ClientSideProjectsRenderer({
 
     return view === "grid" ? (
         <ProjectGrid
-            projects={filteredProjects}
+            projects={filteredProjects.sort(
+                (a, b) => Number(b.year) - Number(a.year)
+            )}
             projectGridAnimationMov={animations.gridMov}
             projectGridAnimationWebm={animations.gridWebm}
         />
     ) : (
         <ProjectList
-            projects={filteredProjects}
+            projects={filteredProjects.sort(
+                (a, b) => Number(b.year) - Number(a.year)
+            )}
             filterRef={filterRef}
             projectListAnimationMov={animations.listMov}
             projectListAnimationWebm={animations.listWebm}
