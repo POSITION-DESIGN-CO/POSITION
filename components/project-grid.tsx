@@ -41,7 +41,9 @@ export function ProjectGrid({
                     key={project.sys.id}
                     href={`/projects/${project.slug}`}
                     className={`group block transition-opacity duration-1000 ease-in-out ${
-                        hoveredId && hoveredId !== project.sys.id
+                        hoveredId &&
+                        hoveredId !== project.sys.id &&
+                        windowWidth > 1024
                             ? "opacity-20"
                             : "opacity-100"
                     }`}

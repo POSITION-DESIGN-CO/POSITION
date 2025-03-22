@@ -179,6 +179,7 @@ export function ProjectList({
                                             />
                                         </div>
                                         <Link
+                                            onClick={(e) => e.stopPropagation()}
                                             href={`/projects/${project.slug}`}
                                             className="rounded-none text-center border-[#3B3B3B] mb-3 border bg-white px-[20px] py-[6px] self-center text-sm transition-all duration-300 hover:text-[#3B3B3B]"
                                         >
