@@ -76,7 +76,7 @@ export function HomePage({ homepageItems }: { homepageItems: HomepageItem[] }) {
     const [hoveredId, setHoveredId] = useState<string | null>(null);
 
     return (
-        <div className="grid md:grid-cols-12 2xl:grid-rows-[repeat(30,minmax(0,100%))] lg:grid-rows-[repeat(30,minmax(0,120px))] md:grid-rows-[repeat(30,minmax(0,90px))] grid-rows-none grid-cols-6 gap-10 md:gap-0 lg:gap-0 xl:gap-4 2xl:gap-y-6">
+        <div className="grid md:grid-cols-12 md:grid-rows-[repeat(30,minmax(0,100%))] grid-rows-none grid-cols-6 gap-16 md:gap-0">
             {homepageItems.map((item: HomepageItem, index: number) => {
                 const gridPlacement = getGridPlacement(index);
 
@@ -149,13 +149,13 @@ export function HomePage({ homepageItems }: { homepageItems: HomepageItem[] }) {
                                 <h2
                                     className={`text-sm break-words overflow-hidden whitespace-normal ${
                                         !isHorizontal &&
-                                        "md:max-w-[90px] max-w-[70px]"
+                                        "max-w-[100px] md:max-w-[65px] lg:max-w-[100px]"
                                     } `}
                                 >
                                     {item.data.title}
                                 </h2>
                                 <p
-                                    className={`text-xs text-gray-500 transition-opacity duration-300 ease-in-out md:max-w-[120px] max-w-[70px] ${
+                                    className={`text-xs text-gray-500 transition-opacity duration-300 ease-in-out max-w-[100px] md:max-w-[65px] lg:max-w-[100px] ${
                                         hoveredId === item.data.sys.id ||
                                         windowWidth < 1024
                                             ? "opacity-100"

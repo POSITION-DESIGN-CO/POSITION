@@ -80,10 +80,10 @@ export function ViewToggle({
                 >
                     <p>Filter</p>
                     <FilterIcon
-                        handleClick={() => {
-                            setHideFilter(!hideFilter);
-                            setIsFilterActive(!isFilterActive);
-                        }}
+                        // handleClick={() => {
+                        //     setHideFilter(!hideFilter);
+                        //     setIsFilterActive(!isFilterActive);
+                        // }}
                         isOpen={isFilterActive}
                     />
                 </button>
