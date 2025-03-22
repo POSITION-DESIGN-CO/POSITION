@@ -73,10 +73,9 @@ export function NavigationMenu({ contact }: { contact: NavigationMenuProps }) {
                     className={`md:w-80 w-[calc(100vw-32px)] flex items-center justify-between border-t border-x bg-white border-[#3B3B3B] px-4 py-2 text-sm`}
                     ref={buttonRef}
                 >
-                    <span className="text-xl">
+                    <span>
                         <Link
                             href={`/`}
-                            className={`text-l`}
                             onClick={() => {
                                 setIsOpen(false);
                                 setTimeout(() => {
@@ -114,7 +113,7 @@ export function NavigationMenu({ contact }: { contact: NavigationMenuProps }) {
                 }`}
                 ref={menuRef}
             >
-                <div className="flex flex-col p-4 pt-24 w-full">
+                <div className="flex flex-col p-[14px] pt-24 w-full">
                     <BackgroundLine
                         isMenuOpen={isOpen}
                         isProjectsOpen={isProjectsOpen}
@@ -162,7 +161,7 @@ export function NavigationMenu({ contact }: { contact: NavigationMenuProps }) {
                     </Link>
                 </div>
 
-                <div className="mt-auto pt-8 pl-4 pb-3">
+                <div className="mt-auto pt-8 pl-[14px] pb-3">
                     <div className="sm:text-sm text-base">
                         <p>{contact?.location}</p>
                         <p>{contact?.phone}</p>
