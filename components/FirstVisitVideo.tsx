@@ -47,7 +47,6 @@ export const FirstVisitVideo = ({
                 playsInline
                 muted
                 autoPlay
-                loop
                 controlsList="nodownload nofullscreen noremoteplayback"
             >
                 {movUrl && (
