@@ -27,7 +27,20 @@ export function NavigationMenu({ contact }: { contact: NavigationMenuProps }) {
 
     const menuRef = useRef<HTMLDivElement>(null);
     const buttonRef = useRef<HTMLButtonElement>(null);
+    const projectsContainerRef = useRef<HTMLDivElement>(null);
     const mainMenuRef = useNavigationMenuRef();
+
+    const calcContainerHeight = () => {
+        if (projectsContainerRef.current) {
+            const height = Array.from(
+                projectsContainerRef.current.children
+            ).reduce((acc, child) => {
+                return acc + (child as HTMLElement).offsetHeight;
+            }, 0);
+            return height;
+        }
+        return 0;
+    };
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -84,15 +97,6 @@ export function NavigationMenu({ contact }: { contact: NavigationMenuProps }) {
                             }}
                         >
                             <Logo />
-                            {/* POSITIO
-                            <span
-                                style={{
-                                    transform: "scale(-1,1)",
-                                    display: "inline-block",
-                                }}
-                            >
-                                N
-                            </span> */}
                         </Link>
                     </span>
                     <MenuIcon
@@ -125,9 +129,13 @@ export function NavigationMenu({ contact }: { contact: NavigationMenuProps }) {
                         Projects
                     </button>
                     <div
-                        className={`overflow-hidden transition-[max-height] duration-300 ease-in-out ${
-                            isProjectsOpen ? "max-h-screen" : "max-h-0"
-                        }`}
+                        className={`overflow-hidden transition-[max-height] duration-700 ease-in-out`}
+                        style={{
+                            maxHeight: isProjectsOpen
+                                ? calcContainerHeight()
+                                : 0,
+                        }}
+                        ref={projectsContainerRef}
                     >
                         {categories.length &&
                             categories?.map((categoryItem, index) => (
