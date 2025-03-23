@@ -46,31 +46,40 @@ export default async function ProjectPage({
                         <p className="text-gray-400">Project</p>
                         <p className="text-gray-400">Year</p>
                         <p className="text-gray-400">Category</p>
-                        <p className="text-gray-400">Location</p>
-                        <p className="text-gray-400">Position</p>
-                        <p className="text-gray-400">Team</p>
+                        {project.location && (
+                            <p className="text-gray-400">Location</p>
+                        )}
+                        {project.position && (
+                            <p className="text-gray-400">Position</p>
+                        )}
+                        {project.team?.length && (
+                            <p className="text-gray-400">Team</p>
+                        )}
                     </aside>
                     <aside className="sm:col-span-4 col-span-2 self-end">
                         <p>{project.title}</p>
                         <p>{project.year}</p>
                         <p>{project.category}</p>
-                        <p>{project.location}</p>
-                        <p>{project.position}</p>
-                        <ul className="flex gap-0 flex-col sm:flex-row sm:gap-1">
-                            {project.team?.map(
-                                (person: string, index: number) => (
-                                    <li key={person}>
-                                        <span>
-                                            {person}
-                                            {project.team &&
-                                                index !==
-                                                    project.team.length - 1 &&
-                                                ","}{" "}
-                                        </span>
-                                    </li>
-                                )
-                            )}
-                        </ul>
+                        {project.location && <p>{project.location}</p>}
+                        {project.position && <p>{project.position}</p>}
+                        {project.team?.length && (
+                            <ul className="flex gap-0 flex-col sm:flex-row sm:gap-1">
+                                {project.team?.map(
+                                    (person: string, index: number) => (
+                                        <li key={person}>
+                                            <span>
+                                                {person}
+                                                {project.team &&
+                                                    index !==
+                                                        project.team.length -
+                                                            1 &&
+                                                    ","}{" "}
+                                            </span>
+                                        </li>
+                                    )
+                                )}
+                            </ul>
+                        )}
                     </aside>
                 </section>
             </div>
