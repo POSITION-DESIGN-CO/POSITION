@@ -3,9 +3,9 @@ import {
     getHomepageItems,
     getPageAnimations,
 } from "@/lib/contentful";
-import { HomePage } from "@/components/HomePage";
+import { HomePage } from "@/components/Home/HomePage";
 import type { HomepageItem } from "@/lib/contentful-models";
-import ClientAnimation from "@/components/ClientAnimation";
+import ClientAnimation from "@/components/Animations/ClientAnimation";
 
 export default async function Home() {
     const homepageItems: HomepageItem[] = await getHomepageItems();

@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
-import TimeToggle from "./time-toggle";
-import FounderBio from "./founder-bio";
+import TimeToggle from "./TimeToggle";
+import FounderBio from "./FounderBio";
 import { Fragment, useState } from "react";
-import AwardsPublications from "./awards-publications";
+import AwardsPublications from "./AwardsPublications";
 import { About } from "@/lib/contentful-models";
 import getWindowDimensions from "@/lib/helper";
 

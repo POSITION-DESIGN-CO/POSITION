@@ -1,6 +1,6 @@
 import { getAbout, getPageAnimations } from "@/lib/contentful";
-import { AboutComponent } from "@/components/About";
-import ClientAnimation from "@/components/ClientAnimation";
+import { AboutComponent } from "@/components/About/About";
+import ClientAnimation from "@/components/Animations/ClientAnimation";
 
 export default async function AboutPage() {
     const about = await getAbout();

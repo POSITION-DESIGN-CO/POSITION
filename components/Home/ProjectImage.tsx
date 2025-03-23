@@ -34,6 +34,7 @@ export function ProjectImage({
                     src={thumbnail.url || "/placeholder.svg"}
                     alt={title || "Editorial image"}
                     fill
+                    priority
                     className="w-full h-full object-cover transition-transform duration-300 cursor-pointer"
                 />
             </div>

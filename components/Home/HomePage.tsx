@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useState, useMemo } from "react";
-import { EditorialImage } from "@/components/editorial-image";
-import { ProjectImage } from "@/components/project-image";
+import { EditorialImage } from "@/components/Home/EditorialImage";
+import { ProjectImage } from "@/components/Home/ProjectImage";
 import { cn } from "@/lib/utils";
 import { HomepageItem } from "@/lib/contentful-models";
 import GetWindowDimensions from "@/lib/helper";

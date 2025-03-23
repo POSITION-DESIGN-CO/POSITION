@@ -3,11 +3,11 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../styles/index.css";
 import { cn } from "@/lib/utils";
-import { NavigationMenu } from "@/components/navigation-menu";
-import { Footer } from "@/components/Footer";
-import { PageTransitionProvider } from "@/components/page-transition";
-import { FirstVisitVideo } from "@/components/FirstVisitVideo";
-import { StoreInitializer } from "@/components/store-initializer";
+import { NavigationMenu } from "@/components/Navigation/NavigationMenu";
+import { Footer } from "@/components/Navigation/Footer";
+import { PageTransitionProvider } from "@/components/PageTransition";
+import { FirstVisitVideo } from "@/components/Animations/FirstVisitVideo";
+import { StoreInitializer } from "@/components/StoreInitializer";
 import {
     getPageAnimations,
     getProjects,

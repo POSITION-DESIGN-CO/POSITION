@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import MenuIcon from "./MenuIcon/MenuIcon";
-import { BackgroundLine } from "./BackgroundLine/BackgroundLine";
+import MenuIcon from "../MenuIcon/MenuIcon";
+import { BackgroundLine } from "../BackgroundLine/BackgroundLine";
 import { useProjectsStore } from "@/store";
 import { useNavigationMenuRef } from "@/lib/useNavigationMenuRef";
 import { Logo } from "./Logo";

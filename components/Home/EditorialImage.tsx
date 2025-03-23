@@ -29,6 +29,7 @@ export function EditorialImage({
                     className="w-full h-full object-cover grayscale"
                     onMouseEnter={onMouseEnter}
                     onMouseLeave={onMouseLeave}
+                    priority
                 />
             </div>
             {title && (

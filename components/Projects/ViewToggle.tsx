@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Fragment, RefObject, useEffect, useRef, useState } from "react";
-import FilterIcon from "./FilterIcon/FilterIcon";
+import FilterIcon from "../FilterIcon/FilterIcon";
 import { useProjectsStore } from "@/store";
 import GetWindowDimensions from "@/lib/helper";
 

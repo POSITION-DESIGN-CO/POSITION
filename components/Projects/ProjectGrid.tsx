@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import GetWindowDimensions from "@/lib/helper";
-import ClientAnimation from "./ClientAnimation";
+import ClientAnimation from "../Animations/ClientAnimation";
 
 type Project = {
     sys: { id: string };
@@ -57,6 +57,7 @@ export function ProjectGrid({
                             width={project.thumbnail.width}
                             height={project.thumbnail.height}
                             className="transition-transform duration-300"
+                            priority
                         />
                     </div>
                     <div className="mt-2">

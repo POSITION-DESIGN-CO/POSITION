@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { Fragment, RefObject, useEffect, useRef, useState } from "react";
-import { HoverImage } from "./hover-image";
+import { HoverImage } from "./HoverImage";
 import Image from "next/image";
 import { useNavigationMenuRef } from "@/lib/useNavigationMenuRef";
-import ClientAnimation from "./ClientAnimation";
+import ClientAnimation from "../Animations/ClientAnimation";
 
 type Project = {
     sys: { id: string };

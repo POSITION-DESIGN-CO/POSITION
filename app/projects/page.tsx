@@ -1,4 +1,4 @@
-import Projects from "@/components/Projects";
+import Projects from "@/components/Projects/Projects";
 import { getPageAnimations } from "@/lib/contentful";
 
 export default async function ProjectsPage() {

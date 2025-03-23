@@ -2,7 +2,7 @@ import Image from "next/image";
 import { getPageAnimations, getProjectBySlug } from "@/lib/contentful";
 import Link from "next/link";
 import { headers } from "next/headers";
-import ClientAnimation from "@/components/ClientAnimation";
+import ClientAnimation from "@/components/Animations/ClientAnimation";
 
 interface Image {
     title: string;
