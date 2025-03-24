@@ -25,10 +25,10 @@ export function ViewToggle({
             if (
                 isFilterActive &&
                 menuRef.current &&
-                filterRef.current &&
+                // filterRef.current &&
                 buttonRef.current &&
                 !menuRef.current.contains(event.target as Node) &&
-                !filterRef.current.contains(event.target as Node) &&
+                // !filterRef.current.contains(event.target as Node) &&
                 !buttonRef.current.contains(event.target as Node)
             ) {
                 setIsFilterActive(false);
