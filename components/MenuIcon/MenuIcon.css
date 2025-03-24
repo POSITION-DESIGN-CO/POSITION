@@ -36,23 +36,28 @@
     transform: translate(-50%, -3px) rotate(0);
 }
 
-.closed:hover #line1 {
-    transform: translate(-50%, 5px) rotate(0);
-}
-
-.closed:hover #line2 {
-    transform: translate(-50%, -5px) rotate(0);
-}
-
 .open #line1 {
     transform: translate(-50%) rotate(-135deg);
 }
 
-.open #line2,
-.open:hover #line1 {
+.open #line2 {
     transform: translate(-50%) rotate(-45deg);
 }
 
-.open:hover #line2 {
-    transform: translate(-50%) rotate(45deg);
+@media not all and (hover: none) and (pointer: coarse) {
+    .closed:hover #line1 {
+        transform: translate(-50%, 5px) rotate(0);
+    }
+
+    .closed:hover #line2 {
+        transform: translate(-50%, -5px) rotate(0);
+    }
+
+    .open:hover #line1 {
+        transform: translate(-50%) rotate(-45deg);
+    }
+
+    .open:hover #line2 {
+        transform: translate(-50%) rotate(45deg);
+    }
 }

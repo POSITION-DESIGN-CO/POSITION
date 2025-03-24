@@ -39,14 +39,17 @@
 .filterButton .closed #line1 {
     transform: rotate(90deg);
 }
-.filter:hover .filterButton .closed #line1 {
-    transform: rotate(-90deg);
-}
 
 .filterButton .closed #line2 {
     transform: rotate(0deg);
 }
 
-.filter:hover .filterButton .closed #line2 {
-    transform: rotate(-180deg);
+@media not all and (hover: none) and (pointer: coarse) {
+    .filter:hover .filterButton .closed #line1 {
+        transform: rotate(-90deg);
+    }
+
+    .filter:hover .filterButton .closed #line2 {
+        transform: rotate(-180deg);
+    }
 }
