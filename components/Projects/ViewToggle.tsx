@@ -16,7 +16,7 @@ export function ViewToggle({
     const buttonClasses =
         "rounded-none border-r border-[#3B3B3B] px-2 py-2 text-sm transition-all duration-300 hover:text-[#3B3B3B]";
 
-    const menuRef = useRef<HTMLDivElement>(null);
+    // const menuRef = useRef<HTMLDivElement>(null);
     const buttonRef = useRef<HTMLButtonElement>(null);
     const { windowWidth } = GetWindowDimensions();
 
@@ -24,10 +24,10 @@ export function ViewToggle({
         const handleClickOutside = (event: MouseEvent) => {
             if (
                 isFilterActive &&
-                menuRef.current &&
+                // menuRef.current &&
                 // filterRef.current &&
                 buttonRef.current &&
-                !menuRef.current.contains(event.target as Node) &&
+                // !menuRef.current.contains(event.target as Node) &&
                 // !filterRef.current.contains(event.target as Node) &&
                 !buttonRef.current.contains(event.target as Node)
             ) {
@@ -87,7 +87,7 @@ export function ViewToggle({
                 className={`-z-10 lg:z-50 absolute md:top-[38px] lg:relative right-0 flex flex-nowrap flex-col lg:flex-row lg:w-full md:w-[calc(324px/3)] w-[calc(calc(100vw-28px)/3)] bg-white border border-[#3B3B3B] -mt-[1px] justify-self-end transition-all duration-300 ease-in-out ${
                     isFilterActive ? "" : ""
                 }`}
-                ref={menuRef}
+                // ref={menuRef}
                 style={{
                     visibility: hideFilter ? "hidden" : "visible",
                     transform:
