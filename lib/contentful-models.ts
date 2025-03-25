@@ -71,6 +71,7 @@ export interface Project {
     year: string;
     thumbnail: {
         url: string;
+        blurDataURL: string;
         width: number;
         height: number;
     };

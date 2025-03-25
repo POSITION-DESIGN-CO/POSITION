@@ -1,9 +1,12 @@
+import { dynamicBlurDataUrl } from "@/lib/helper";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 interface ProjectImageProps {
     thumbnail: {
         url: string;
+        blurDataURL: string;
         width: number;
         height: number;
     };
@@ -25,16 +28,17 @@ export function ProjectImage({
             <div
                 className={cn(
                     isHorizontal ? "aspect-[5/3]" : "aspect-[4/5]",
-                    "relative overflow-hidden"
+                    "relative overflow-hidden bg-neutral-300" // fallback color
                 )}
             >
                 <Image
                     onMouseEnter={onMouseEnter}
                     onMouseLeave={onMouseLeave}
+                    blurDataURL={thumbnail.blurDataURL || ""}
+                    placeholder={thumbnail.blurDataURL ? "blur" : "empty"}
                     src={thumbnail.url || "/placeholder.svg"}
                     alt={title || "Editorial image"}
                     fill
-                    priority
                     className="w-full h-full object-cover transition-transform duration-300 cursor-pointer"
                 />
             </div>

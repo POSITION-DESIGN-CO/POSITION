@@ -3,6 +3,7 @@
 import { useRef, useEffect } from "react";
 import { useProjectsStore } from "@/store";
 import type { Project } from "@/lib/contentful-models";
+import { dynamicBlurDataUrl } from "@/lib/helper";
 
 interface StoreInitializerProps {
     projects: Project[];

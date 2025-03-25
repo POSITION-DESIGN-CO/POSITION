@@ -73,7 +73,7 @@ export async function getAbout(): Promise<About> {
                 id
               }
               studioImage {
-              url
+              url(transform: {width: 1400})
               title
               width
               height
@@ -133,7 +133,7 @@ export async function getEditorialImages() {
           title
           description
           image {
-            url
+            url(transform: {width: 1400})
             width
             height
           }
@@ -159,7 +159,11 @@ export async function getProjects() {
             description
             category
             year
-            thumbnail { url width height }
+            thumbnail {         
+              url(transform: {width: 1400})
+              width 
+              height 
+              }
             location
             order
             featured
@@ -185,12 +189,16 @@ export async function getProjectBySlug(slug: string): Promise<Project> {
             position
             team
             year
-            thumbnail { url width height }
+            thumbnail {         
+              url(transform: {width: 1400})
+              width 
+              height 
+              }            
             location
             galleryCollection {
               items {
                 title
-                url
+                url(transform: {width: 1400})
                 width
                 height
                 sys { id }
@@ -201,7 +209,24 @@ export async function getProjectBySlug(slug: string): Promise<Project> {
       }
     `;
     const data = await fetchFromContentful(query);
-    return data?.projectCollection.items[0] || null;
+    const project = data?.projectCollection?.items[0] || [];
+
+    const projectsWithBlur = await Promise.all(
+        project.galleryCollection.items.map(async (project: any) => {
+            const blurDataURL = await dynamicBlurDataUrl(project.url);
+            return {
+                ...project,
+                blurDataURL,
+            };
+        })
+    );
+    const projects = {
+        ...project,
+        galleryCollection: { items: projectsWithBlur },
+    };
+
+    return projects || null;
+    // return data?.projectCollection.items[0] || null;
     // const project = dummyProjects.projectCollection.items.find(
     //     (project) => project.sys.id === id
     // );
@@ -220,7 +245,11 @@ export async function getProjectsByCategory(category: string) {
             title
             category
             year
-            thumbnail { url width height }
+            thumbnail {               
+              url(transform: {width: 800})
+              width 
+              height 
+            }
             location
           }
         }
@@ -235,14 +264,34 @@ export async function getProjectsByCategory(category: string) {
             title
             category
             year
-            thumbnail { url width height }
+            thumbnail {               
+              url(transform: {width: 800})
+              width 
+              height 
+            }
             location
           }
         }
       }
     `;
     const data = await fetchFromContentful(query);
-    return data?.projectCollection || { items: [] };
+    const projects = data?.projectCollection?.items || [];
+
+    const projectsWithBlur = await Promise.all(
+        projects.map(async (project: any) => {
+            const blurDataURL = await dynamicBlurDataUrl(project.thumbnail.url);
+            return {
+                ...project,
+                thumbnail: {
+                    ...project.thumbnail,
+                    blurDataURL,
+                },
+            };
+        })
+    );
+
+    return { items: projectsWithBlur };
+    // return data?.projectCollection || { items: [] };
     // if (category === "All") {
     //     return dummyProjects.projectCollection;
     // }
@@ -280,13 +329,32 @@ export async function getHomepageItems(): Promise<HomepageItem[]> {
         getEditorialImages(),
     ]);
 
-    const projectItems: HomepageItem[] = projectsData.items
-        .filter((project: any) => project.featured)
-        .map((project: any) => ({
-            type: "project" as const,
-            data: project,
-            order: project.order || 999,
-        }));
+    let allProjectItemsPromise = [];
+
+    const projectItems = projectsData.items.filter(
+        (project: any) => project.featured
+    );
+
+    for (const item of projectItems) {
+        allProjectItemsPromise.push(
+            (async () => {
+                const blurDataURL = await dynamicBlurDataUrl(
+                    item.thumbnail.url
+                );
+                return {
+                    type: "project" as const,
+                    data: {
+                        ...item,
+                        thumbnail: {
+                            ...item.thumbnail,
+                            blurDataURL: blurDataURL,
+                        },
+                    },
+                    order: item.order || 999,
+                };
+            })()
+        );
+    }
 
     const editorialItems: HomepageItem[] = editorialData.items.map(
         (editorial: any) => ({
@@ -298,8 +366,37 @@ export async function getHomepageItems(): Promise<HomepageItem[]> {
         })
     );
 
-    return [...projectItems, ...editorialItems].sort(
-        (a, b) => a.order - b.order
-    );
+    return [
+        ...(await Promise.all(allProjectItemsPromise)),
+        ...editorialItems,
+    ].sort((a, b) => a.order - b.order);
     // return [...projectItems].sort((a, b) => a.order - b.order);
+}
+
+export async function dynamicBlurDataUrl(url: string) {
+    try {
+        const res = await fetch(`${url}&w=32&q=70`);
+        const buffer = await res.arrayBuffer();
+        const base64 = Buffer.from(buffer).toString("base64");
+
+        const blurSvg = `
+          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 10'>
+            <filter id='b' color-interpolation-filters='sRGB'>
+              <feGaussianBlur stdDeviation='0.5' />
+            </filter>
+
+            <image preserveAspectRatio='none' filter='url(#b)' x='0' y='0' height='100%' width='100%' 
+            href='data:image/avif;base64,${base64}' />
+          </svg>
+        `;
+
+        const toBase64 = (str: string) =>
+            typeof window === "undefined"
+                ? Buffer.from(str).toString("base64")
+                : window.btoa(str);
+
+        return `data:image/svg+xml;base64,${toBase64(blurSvg)}`;
+    } catch (e) {
+        console.error(e);
+    }
 }

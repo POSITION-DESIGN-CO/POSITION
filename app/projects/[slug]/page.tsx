@@ -4,9 +4,10 @@ import Link from "next/link";
 import { headers } from "next/headers";
 import ClientAnimation from "@/components/Animations/ClientAnimation";
 
-interface Image {
+interface ImageProps {
     title: string;
     url: string;
+    blurDataURL?: string;
     width: number;
     height: number;
     sys: { id: string };
@@ -98,14 +99,17 @@ export default async function ProjectPage({
 
             <div className="gap-2 grid md:grid-cols-12">
                 {project.galleryCollection.items.map(
-                    (image: Image, index: number) => {
+                    (image: ImageProps, index: number) => {
                         return (
                             <div
                                 key={image.sys.id}
                                 className="lg:col-start-3 lg:col-span-8 sm:col-start-2 col-start-1 col-span-10 my-3 flex justify-center"
                             >
                                 <Image
-                                    priority
+                                    blurDataURL={image.blurDataURL || ""}
+                                    placeholder={
+                                        image.blurDataURL ? "blur" : "empty"
+                                    }
                                     src={image.url || "/placeholder.svg"}
                                     alt={image.title}
                                     width={image.width}

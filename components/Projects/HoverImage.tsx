@@ -3,14 +3,15 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-interface ImageDimensions {
+interface ImageProps {
     width: number;
     height: number;
     url: string;
+    blurDataURL?: string;
 }
 
 interface HoverImageProps {
-    image: ImageDimensions;
+    image: ImageProps;
     isVisible: boolean;
     alt: string;
 }
@@ -68,6 +69,8 @@ export function HoverImage({ image, isVisible, alt }: HoverImageProps) {
                 height={image.height}
                 style={getImageStyle()}
                 className="object-contain"
+                blurDataURL={image.blurDataURL || ""}
+                placeholder={image.blurDataURL ? "blur" : "empty"}
                 priority
             />
         </div>

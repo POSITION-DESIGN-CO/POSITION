@@ -13,6 +13,7 @@ type Project = {
     slug: string;
     year: string;
     thumbnail: {
+        blurDataURL: string;
         url: string;
         width: number;
         height: number;
@@ -57,6 +58,10 @@ export function ProjectGrid({
                             width={project.thumbnail.width}
                             height={project.thumbnail.height}
                             className="transition-transform duration-300"
+                            blurDataURL={project.thumbnail.blurDataURL || ""}
+                            placeholder={
+                                project.thumbnail.blurDataURL ? "blur" : "empty"
+                            }
                             priority
                         />
                     </div>
