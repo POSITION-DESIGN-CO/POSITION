@@ -56,14 +56,14 @@ export default async function ProjectPage({
                             <p className="text-gray-400">Team</p>
                         )}
                     </aside>
-                    <aside className="sm:col-span-4 col-span-2 self-end">
+                    <aside className="sm:col-span-4 col-span-2 self-start">
                         <p>{project.title}</p>
                         <p>{project.year}</p>
                         <p>{project.category}</p>
                         {project.location && <p>{project.location}</p>}
                         {project.position && <p>{project.position}</p>}
                         {project.team?.length && (
-                            <ul className="flex gap-0 flex-col sm:flex-row sm:gap-1">
+                            <ul className="flex gap-0 flex-wrap flex-col sm:flex-row sm:gap-x-1">
                                 {project.team?.map(
                                     (person: string, index: number) => (
                                         <li key={person}>
