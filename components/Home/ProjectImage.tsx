@@ -28,7 +28,7 @@ export function ProjectImage({
             <div
                 className={cn(
                     isHorizontal ? "aspect-[5/3]" : "aspect-[4/5]",
-                    "relative overflow-hidden bg-neutral-300" // fallback color
+                    "relative overflow-hidden bg-neutral-300"
                 )}
             >
                 <Image
