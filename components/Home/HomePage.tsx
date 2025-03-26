@@ -98,6 +98,7 @@ export function HomePage({ homepageItems }: { homepageItems: HomepageItem[] }) {
                             <EditorialImage
                                 image={item.data.image}
                                 title={item.data.title}
+                                link={item.data.link}
                                 description={item.data?.description}
                                 onMouseEnter={() =>
                                     setHoveredId(item.data.sys.id)

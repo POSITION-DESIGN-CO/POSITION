@@ -103,6 +103,7 @@ export interface EditorialImage {
         height: number;
     };
     order: number;
+    link: string;
     description?: string | null;
 }
 

@@ -132,6 +132,7 @@ export async function getEditorialImages() {
           }
           title
           description
+          link
           image {
             url(transform: {width: 1400})
             width
