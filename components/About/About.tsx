@@ -19,7 +19,7 @@ export const AboutComponent = ({ about }: { about: About }) => {
             {/* Studio Description */}
             <section className="lg:col-start-3 lg:col-span-8 col-start-2 col-span-10">
                 <div className="text-sm pt-2 lg:p-0 mt-24">
-                    <p className="lg:text-lg leading-[1.3]">
+                    <p className="lg:text-lg" style={{ lineHeight: 1.3 }}>
                         {about.description}
                     </p>
                 </div>
