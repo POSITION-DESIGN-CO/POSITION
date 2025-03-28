@@ -2,16 +2,19 @@
 
 import getWindowDimensions from "@/lib/helper";
 import { useEffect, useRef, useState } from "react";
+
 interface ClientAnimationProps {
     webmUrl?: string;
     movUrl?: string;
     grid?: boolean;
+    hasNoGradient?: boolean;
 }
 
 export default function ClientAnimation({
     webmUrl,
     movUrl,
     grid,
+    hasNoGradient,
 }: ClientAnimationProps) {
     if (!webmUrl && !movUrl) return null;
     const { windowWidth } = getWindowDimensions();
@@ -39,9 +42,11 @@ export default function ClientAnimation({
 
     return (
         <div
-            className={`fixed bottom-0 left-0 w-screen sm:h-48 h-48 z-50 bg-gradient-to-t from-[#F8F8F5] via-[#F8F8F5]/60 to-transparent transition-opacity duration-1000 ease-in-out ${
-                showAnimation && !isEnded ? "opacity-100" : "opacity-0"
-            }`}
+            className={`fixed bottom-0 left-0 ${
+                (hasNoGradient && windowWidth < 639) || !hasNoGradient
+                    ? "w-screen sm:h-48 h-48 z-50 bg-gradient-to-t from-[#F8F8F5] via-[#F8F8F5]/60 to-transparent transition-opacity duration-1000 ease-in-out"
+                    : ""
+            } ${showAnimation && !isEnded ? "opacity-100" : "opacity-0"}`}
             style={{
                 opacity: showAnimation && !isEnded ? 1 : 0,
                 display: hideContainer ? "none" : "block",

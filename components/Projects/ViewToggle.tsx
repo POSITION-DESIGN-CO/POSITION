@@ -92,11 +92,11 @@ export function ViewToggle({
                     visibility: hideFilter ? "hidden" : "visible",
                     transform:
                         windowWidth > 1024 && categories && !isFilterActive
-                            ? "translateX(30%)"
+                            ? "translateX(5%)"
                             : windowWidth < 1024 &&
                               categories &&
                               !isFilterActive
-                            ? "translateY(-30%)"
+                            ? "translateY(-20%)"
                             : "translateX(0%) translateY(0%)",
                     opacity: categories && isFilterActive ? 1 : 0,
                 }}

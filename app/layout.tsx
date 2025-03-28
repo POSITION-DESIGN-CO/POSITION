@@ -22,6 +22,46 @@ export const metadata: Metadata = {
     title: "POSITION | Architecture Studio",
     description:
         "An architectural practice that explores ideas across disciplines and scales",
+
+    twitter: {
+        card: "summary_large_image",
+        title: "POSITION | Architecture Studio",
+        description:
+            "An architectural practice that explores ideas across disciplines and scales",
+
+        images: [
+            {
+                url: "/og/openGraph.png",
+            },
+        ],
+    },
+    openGraph: {
+        title: "POSITION | Architecture Studio",
+        description:
+            "An architectural practice that explores ideas across disciplines and scales",
+
+        images: [
+            {
+                url: "/og/openGraph.png",
+            },
+        ],
+    },
+    icons: {
+        icon: [
+            {
+                url: "/favicon/favicon-96x96.png",
+                type: "image/png",
+                sizes: "96x96",
+            },
+        ],
+        apple: { url: "/favicon/apple-touch-icon.png", sizes: "180x180" },
+        other: {
+            rel: "mask-icon",
+            url: "/favicon/safari-pinned-tab.svg",
+            color: "#5bbad5",
+        },
+    },
+    themeColor: "#ffffff",
 };
 
 export default async function RootLayout({

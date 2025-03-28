@@ -15,9 +15,14 @@ export interface Animations {
 
 export default function Projects({ animations }: { animations: Animations }) {
     const filterRef = useRef<HTMLDivElement>(null);
-    const { view, getFilteredProjects, category } = useProjectsStore();
+    const { view, setView, getFilteredProjects, category } = useProjectsStore();
     const filteredProjects = getFilteredProjects();
     const [projects, setProjects] = useState(filteredProjects);
+    const [isHydrated, setIsHydrated] = useState(false);
+
+    useEffect(() => {
+        setIsHydrated(true);
+    }, []);
 
     useEffect(() => {
         async function fetchProjects() {
@@ -27,12 +32,20 @@ export default function Projects({ animations }: { animations: Animations }) {
         fetchProjects();
     }, [category]);
 
+    useEffect(() => {
+        setView("grid");
+    }, []);
+
     if (!filteredProjects) {
         return (
             <main className="min-h-[calc(100vh-50px)] flex justify-center items-center p-8">
                 <h1 className="text-xl">no project found...</h1>
             </main>
         );
+    }
+
+    if (!isHydrated) {
+        return null;
     }
 
     return (

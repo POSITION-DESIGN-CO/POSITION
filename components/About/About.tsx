@@ -2,7 +2,7 @@
 import Image from "next/image";
 import TimeToggle from "./TimeToggle";
 import FounderBio from "./FounderBio";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import AwardsPublications from "./AwardsPublications";
 import { About } from "@/lib/contentful-models";
 import getWindowDimensions from "@/lib/helper";
@@ -10,6 +10,15 @@ import getWindowDimensions from "@/lib/helper";
 export const AboutComponent = ({ about }: { about: About }) => {
     const [selectedBio, setSeletedBio] = useState("");
     const { windowWidth } = getWindowDimensions();
+    const [isHydrated, setIsHydrated] = useState(false);
+
+    useEffect(() => {
+        setIsHydrated(true);
+    }, []);
+
+    if (!isHydrated) {
+        return null;
+    }
 
     return (
         <>
@@ -17,7 +26,7 @@ export const AboutComponent = ({ about }: { about: About }) => {
                 <TimeToggle />
             </div>
             {/* Studio Description */}
-            <section className="lg:col-start-3 lg:col-span-8 col-start-2 col-span-10">
+            <section className="lg:col-start-3 lg:col-span-8 col-start-1 col-span-10">
                 <div className="text-sm pt-2 lg:p-0 mt-24">
                     <p className="lg:text-lg" style={{ lineHeight: 1.3 }}>
                         {about.description}
@@ -36,22 +45,26 @@ export const AboutComponent = ({ about }: { about: About }) => {
                 </div>
 
                 {/* Contact */}
-                <div className="grid grid-cols-2">
-                    <section>
+                <div className="grid grid-cols-8">
+                    <section className="sm:col-span-4 col-span-5">
                         <h2 className="sm:mb-4 mb-2 text-lg">Contact</h2>
                         <div>
                             <p className="text-sm">
-                                <a href={`mailto:${about.contact.email}`}>
+                                <a
+                                    className="hover:text-gray-400 transition-all duration-300"
+                                    href={`mailto:${about.contact.email}`}
+                                >
                                     {about.contact.email.replace(/@/g, "[at]")}
                                 </a>
                             </p>
                         </div>
                     </section>
-                    <section>
+                    <section className="sm:col-span-4 col-span-3">
                         <h2 className="sm:mb-4 mb-2 text-lg">Social Media</h2>
                         <div>
                             <p className="text-sm">
                                 <a
+                                    className="hover:text-gray-400 transition-all duration-300"
                                     target="_blank"
                                     href={`https://www.instagram.com/${about.contact?.instagram
                                         ?.split("@")
@@ -63,6 +76,7 @@ export const AboutComponent = ({ about }: { about: About }) => {
                             {about.contact.secondaryIG && (
                                 <p className="text-sm">
                                     <a
+                                        className="hover:text-gray-400 transition-all duration-300"
                                         target="_blank"
                                         href={`https://www.instagram.com/${about.contact?.secondaryIG
                                             ?.split("@")
@@ -111,7 +125,7 @@ export const AboutComponent = ({ about }: { about: About }) => {
                                                                     : (member.bio as string)
                                                             )
                                                         }
-                                                        className="text-gray-400"
+                                                        className="text-gray-400 mt-0 hover:text-[#3B3B3B] transition-all duration-300"
                                                     >
                                                         {selectedBio ===
                                                         member.bio
@@ -122,7 +136,7 @@ export const AboutComponent = ({ about }: { about: About }) => {
                                             </p>
                                             {windowWidth < 768 &&
                                                 selectedBio === member.bio && (
-                                                    <p className="text-sm col-span-2 py-16 absolute w-full sm:max-w-lg max-w-[22rem]">
+                                                    <p className="text-sm col-span-2 py-16 absolute w-full sm:max-w-lg max-w-[18rem]">
                                                         {selectedBio}
                                                     </p>
                                                 )}

@@ -24,17 +24,17 @@ export function BackgroundLine({
                 className="w-full h-full"
             >
                 <motion.polyline
-                    points="17,2 17,2 304,2 304,2"
+                    points="17,2 17,2 303,2 303,2"
                     animate={{
                         points: isMenuOpen
                             ? isProjectsOpen
-                                ? `16,2 16,${
+                                ? `17,2 17,${
                                       windowWidth > 767 ? "80" : "80"
-                                  } 304,2 304,600`
-                                : `16,2 16,${
+                                  } 303,2 303,600`
+                                : `17,2 17,${
                                       windowWidth > 767 ? "80" : "80"
-                                  } 304,2 304,300`
-                            : "16,2 16,2 304,2 304,2",
+                                  } 303,2 303,300`
+                            : "17,2 17,2 303,2 303,2",
                     }}
                     transition={{
                         duration: 0.7,

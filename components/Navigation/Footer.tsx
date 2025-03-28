@@ -18,6 +18,7 @@ export async function Footer() {
             <div className="hidden md:block lg:col-span-2 lg:col-start-auto sm:col-span-3">
                 <p>
                     <a
+                        className="hover:text-gray-400 transition-all duration-300"
                         target="_blank"
                         href={`https://www.instagram.com/${contact?.instagram
                             ?.split("@")
@@ -27,7 +28,10 @@ export async function Footer() {
                     </a>
                 </p>
                 <p>
-                    <a href={`mailto:${contact?.email}`}>
+                    <a
+                        className="hover:text-gray-400 transition-all duration-300"
+                        href={`mailto:${contact?.email}`}
+                    >
                         {contact?.email.replace(/@/g, "[at]")}
                     </a>
                 </p>

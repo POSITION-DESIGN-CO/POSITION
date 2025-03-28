@@ -117,14 +117,14 @@ export function NavigationMenu({ contact }: { contact: NavigationMenuProps }) {
                 }`}
                 ref={menuRef}
             >
-                <div className="flex flex-col p-[14px] pt-24 w-full">
+                <div className="flex flex-col p-[14px] pt-24 w-full items-start">
                     <BackgroundLine
                         isMenuOpen={isOpen}
                         isProjectsOpen={isProjectsOpen}
                     />
                     <button
                         onClick={() => setIsProjectsOpen(!isProjectsOpen)}
-                        className={`flex w-full items-start justify-start text-left pb-2 pt-2`}
+                        className={`flex items-start text-left pb-0 pt-2 hover:text-gray-400 transition-all duration-300`}
                     >
                         Projects
                     </button>
@@ -144,6 +144,8 @@ export function NavigationMenu({ contact }: { contact: NavigationMenuProps }) {
                                     className={`${
                                         index === categories.length - 1
                                             ? "pb-3"
+                                            : index === 0
+                                            ? "pt-2"
                                             : "py-0 leading-[1.5]"
                                     }`}
                                 >
@@ -164,22 +166,30 @@ export function NavigationMenu({ contact }: { contact: NavigationMenuProps }) {
                             ))}
                     </div>
 
-                    <Link href="/about" onClick={() => setIsOpen(false)}>
+                    <Link
+                        href="/about"
+                        onClick={() => setIsOpen(false)}
+                        className="hover:text-gray-400 transition-all duration-300"
+                    >
                         About
                     </Link>
                 </div>
 
                 <div className="mt-auto pt-8 pl-[14px] pb-3">
                     <div className="sm:text-sm text-base">
-                        <p>{contact?.location}</p>
-                        <p>{contact?.phone}</p>
+                        {contact?.location ? <p>{contact.location}</p> : null}
+                        {contact?.phone ? <p>{contact.phone}</p> : null}
                         <p>
-                            <a href={`mailto:${contact.email}`}>
+                            <a
+                                className="hover:text-gray-400 transition-all duration-300"
+                                href={`mailto:${contact.email}`}
+                            >
                                 {contact.email.replace(/@/g, "[at]")}
                             </a>
                         </p>
                         <p>
                             <a
+                                className="hover:text-gray-400 transition-all duration-300"
                                 target="_blank"
                                 href={`https://www.instagram.com/${contact?.instagram
                                     ?.split("@")

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { EditorialImage } from "@/components/Home/EditorialImage";
 import { ProjectImage } from "@/components/Home/ProjectImage";
 import { cn } from "@/lib/utils";
@@ -10,6 +10,12 @@ import GetWindowDimensions from "@/lib/helper";
 
 export function HomePage({ homepageItems }: { homepageItems: HomepageItem[] }) {
     const { windowWidth } = GetWindowDimensions();
+    const [isHydrated, setIsHydrated] = useState(false);
+
+    useEffect(() => {
+        setIsHydrated(true);
+    }, []);
+
     const getGridPlacement = (index: number) => {
         const configs = [
             {
@@ -74,6 +80,7 @@ export function HomePage({ homepageItems }: { homepageItems: HomepageItem[] }) {
     };
 
     const [hoveredId, setHoveredId] = useState<string | null>(null);
+    if (!isHydrated) return null;
 
     return (
         <div className="grid md:grid-cols-12 md:grid-rows-[repeat(30,minmax(0,100%))] grid-rows-none grid-cols-6 gap-16 md:gap-0">

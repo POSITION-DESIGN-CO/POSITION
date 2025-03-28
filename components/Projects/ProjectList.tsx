@@ -99,7 +99,7 @@ export function ProjectList({
                                     hoveredId &&
                                     hoveredId !== project.sys.id) ||
                                 (expandedId && expandedId !== project.sys.id)
-                                    ? "opacity-10"
+                                    ? "opacity-50"
                                     : "opacity-100"
                             } py-[2px] group grid lg:grid-cols-12 md:grid-cols-6 grid-cols-2 gap-4 relative text-sm lg:text-base`}
                             onMouseEnter={() => setHoveredId(project.sys.id)}
