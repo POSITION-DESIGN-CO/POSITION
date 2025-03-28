@@ -177,7 +177,7 @@ export async function getProjects() {
     // return dummyProjects.projectCollection;
 }
 
-export async function getProjectBySlug(slug: string): Promise<Project> {
+export async function getProjectBySlug(slug: string) {
     const query = `
         query {
         projectCollection(where: { slug: "${slug}" }, limit: 1) {
@@ -210,10 +210,13 @@ export async function getProjectBySlug(slug: string): Promise<Project> {
       }
     `;
     const data = await fetchFromContentful(query);
-    const project = data?.projectCollection?.items[0] || [];
+    const project = data?.projectCollection?.items[0];
+    if (!project) {
+        return null;
+    }
 
     const projectsWithBlur = await Promise.all(
-        project.galleryCollection.items.map(async (project: any) => {
+        project.galleryCollection?.items.map(async (project: any) => {
             const blurDataURL = await dynamicBlurDataUrl(project.url);
             return {
                 ...project,
@@ -225,8 +228,7 @@ export async function getProjectBySlug(slug: string): Promise<Project> {
         ...project,
         galleryCollection: { items: projectsWithBlur },
     };
-
-    return projects || null;
+    return projects;
     // return data?.projectCollection.items[0] || null;
     // const project = dummyProjects.projectCollection.items.find(
     //     (project) => project.sys.id === id

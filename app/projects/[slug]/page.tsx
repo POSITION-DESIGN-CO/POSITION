@@ -3,6 +3,7 @@ import { headers } from "next/headers";
 import { ProjectDetail } from "@/components/Projects/ProjectDetail";
 import { Metadata } from "next";
 import { Project } from "@/lib/contentful-models";
+import NotFound from "@/app/not-found";
 
 type Props = {
     params: { slug: string };
@@ -82,11 +83,7 @@ export default async function ProjectPage({
         await getPageAnimations();
 
     if (!project) {
-        return (
-            <main className="min-h-[calc(100vh-50px)] flex justify-center items-center p-8">
-                <h1 className="text-xl">project not found...</h1>
-            </main>
-        );
+        return <NotFound />;
     }
 
     return (
