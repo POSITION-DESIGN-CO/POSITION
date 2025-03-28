@@ -138,14 +138,15 @@ export function HomePage({ homepageItems }: { homepageItems: HomepageItem[] }) {
                             />
                             <div
                                 className={`mt-2 ${
-                                    !isHorizontal
+                                    !isHorizontal && index !== 11
                                         ? "absolute -top-3 -right-3 z-50"
                                         : ""
                                 }`}
                                 style={{
-                                    transform: !isHorizontal
-                                        ? "translateX(100%)"
-                                        : "",
+                                    transform:
+                                        !isHorizontal && index !== 11
+                                            ? "translateX(100%)"
+                                            : "",
                                 }}
                             >
                                 <h2
