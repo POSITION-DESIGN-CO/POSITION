@@ -76,7 +76,7 @@ export function HomePage({ homepageItems }: { homepageItems: HomepageItem[] }) {
     const [hoveredId, setHoveredId] = useState<string | null>(null);
 
     return (
-        <div className="grid md:grid-cols-12 md:grid-rows-[repeat(30,minmax(0,100%))] grid-rows-none grid-cols-6 gap-16 md:gap-0 overflow-x-hidden">
+        <div className="grid md:grid-cols-12 md:grid-rows-[repeat(30,minmax(0,100%))] grid-rows-none grid-cols-6 gap-16 md:gap-0">
             {homepageItems.map((item: HomepageItem, index: number) => {
                 const gridPlacement = getGridPlacement(index);
 
@@ -90,7 +90,7 @@ export function HomePage({ homepageItems }: { homepageItems: HomepageItem[] }) {
                                     hoveredId &&
                                     hoveredId !== item.data.sys.id &&
                                     windowWidth > 1024
-                                        ? "opacity-10"
+                                        ? "opacity-20"
                                         : "opacity-100"
                                 }`
                             )}
