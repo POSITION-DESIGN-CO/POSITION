@@ -151,13 +151,21 @@ export function HomePage({ homepageItems }: { homepageItems: HomepageItem[] }) {
                                 <h2
                                     className={`text-sm break-words overflow-hidden whitespace-normal ${
                                         !isHorizontal &&
-                                        "max-w-[70px] md:max-w-[65px] lg:max-w-[100px]"
+                                        `${
+                                            index === 4
+                                                ? `lg:max-w-[70px] md:max-w-[65px] `
+                                                : `lg:max-w-[120px] md:max-w-[120px]`
+                                        } `
                                     } `}
                                 >
                                     {item.data.title}
                                 </h2>
                                 <p
-                                    className={`text-xs text-gray-500 transition-opacity duration-300 ease-in-out max-w-[70px] md:max-w-[65px] lg:max-w-[100px] ${
+                                    className={`text-xs text-gray-500 transition-opacity duration-300 ease-in-out ${
+                                        index === 4
+                                            ? `lg:max-w-[70px] md:max-w-[65px] `
+                                            : `lg:max-w-[120px] md:max-w-[120px]`
+                                    } ${
                                         hoveredId === item.data.sys.id ||
                                         windowWidth < 1024
                                             ? "opacity-100"

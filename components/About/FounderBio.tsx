@@ -25,7 +25,7 @@ export default function FounderBio({ founder }: FounderBioProps) {
     const bioToShow = showFullBio ? bio : [bio[0]];
 
     return (
-        <div className="grid grid-cols-2 sm:gap-8 gap-4 mb-12 sm:mt-0 mt-8">
+        <div className="grid grid-cols-2 sm:gap-8 gap-4 mb-12">
             <div className="flex flex-col gap-3">
                 <div className="relative aspect-square w-full max-w-[250px]">
                     <Image

@@ -20,7 +20,7 @@ export default async function Home() {
 
     return (
         <main className="sm:min-h-[calc(100vh-50px)] min-h-[calc(100vh-150px)] p-4">
-            <div className="grid md:grid-cols-12 grid-cols-1 md:mb-12 md:my-0 my-6 gap-2">
+            <div className="grid md:grid-cols-12 grid-cols-1 md:mb-12 md:my-0 my-6 gap-8">
                 <div className="text-sm lg:col-start-6 md:col-start-7 col-start-1 col-span-7 pt-10 md:p-0 w-full leading-[1.3]">
                     <p>{aboutText}.</p>
                 </div>

@@ -78,7 +78,7 @@ export const AboutComponent = ({ about }: { about: About }) => {
 
                 {/* Team Section */}
                 <div className="my-16 max-w-5xl">
-                    <h2 className="sm:mb-4 mb-2 text-lg">Team</h2>
+                    <h2 className="sm:mb-6 mb-4 text-lg">Team</h2>
 
                     {/* Founder - now using the client component */}
                     <FounderBio founder={about.founder} />

@@ -152,7 +152,7 @@ export function ProjectList({
                             {project.thumbnail &&
                                 expandedId === project.sys.id && (
                                     <>
-                                        <aside className="flex justify-between text-xs">
+                                        <aside className="flex justify-between text-xs text-gray-500">
                                             <div className="col-span-1">
                                                 {project.location}
                                             </div>
