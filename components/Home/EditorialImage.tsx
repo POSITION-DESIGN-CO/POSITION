@@ -41,7 +41,7 @@ export function EditorialImage({
                 <div className="mt-2">
                     <h2 className="text-sm">{title}</h2>
                     {description && (
-                        <p className="text-xs w-3/4">{description}</p>
+                        <p className="text-xs w-full">{description}</p>
                     )}
                 </div>
             )}
