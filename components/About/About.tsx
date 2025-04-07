@@ -26,7 +26,7 @@ export const AboutComponent = ({ about }: { about: About }) => {
                 <TimeToggle />
             </div>
             {/* Studio Description */}
-            <section className="lg:col-start-3 lg:col-span-8 col-start-1 col-span-10">
+            <section className="lg:col-start-3 lg:col-span-8 md:col-start-2 md:col-span-10 col-start-1 col-span-10">
                 <div className="text-sm pt-2 lg:p-0 mt-24">
                     <p className="lg:text-lg" style={{ lineHeight: 1.3 }}>
                         {about.description}
@@ -91,7 +91,7 @@ export const AboutComponent = ({ about }: { about: About }) => {
                 </div>
 
                 {/* Team Section */}
-                <div className="my-16 max-w-5xl">
+                <div className="my-16">
                     <h2 className="sm:mb-6 mb-4 text-lg">Team</h2>
 
                     {/* Founder - now using the client component */}
@@ -195,10 +195,10 @@ export const AboutComponent = ({ about }: { about: About }) => {
                                 <div className="col-span-1 leading-[1.3]">
                                     {award.year}
                                 </div>
-                                <div className="col-span-7 leading-[1.3]">
+                                <div className="col-span-6 leading-[1.3]">
                                     {award.title}
                                 </div>
-                                <div className="col-span-4 leading-[1.3]">
+                                <div className="col-span-5 leading-[1.3]">
                                     {award.result}
                                 </div>
                             </Fragment>
@@ -215,10 +215,10 @@ export const AboutComponent = ({ about }: { about: About }) => {
                                 <div className="col-span-1 leading-[1.3]">
                                     {pub.year}
                                 </div>
-                                <div className="col-span-7 leading-[1.3]">
+                                <div className="col-span-6 leading-[1.3]">
                                     {pub.title}
                                 </div>
-                                <div className="col-span-4 leading-[1.3]">
+                                <div className="col-span-5 leading-[1.3]">
                                     {pub.publisher}
                                 </div>
                             </Fragment>

@@ -24,20 +24,64 @@ export default function ClientAnimation({
     const videoRef = useRef<HTMLVideoElement>(null);
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setShowAnimation(true);
-            videoRef.current?.play().catch((e) => {
-                console.error(e);
-            });
-        }, 1500);
-        return () => clearTimeout(timer);
+        if (windowWidth > 639) {
+            const timer = setTimeout(() => {
+                setShowAnimation(true);
+                videoRef.current?.play().catch((e) => {
+                    console.error(e);
+                });
+            }, 1500);
+            return () => clearTimeout(timer);
+        } else {
+            const timer = setTimeout(() => {
+                setShowAnimation(true);
+                videoRef.current?.play().catch((e) => {
+                    console.error(e);
+                });
+            }, 500);
+            return () => clearTimeout(timer);
+        }
+    }, [windowWidth]);
+
+    useEffect(() => {
+        const handleVisibilityChange = () => {
+            if (document.visibilityState === "visible") {
+                if (videoRef.current) {
+                    videoRef.current.pause();
+                    videoRef.current.currentTime = 0;
+                }
+                setIsEnded(false);
+                setHideContainer(false);
+                setShowAnimation(false);
+                const timer = setTimeout(() => {
+                    setShowAnimation(true);
+                    setIsEnded(false);
+                    setHideContainer(false);
+                    videoRef.current?.play().catch(console.error);
+                }, 1500);
+                return () => clearTimeout(timer);
+            } else {
+                setShowAnimation(false);
+                setIsEnded(true);
+                setHideContainer(true);
+                videoRef.current?.pause();
+            }
+        };
+
+        document.addEventListener("visibilitychange", handleVisibilityChange);
+        return () => {
+            document.removeEventListener(
+                "visibilitychange",
+                handleVisibilityChange
+            );
+        };
     }, []);
 
     const handleIsEnded = () => {
         setIsEnded(true);
         setTimeout(() => {
             setHideContainer(true);
-        }, 4000);
+        }, 2000);
     };
 
     return (
@@ -64,6 +108,10 @@ export default function ClientAnimation({
                     right: windowWidth <= 639 ? "20px" : "auto",
                     zIndex: 1000,
                     pointerEvents: "none",
+                    willChange: "transform",
+                    transform: "translateX(Math.round(x))",
+                    shapeRendering: "crispEdges",
+                    imageRendering: "pixelated",
                 }}
                 playsInline
                 muted

@@ -305,25 +305,38 @@ export async function getProjectsByCategory(category: string) {
     //     ),
     // };
 }
-
 export async function getUniqueCategories(): Promise<string[]> {
+    const desiredOrder = [
+        "All",
+        "Architecture",
+        "Interior",
+        "Fabrication",
+        "Product",
+        "Academic",
+        "Archive",
+    ];
+
     const categoryQuery = `
-      query {
-        projectCollection {
-          items {
-            category
-          }
+    query {
+      projectCollection {
+        items {
+          category
         }
       }
-    `;
+    }
+  `;
     const data = await fetchFromContentful(categoryQuery);
-    const categories = data?.projectCollection.items.map(
+    const rawCategories = data?.projectCollection.items.map(
         (project: any) => project.category
-    );
-    // const categories = dummyProjects.projectCollection.items.map(
-    //     (project) => project.category
-    // );
-    return ["All", ...Array.from(new Set(categories as string[]))];
+    ) as string[];
+
+    const uniqueCategories = Array.from(new Set(rawCategories));
+    const known = desiredOrder.filter((cat) => uniqueCategories.includes(cat));
+    const unknown = uniqueCategories
+        .filter((cat) => !desiredOrder.includes(cat))
+        .sort();
+
+    return ["All", ...known.filter((cat) => cat !== "All"), ...unknown];
 }
 
 export async function getHomepageItems(): Promise<HomepageItem[]> {
