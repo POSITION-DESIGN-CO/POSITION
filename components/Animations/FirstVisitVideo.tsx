@@ -14,7 +14,7 @@ export const FirstVisitVideo = ({
 
     useEffect(() => {
         if (typeof window !== "undefined") {
-            const hasVisited = localStorage.getItem("visited");
+            const hasVisited = sessionStorage.getItem("visited");
 
             if (!hasVisited) {
                 setShouldShow(true);
@@ -24,7 +24,7 @@ export const FirstVisitVideo = ({
     }, []);
 
     const handleClose = () => {
-        localStorage.setItem("visited", "true");
+        sessionStorage.setItem("visited", "true");
         setShouldShow(false);
         setTimeout(() => setHideVideo(false), 700);
     };
