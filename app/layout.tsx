@@ -19,15 +19,15 @@ import { getAbout } from "@/lib/contentful";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: "POSITION | Architecture Studio",
+    title: "POSITION",
     description:
-        "An architectural practice that explores ideas across disciplines and scales",
+        "A design practice that explores ideas across disciplines and scales",
 
     twitter: {
         card: "summary_large_image",
-        title: "POSITION | Architecture Studio",
+        title: "POSITION",
         description:
-            "An architectural practice that explores ideas across disciplines and scales",
+            "A design practice that explores ideas across disciplines and scales",
 
         images: [
             {
@@ -36,9 +36,9 @@ export const metadata: Metadata = {
         ],
     },
     openGraph: {
-        title: "POSITION | Architecture Studio",
+        title: "POSITION",
         description:
-            "An architectural practice that explores ideas across disciplines and scales",
+            "A design practice that explores ideas across disciplines and scales",
 
         images: [
             {
