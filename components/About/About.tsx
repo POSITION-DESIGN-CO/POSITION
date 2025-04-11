@@ -101,14 +101,14 @@ export const AboutComponent = ({ about }: { about: About }) => {
                     <div className="my-12 max-w-7xl grid md:grid-cols-1 grid-cols-2">
                         <div>
                             <h3 className="text-base sm:mb-4 mb-2">Members</h3>
-                            <div className="grid grid-cols-1 md:grid-cols-4 gap-y-3 gap-8">
+                            <div className="grid grid-cols-1 md:grid-cols-5 gap-y-3 gap-0">
                                 {about.teamMembersCollection.items.map(
                                     (member, i) => (
                                         <div
                                             key={i}
                                             className={`pr-4 ${
                                                 selectedBio === member.bio &&
-                                                "pb-52 md:pb-0"
+                                                "pb-64 md:pb-0"
                                             }`}
                                         >
                                             <p className="text-sm">
