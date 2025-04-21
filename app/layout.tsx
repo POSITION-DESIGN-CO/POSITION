@@ -15,6 +15,7 @@ import {
 } from "@/lib/contentful";
 import { NavigationMenuRefProvider } from "@/lib/useNavigationMenuRef";
 import { getAbout } from "@/lib/contentful";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -87,6 +88,7 @@ export default async function RootLayout({
                     "bg-[#F8F8F5] text-[#3B3B3B] pt-4 sm:pt-0 font-grotesk"
                 )}
             >
+                <GoogleAnalytics />
                 <NavigationMenuRefProvider>
                     <NavigationMenu contact={contact} />
                     <PageTransitionProvider>{children}</PageTransitionProvider>
