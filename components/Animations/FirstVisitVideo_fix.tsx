@@ -9,15 +9,16 @@ export const FirstVisitVideo = ({
     movUrl?: string;
     webmUrl?: string;
 }) => {
+    const [hasMounted, setHasMounted] = useState(false);
     const [shouldShow, setShouldShow] = useState(false);
 
     useEffect(() => {
+        setHasMounted(true);
+
         if (typeof window !== "undefined") {
             const hasVisited = sessionStorage.getItem("visited");
             if (!hasVisited) {
                 setShouldShow(true);
-            } else {
-                setShouldShow(false);
             }
         }
     }, []);
@@ -27,8 +28,7 @@ export const FirstVisitVideo = ({
         setShouldShow(false);
     };
 
-    if (!shouldShow) return null;
-
+    if (!hasMounted) return null;
 
     return (
         <div
