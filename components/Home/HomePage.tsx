@@ -8,12 +8,20 @@ import { cn } from "@/lib/utils";
 import { HomepageItem } from "@/lib/contentful-models";
 import GetWindowDimensions from "@/lib/helper";
 
-export function HomePage({ homepageItems }: { homepageItems: HomepageItem[] }) {
+export function HomePage({
+    homepageItems,
+    aboutText,
+}: {
+    homepageItems: HomepageItem[];
+    aboutText: string;
+}) {
     const { windowWidth } = GetWindowDimensions();
     const [isHydrated, setIsHydrated] = useState(false);
 
     useEffect(() => {
-        setIsHydrated(true);
+        setTimeout(() => {
+            setIsHydrated(true);
+        }, 100);
     }, []);
 
     const getGridPlacement = (index: number) => {
@@ -80,113 +88,125 @@ export function HomePage({ homepageItems }: { homepageItems: HomepageItem[] }) {
     };
 
     const [hoveredId, setHoveredId] = useState<string | null>(null);
-    if (!isHydrated) return null;
 
     return (
-        <div className="grid md:grid-cols-12 md:grid-rows-[repeat(30,minmax(0,100%))] grid-rows-none grid-cols-6 gap-16 md:gap-0">
-            {homepageItems.map((item: HomepageItem, index: number) => {
-                const gridPlacement = getGridPlacement(index);
+        <>
+            <div
+                className="grid md:grid-cols-12 grid-cols-1 md:mb-12 md:my-0 my-6 gap-8 transition-all duration-500 ease-in-out"
+                style={{ opacity: isHydrated ? 1 : 0 }}
+            >
+                <div className="text-sm lg:col-start-6 md:col-start-7 col-start-1 col-span-7 pt-10 md:p-0 w-full leading-[1.3]">
+                    <p>{aboutText}.</p>
+                </div>
+            </div>
+            <div
+                className="grid md:grid-cols-12 md:grid-rows-[repeat(30,minmax(0,100%))] grid-rows-none grid-cols-6 gap-16 md:gap-0 transition-all duration-500 ease-in-out"
+                style={{ opacity: isHydrated ? 1 : 0 }}
+            >
+                {homepageItems.map((item: HomepageItem, index: number) => {
+                    const gridPlacement = getGridPlacement(index);
 
-                if (item.type === "editorial") {
+                    if (item.type === "editorial") {
+                        return (
+                            <div
+                                key={`editorial-${item.data.sys.id}`}
+                                className={cn(
+                                    gridPlacement.colSpan,
+                                    `block h-full group transition-opacity duration-1000 ease-in-out ${
+                                        hoveredId &&
+                                        hoveredId !== item.data.sys.id &&
+                                        windowWidth > 1024
+                                            ? "opacity-20"
+                                            : "opacity-100"
+                                    }`
+                                )}
+                            >
+                                <EditorialImage
+                                    image={item.data.image}
+                                    title={item.data.title}
+                                    link={item.data.link}
+                                    description={item.data?.description}
+                                    onMouseEnter={() =>
+                                        setHoveredId(item.data.sys.id)
+                                    }
+                                    onMouseLeave={() => setHoveredId(null)}
+                                />
+                            </div>
+                        );
+                    }
+
+                    const isHorizontal =
+                        item.data.thumbnail.width >= item.data.thumbnail.height;
+
                     return (
                         <div
-                            key={`editorial-${item.data.sys.id}`}
-                            className={cn(
-                                gridPlacement.colSpan,
-                                `block h-full group transition-opacity duration-1000 ease-in-out ${
+                            key={`project-${item.data.sys.id}`}
+                            className={cn(gridPlacement.colSpan, "relative")}
+                        >
+                            <Link
+                                href={`/projects/${item.data.slug}`}
+                                className={`block h-full group transition-opacity duration-1000 ease-in-out cursor-default ${
                                     hoveredId &&
                                     hoveredId !== item.data.sys.id &&
                                     windowWidth > 1024
                                         ? "opacity-20"
                                         : "opacity-100"
-                                }`
-                            )}
-                        >
-                            <EditorialImage
-                                image={item.data.image}
-                                title={item.data.title}
-                                link={item.data.link}
-                                description={item.data?.description}
-                                onMouseEnter={() =>
-                                    setHoveredId(item.data.sys.id)
-                                }
-                                onMouseLeave={() => setHoveredId(null)}
-                            />
-                        </div>
-                    );
-                }
-
-                const isHorizontal =
-                    item.data.thumbnail.width >= item.data.thumbnail.height;
-
-                return (
-                    <div
-                        key={`project-${item.data.sys.id}`}
-                        className={cn(gridPlacement.colSpan, "relative")}
-                    >
-                        <Link
-                            href={`/projects/${item.data.slug}`}
-                            className={`block h-full group transition-opacity duration-1000 ease-in-out cursor-default ${
-                                hoveredId &&
-                                hoveredId !== item.data.sys.id &&
-                                windowWidth > 1024
-                                    ? "opacity-20"
-                                    : "opacity-100"
-                            }`}
-                        >
-                            <ProjectImage
-                                thumbnail={item.data.thumbnail}
-                                title={item.data.title}
-                                isHorizontal={isHorizontal}
-                                onMouseEnter={() =>
-                                    setHoveredId(item.data.sys.id)
-                                }
-                                onMouseLeave={() => setHoveredId(null)}
-                            />
-                            <div
-                                className={`mt-2 ${
-                                    !isHorizontal && index !== 11
-                                        ? "absolute -top-3 -right-3 z-50"
-                                        : ""
                                 }`}
-                                style={{
-                                    transform:
-                                        !isHorizontal && index !== 11
-                                            ? "translateX(100%)"
-                                            : "",
-                                }}
                             >
-                                <h2
-                                    className={`text-sm break-words overflow-hidden whitespace-normal ${
-                                        !isHorizontal &&
-                                        `${
+                                <ProjectImage
+                                    thumbnail={item.data.thumbnail}
+                                    title={item.data.title}
+                                    isHorizontal={isHorizontal}
+                                    onMouseEnter={() =>
+                                        setHoveredId(item.data.sys.id)
+                                    }
+                                    onMouseLeave={() => setHoveredId(null)}
+                                />
+                                <div
+                                    className={`mt-2 ${
+                                        !isHorizontal && index !== 11
+                                            ? "absolute -top-3 -right-3 z-50"
+                                            : ""
+                                    }`}
+                                    style={{
+                                        transform:
+                                            !isHorizontal && index !== 11
+                                                ? "translateX(100%)"
+                                                : "",
+                                    }}
+                                >
+                                    <h2
+                                        className={`text-sm break-words overflow-hidden whitespace-normal ${
+                                            !isHorizontal &&
+                                            `${
+                                                index === 4
+                                                    ? `lg:max-w-[70px] md:max-w-[65px] `
+                                                    : `lg:max-w-[120px] md:max-w-[120px]`
+                                            } `
+                                        } `}
+                                    >
+                                        {item.data.title}
+                                    </h2>
+                                    <p
+                                        className={`text-xs text-gray-500 transition-opacity duration-300 ease-in-out ${
                                             index === 4
                                                 ? `lg:max-w-[70px] md:max-w-[65px] `
                                                 : `lg:max-w-[120px] md:max-w-[120px]`
-                                        } `
-                                    } `}
-                                >
-                                    {item.data.title}
-                                </h2>
-                                <p
-                                    className={`text-xs text-gray-500 transition-opacity duration-300 ease-in-out ${
-                                        index === 4
-                                            ? `lg:max-w-[70px] md:max-w-[65px] `
-                                            : `lg:max-w-[120px] md:max-w-[120px]`
-                                    } ${
-                                        hoveredId === item.data.sys.id ||
-                                        windowWidth < 1024
-                                            ? "opacity-100"
-                                            : "opacity-0"
-                                    }`}
-                                >
-                                    {item.data.category}, {item.data.year}
-                                </p>
-                            </div>
-                        </Link>
-                    </div>
-                );
-            })}
-        </div>
+                                        } ${
+                                            hoveredId === item.data.sys.id ||
+                                            windowWidth < 1024
+                                                ? "opacity-100"
+                                                : "opacity-0"
+                                        }`}
+                                    >
+                                        {item.data.category}, {item.data.year}
+                                    </p>
+                                </div>
+                            </Link>
+                        </div>
+                    );
+                })}
+            </div>
+        </>
     );
 }
