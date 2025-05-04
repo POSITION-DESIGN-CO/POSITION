@@ -69,8 +69,7 @@ export function NavigationMenu({ contact }: { contact: NavigationMenuProps }) {
         if (typeof window !== "undefined") {
             const hasVisited = localStorage.getItem("visited");
             if (!hasVisited) {
-                setIsLoading(false);
-                setTimeout(() => setIsLoading(true), 1000);
+                setIsLoading(true);
             } else {
                 setIsLoading(true);
             }

@@ -7,7 +7,8 @@ import { NavigationMenu } from "@/components/Navigation/NavigationMenu";
 import { Footer } from "@/components/Navigation/Footer";
 import { PageTransitionProvider } from "@/components/PageTransition";
 // import { FirstVisitVideo } from "@/components/Animations/FirstVisitVideo";
-import { FirstVisitVideo } from "@/components/Animations/FirstVisitVideo_fix";
+// import { FirstVisitVideo } from "@/components/Animations/FirstVisitVideo_fix";
+import { FirstVisitVideo } from "@/components/Animations/FirstVisitVideo_fix_2";
 import { StoreInitializer } from "@/components/StoreInitializer";
 import {
     getPageAnimations,
