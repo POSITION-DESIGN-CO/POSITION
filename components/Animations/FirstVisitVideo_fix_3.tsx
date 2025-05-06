@@ -24,9 +24,11 @@ async function getBase64FromUrl(videoUrl: string): Promise<string> {
 export const FirstVisitVideo = ({
     webmUrl,
     movUrl,
+    onFinish,
 }: {
     movUrl?: string;
     webmUrl?: string;
+    onFinish?: () => void;
 }) => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [shouldShow, setShouldShow] = useState(false);
@@ -35,7 +37,6 @@ export const FirstVisitVideo = ({
     const [userStarted, setUserStarted] = useState(false);
     const [hasPlayed, setHasPlayed] = useState(false);
     const [videoBase64, setVideoBase64] = useState<string | null>(null);
-    
 
     useEffect(() => {
         if (movUrl) {
@@ -47,6 +48,8 @@ export const FirstVisitVideo = ({
         const hasVisited = sessionStorage.getItem("visited");
         if (!hasVisited) {
             setShouldShow(true);
+        } else {
+            onFinish?.();
         }
     }, []);
 
@@ -75,25 +78,26 @@ export const FirstVisitVideo = ({
         checkAutoplay();
     }, [videoBase64]);
 
-useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
 
-    const onPlay = () => {
-        console.log("Video started playing");
-        setHasPlayed(true);
-    };
+        const onPlay = () => {
+            console.log("Video started playing");
+            setHasPlayed(true);
+        };
 
-    video.addEventListener("play", onPlay);
+        video.addEventListener("play", onPlay);
 
-    return () => {
-        video.removeEventListener("play", onPlay);
-    };
-}, [autoplayChecked]);
+        return () => {
+            video.removeEventListener("play", onPlay);
+        };
+    }, [autoplayChecked]);
 
     const handleClose = () => {
         sessionStorage.setItem("visited", "true");
         setShouldShow(false);
+        onFinish?.();
     };
 
     const startVideo = () => {

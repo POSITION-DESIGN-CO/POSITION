@@ -3,19 +3,16 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../styles/index.css";
 import { cn } from "@/lib/utils";
-import { NavigationMenu } from "@/components/Navigation/NavigationMenu";
 import { Footer } from "@/components/Navigation/Footer";
-import { PageTransitionProvider } from "@/components/PageTransition";
-import { FirstVisitVideo } from "@/components/Animations/FirstVisitVideo_fix_3";
 import { StoreInitializer } from "@/components/StoreInitializer";
 import {
     getPageAnimations,
     getProjects,
     getUniqueCategories,
 } from "@/lib/contentful";
-import { NavigationMenuRefProvider } from "@/lib/useNavigationMenuRef";
 import { getAbout } from "@/lib/contentful";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import LayoutWithVideoGate from "@/components/LayoutWithVideoGate";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -85,15 +82,13 @@ export default async function RootLayout({
                 )}
             >
                 <GoogleAnalytics />
-                <FirstVisitVideo
+                <LayoutWithVideoGate
                     webmUrl={loadingAnimationWebm?.url}
                     movUrl={loadingAnimationMov?.url}
-                />
-                <NavigationMenuRefProvider>
-                    <NavigationMenu contact={contact} />
-                    <PageTransitionProvider>{children}</PageTransitionProvider>
-                </NavigationMenuRefProvider>
-                <Footer />
+                    contact={contact}
+                >
+                    {children}
+                </LayoutWithVideoGate>
             </body>
         </html>
     );
