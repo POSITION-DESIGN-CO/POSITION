@@ -30,13 +30,13 @@ export default function LayoutWithVideoGate({
                 />
             )}
 
-            {videoDone && (
+            <div style={{ opacity: videoDone ? 1 : 0 }} className="transition-opacity duration-500 ease-in-out">
                 <NavigationMenuRefProvider>
                     <NavigationMenu contact={contact} />
                     <PageTransitionProvider>{children}</PageTransitionProvider>
                     <Footer contact={contact} />
                 </NavigationMenuRefProvider>
-            )}
+            </div>
         </>
     );
 }
