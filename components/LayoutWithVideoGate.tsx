@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { FirstVisitVideo } from "@/components/Animations/FirstVisitVideo_fix_3";
+import { FirstVisitVideo } from "@/components/Animations/FirstVisitVideo_fix_GIF";
 import { NavigationMenu } from "@/components/Navigation/NavigationMenu";
 import { PageTransitionProvider } from "@/components/PageTransition";
 import { NavigationMenuRefProvider } from "@/lib/useNavigationMenuRef";
