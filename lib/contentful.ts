@@ -189,6 +189,12 @@ export async function getProjectBySlug(slug: string) {
             category
             position
             team
+            additionalCreditsCollection(limit: 10) {
+              items {
+                label
+                names
+              }
+            }
             year
             thumbnail {         
               url(transform: {width: 1400})

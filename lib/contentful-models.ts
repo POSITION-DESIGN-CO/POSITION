@@ -63,6 +63,11 @@ export interface About {
     };
 }
 
+export interface Credit {
+    label: string;
+    names: string[];
+}
+
 export interface Project {
     sys: { id: string };
     title: string;
@@ -89,6 +94,9 @@ export interface Project {
         }[];
     };
     team?: string[] | null;
+    additionalCreditsCollection?: {
+        items: Credit[];
+    } | null;
     location?: string | null;
     position?: string | null;
     order?: number | null;
