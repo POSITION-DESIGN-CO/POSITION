@@ -24,6 +24,23 @@ interface ProjectDetailProps {
     referer: string;
 }
 
+interface OverviewRow {
+    label: string;
+    value?: string | string[] | null;
+}
+
+// Comma-separated on desktop, one name per line on mobile
+const NameList = ({ names }: { names: string[] }) => (
+    <ul className="flex gap-0 flex-wrap flex-col sm:flex-row sm:gap-x-1">
+        {names.map((name, index) => (
+            <li key={`${name}-${index}`}>
+                {name}
+                {index !== names.length - 1 && ","}
+            </li>
+        ))}
+    </ul>
+);
+
 export const ProjectDetail = ({
     project,
     projectGridAnimationWebm,
@@ -40,58 +57,57 @@ export const ProjectDetail = ({
         return null;
     }
 
+    // Optional rows are only shown when they have content
+    const overviewRows: OverviewRow[] = [
+        { label: "Project", value: project.title },
+        { label: "Year", value: project.year },
+        { label: "Category", value: project.category },
+        { label: "Location", value: project.location },
+        { label: "Position", value: project.position },
+        { label: "Team", value: project.team },
+        // Unpublished credit entries come back from Contentful as null
+        ...(project.additionalCreditsCollection?.items ?? [])
+            .filter(Boolean)
+            .map((credit) => ({ label: credit.label, value: credit.names })),
+    ].filter((row) =>
+        Array.isArray(row.value) ? row.value.length > 0 : Boolean(row.value)
+    );
+
     return (
         <>
             <div className="grid md:grid-cols-12 grid-cols-12 mt-24 mb-16 max-w-7xl lg:text-lg text-sm">
-                <p className="col-span-10 md:col-span-8 pt-2 lg:p-0 leading-[1.3]">
-                    {project.description}
-                </p>
+                <div className="col-span-10 md:col-span-8 pt-2 lg:p-0 leading-[1.3] space-y-[1.3em]">
+                    {/* An empty line in Contentful starts a new paragraph, a single line break is kept as is */}
+                    {project.description
+                        .split(/\n\s*\n/)
+                        .map((paragraph, index) => (
+                            <p key={index} className="whitespace-pre-line">
+                                {paragraph.trim()}
+                            </p>
+                        ))}
+                </div>
             </div>
             <div className="grid md:grid-cols-12 grid-col-1 text-sm mb-16">
                 <section className="grid sm:grid-cols-6 grid-cols-3 lg:col-start-3 lg:col-span-8 col-start-2 md:col-start-2 col-span-7 gap-0">
                     <p className="text-gray-400 mb-5">Overview</p>
                 </section>
-                <section className="grid sm:grid-cols-6 grid-cols-3 lg:col-start-3 lg:col-span-8 col-start-2 md:col-start-2 col-span-7 gap-0">
-                    <aside className="self-start">
-                        <p className="text-gray-400">Project</p>
-                        <p className="text-gray-400">Year</p>
-                        <p className="text-gray-400">Category</p>
-                        {project.location && (
-                            <p className="text-gray-400">Location</p>
-                        )}
-                        {project.position && (
-                            <p className="text-gray-400">Position</p>
-                        )}
-                        {project.team?.length && (
-                            <p className="text-gray-400">Team</p>
-                        )}
-                    </aside>
-                    <aside className="sm:col-span-4 col-span-2 self-start">
-                        <p>{project.title}</p>
-                        <p>{project.year}</p>
-                        <p>{project.category}</p>
-                        {project.location && <p>{project.location}</p>}
-                        {project.position && <p>{project.position}</p>}
-                        {project.team?.length && (
-                            <ul className="flex gap-0 flex-wrap flex-col sm:flex-row sm:gap-x-1">
-                                {project.team?.map(
-                                    (person: string, index: number) => (
-                                        <li key={person}>
-                                            <span>
-                                                {person}
-                                                {project.team &&
-                                                    index !==
-                                                        project.team.length -
-                                                            1 &&
-                                                    ","}{" "}
-                                            </span>
-                                        </li>
-                                    )
+                <dl className="grid sm:grid-cols-6 grid-cols-3 lg:col-start-3 lg:col-span-8 col-start-2 md:col-start-2 col-span-7 gap-0">
+                    {/* Label and value share a row, so multi-line values keep labels aligned */}
+                    {overviewRows.map((row, index) => (
+                        <div key={index} className="contents">
+                            <dt className="text-gray-400 col-start-1 pr-2">
+                                {row.label}
+                            </dt>
+                            <dd className="sm:col-span-4 col-span-2">
+                                {Array.isArray(row.value) ? (
+                                    <NameList names={row.value} />
+                                ) : (
+                                    row.value
                                 )}
-                            </ul>
-                        )}
-                    </aside>
-                </section>
+                            </dd>
+                        </div>
+                    ))}
+                </dl>
             </div>
             <div className="fixed md:top-4 right-4 top-[53px]">
                 <div className="grid grid-cols-3 md:grid-cols-1 border border-[#3B3B3B] bg-white justify-center md:w-[calc(320px/3)] w-[calc(100vw-32px)]">

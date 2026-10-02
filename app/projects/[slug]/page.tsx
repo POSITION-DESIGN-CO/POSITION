@@ -20,7 +20,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         };
     }
 
-    const description = foundProject.description;
+    // Collapse paragraph breaks so meta tags get a single line of text
+    const description = foundProject.description.replace(/\s+/g, " ");
     const primaryImage = foundProject.thumbnail;
 
     const maxWidth = 800;
