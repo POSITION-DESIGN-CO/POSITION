@@ -29,17 +29,38 @@ interface OverviewRow {
     value?: string | string[] | null;
 }
 
-// Comma-separated on desktop, one name per line on mobile
-const NameList = ({ names }: { names: string[] }) => (
-    <ul className="flex gap-0 flex-wrap flex-col sm:flex-row sm:gap-x-1">
-        {names.map((name, index) => (
-            <li key={`${name}-${index}`}>
-                {name}
-                {index !== names.length - 1 && ","}
-            </li>
-        ))}
-    </ul>
-);
+const NAMES_PER_LINE = 4;
+
+// Comma-separated on desktop with at most four names per line, one name per line on mobile
+const NameList = ({ names }: { names: string[] }) => {
+    const lines: string[][] = [];
+    for (let i = 0; i < names.length; i += NAMES_PER_LINE) {
+        lines.push(names.slice(i, i + NAMES_PER_LINE));
+    }
+
+    return (
+        <ul className="flex flex-col">
+            {lines.map((line, lineIndex) => (
+                <li
+                    key={lineIndex}
+                    className="flex flex-col sm:flex-row sm:gap-x-1"
+                >
+                    {line.map((name, index) => {
+                        const isLastName =
+                            lineIndex === lines.length - 1 &&
+                            index === line.length - 1;
+                        return (
+                            <span key={`${name}-${index}`}>
+                                {name}
+                                {!isLastName && ","}
+                            </span>
+                        );
+                    })}
+                </li>
+            ))}
+        </ul>
+    );
+};
 
 export const ProjectDetail = ({
     project,
